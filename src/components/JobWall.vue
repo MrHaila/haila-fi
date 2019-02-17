@@ -11,8 +11,24 @@ div#job-wall-container.section-padding
     div#lila.box.flex-fill.text-center
       transition(name="slide")
         p(:key="currentJob.suffix") {{ currentJob.suffix }}
-  h4.d-flex.justify-content-center.mt-3 at
-  i.content-placeholder.d-flex.justify-content-center Placeholder
+
+  h4.d-flex.justify-content-center.mt-4.mb-4 at
+
+  div.row.text-center.align-items-center.mb-4
+    div.col-sm
+      g-image(src="@/assets/rovio.png" width="100" fit="inside")
+    div.col-sm
+      g-image(src="@/assets/playraven.png" width="160" fit="inside")
+    div.col-sm
+      g-image(src="@/assets/wooga.png" width="130" fit="inside")
+  div.row.text-center.align-items-center
+    div.col-sm
+      g-image(src="@/assets/newfactory.png" width="130" fit="inside")
+    div.col-sm
+      g-image(src="@/assets/neogames.png" width="90" fit="inside")
+    div.col-sm
+      g-image(src="@/assets/igda.png" width="140" fit="inside")
+
   p#boring-label.d-flex.justify-content-center Looking for a boring list?
   div.d-flex.justify-content-center
     a(href="")

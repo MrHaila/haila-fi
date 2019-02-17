@@ -1,5 +1,5 @@
 <template lang="pug">
-div
+div.container
   div#header.d-flex.justify-content-center.fixed-top
     g-image(alt="Haila logo" src="~/assets/haila.png" width="100" fit="inside")
   div#empty-header
