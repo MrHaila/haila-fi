@@ -1,46 +1,47 @@
 <template lang="pug">
 div#potentiality-container.text-light.section-padding
-  h1 MULTIPOTENTIALITY
-  small.text-monospace.font-weight-light teemu@haila.fi ~/manifestos> cat 01.txt#[span.caret.bg-light.text-light(v-show="showCaret") _]
+  div.container
+    h1 MULTIPOTENTIALITY
+    small.text-monospace.font-weight-light teemu@haila.fi ~/manifestos> cat 01.txt#[span.caret.bg-light.text-light(v-show="showCaret") _]
 
-  p.mt-4.ml-3 1. Eat
-  p.ml-3 2. Sleep
-  p.ml-3
-    span 3.
-    span.overlay.ml-1   ------------
-    span  Code
-    span.ml-4.overlay.up --------------
-    span.ml-4 Design
-  p.ml-5
-    span.overlay.ml-1.up ----------------------
-    span Photograph
-  p.ml-4
-    span.overlay.ml-1 --------
-    span Play
-    span.ml-4.overlay.down -------------------
-    span.ml-4 Excercise
-  p.ml-5
-    span.overlay.ml-1.down ----------
-    span Cook
-    span.ml-2.overlay ------
-    span.ml-2 Fix
-  p.ml-3
-    span.overlay.ml-1 ----------
-    span Read
-    span.ml-3.overlay.down -------------------
-    span.ml-3 Evagelise
-  p.ml-4
-    span.overlay.ml-1.down -----------
-    span Teach
-    span.ml-4.overlay.up ------------
-    span.ml-4 Learn
-  p.ml-2
-    span.overlay.ml-1 ------------
-    span Travel
-    span.ml-4.overlay.down -------------
-    span.ml-4 Create
+    p.mt-4.ml-3 1. Eat
+    p.ml-3 2. Sleep
+    p.ml-3
+      span 3.
+      span.overlay.ml-1   ------------
+      span  Code
+      span.ml-4.overlay.up --------------
+      span.ml-4 Design
+    p.ml-5
+      span.overlay.ml-1.up ----------------------
+      span Photograph
+    p.ml-4
+      span.overlay.ml-1 --------
+      span Play
+      span.ml-4.overlay.down -------------------
+      span.ml-4 Excercise
+    p.ml-5
+      span.overlay.ml-1.down ----------
+      span Cook
+      span.ml-2.overlay ------
+      span.ml-2 Fix
+    p.ml-3
+      span.overlay.ml-1 ----------
+      span Read
+      span.ml-3.overlay.down -------------------
+      span.ml-3 Evagelise
+    p.ml-4
+      span.overlay.ml-1.down -----------
+      span Teach
+      span.ml-4.overlay.up ------------
+      span.ml-4 Learn
+    p.ml-2
+      span.overlay.ml-1 ------------
+      span Travel
+      span.ml-4.overlay.down -------------
+      span.ml-4 Create
 
-  p.mt-4.ml-4 Ehhh, whatever.
+    p.mt-4.ml-4 Ehhh, whatever.
 </template>
 
 <script>
@@ -86,6 +87,4 @@ export default {
 .section-padding
   padding-top: 3rem
   padding-bottom: 2.5rem
-  padding-left: 1rem
-  padding-right: 1rem
 </style>

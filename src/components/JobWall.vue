@@ -1,38 +1,39 @@
 <template lang="pug">
 div#job-wall-container.section-padding
-  h1.mb-3 CV
-  div.d-flex.justify-content-center.text-light
-    div#orange.box.flex-fill.text-center
-      transition(name="slide")
-        p(:key="currentJob.prefix") {{ currentJob.prefix }}
-    div#blue.box.flex-fill.text-center.ml-2.mr-2
-      transition(name="slide")
-        p(:key="currentJob.job") {{ currentJob.job }}
-    div#lila.box.flex-fill.text-center
-      transition(name="slide")
-        p(:key="currentJob.suffix") {{ currentJob.suffix }}
+  div.container
+    h1.mb-3 CV
+    div.d-flex.justify-content-center.text-light
+      div#orange.box.flex-fill.text-center
+        transition(name="slide")
+          p(:key="currentJob.prefix") {{ currentJob.prefix }}
+      div#blue.box.flex-fill.text-center.ml-2.mr-2
+        transition(name="slide")
+          p(:key="currentJob.job") {{ currentJob.job }}
+      div#lila.box.flex-fill.text-center
+        transition(name="slide")
+          p(:key="currentJob.suffix") {{ currentJob.suffix }}
 
-  h4.d-flex.justify-content-center.mt-4.mb-4 at
+    h4.d-flex.justify-content-center.mt-4.mb-4 at
 
-  div.row.text-center.align-items-center.mb-4
-    div.col-sm
-      g-image(src="@/assets/rovio.png" width="100" fit="inside")
-    div.col-sm
-      g-image(src="@/assets/playraven.png" width="160" fit="inside")
-    div.col-sm
-      g-image(src="@/assets/wooga.png" width="130" fit="inside")
-  div.row.text-center.align-items-center
-    div.col-sm
-      g-image(src="@/assets/newfactory.png" width="130" fit="inside")
-    div.col-sm
-      g-image(src="@/assets/neogames.png" width="90" fit="inside")
-    div.col-sm
-      g-image(src="@/assets/igda.png" width="140" fit="inside")
+    div.row.text-center.align-items-center.mb-4
+      div.col-sm
+        g-image(src="@/assets/rovio.png" width="100" fit="inside")
+      div.col-sm
+        g-image(src="@/assets/playraven.png" width="160" fit="inside")
+      div.col-sm
+        g-image(src="@/assets/wooga.png" width="130" fit="inside")
+    div.row.text-center.align-items-center
+      div.col-sm
+        g-image(src="@/assets/newfactory.png" width="130" fit="inside")
+      div.col-sm
+        g-image(src="@/assets/neogames.png" width="90" fit="inside")
+      div.col-sm
+        g-image(src="@/assets/igda.png" width="140" fit="inside")
 
-  p#boring-label.d-flex.justify-content-center Looking for a boring list?
-  div.d-flex.justify-content-center
-    a(href="")
-      g-image(alt="LinkedIn" src="~/assets/linkedin.png" width="150")
+    p#boring-label.d-flex.justify-content-center Looking for a boring list?
+    div.d-flex.justify-content-center
+      a(href="")
+        g-image(alt="LinkedIn" src="~/assets/linkedin.png" width="150")
 </template>
 
 <script>
@@ -98,6 +99,6 @@ export default {
   opacity: 0
 
 #boring-label
-  margin-top: 2rem
+  margin-top: 4rem
   margin-bottom: 0.3rem
 </style>
