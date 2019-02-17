@@ -4,12 +4,15 @@ div#job-wall-container.section-padding
     h1.mb-3 CV
     div.d-flex.justify-content-center.text-light
       div#orange.box.flex-fill.text-center
+        small {{ (ticker % prefixes.length) + 1 }}/{{ prefixes.length }}
         transition(name="slide")
           p(:key="currentJob.prefix") {{ currentJob.prefix }}
       div#blue.box.flex-fill.text-center.ml-2.mr-2
+        small {{ (ticker % jobs.length) + 1 }}/{{ jobs.length }}
         transition(name="slide")
           p(:key="currentJob.job") {{ currentJob.job }}
       div#lila.box.flex-fill.text-center
+        small {{ (ticker % suffixes.length) + 1 }}/{{ suffixes.length }}
         transition(name="slide")
           p(:key="currentJob.suffix") {{ currentJob.suffix }}
 
@@ -40,19 +43,19 @@ div#job-wall-container.section-padding
 export default {
   data: function () {
     return {
-      ticker: 0
+      ticker: 0,
+      prefixes: ['One-man', 'Senior', 'Lead', 'Chief'],
+      jobs: ['Product', 'Game', 'Analytics', 'Technology', 'Bizdev'],
+      suffixes: ['Officer', 'Manager', 'Designer', 'Developer', 'Producer', 'Artist']
     }
   },
   computed: {
     // True Story™ Technology, patent pending
     currentJob: function () {
-      const a = ['Senior', 'Lead', 'Chief']
-      const b = ['Product', 'Game', 'Analytics', 'Technology']
-      const c = ['Officer', 'Manager', 'Designer', 'Developer', 'Producer']
       return {
-        prefix: a[this.ticker % a.length],
-        job: b[this.ticker % b.length],
-        suffix: c[this.ticker % c.length]
+        prefix: this.prefixes[this.ticker % this.prefixes.length],
+        job: this.jobs[this.ticker % this.jobs.length],
+        suffix: this.suffixes[this.ticker % this.suffixes.length]
       }
     }
   },
@@ -69,6 +72,13 @@ export default {
   border-radius: 0.4rem
   height: 2rem
   position: relative
+
+  small
+    font-size: 0.6rem
+    position: absolute
+    left: 0
+    bottom: 0
+    margin-left: 0.2rem
 
   p
     font-size: 1.3rem
