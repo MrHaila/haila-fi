@@ -7,5 +7,4 @@ div#photography-container
 
 <style lang="sass">
 #photography-container
-  
 </style>

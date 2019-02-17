@@ -10,5 +10,4 @@ div#job-wall-container
 
 <style lang="sass">
 #job-wall-container
-  
 </style>

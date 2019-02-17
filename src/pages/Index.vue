@@ -25,7 +25,7 @@ import JobWall from '~/components/JobWall.vue'
 import Photography from '~/components/Photography.vue'
 
 export default {
-  name: "index",
+  name: 'Index',
   components: {
     LogoToy,
     Multipotentiality,
@@ -38,6 +38,11 @@ export default {
 </script>
 
 <style lang="sass">
+$enable-shadows: true
+
+@import '~bootstrap/scss/bootstrap.scss'
+@import '~bootstrap-vue/src/index.scss'
+
 #header
   background-color: rgb(255, 255, 255)
   padding-top: 0.5rem
