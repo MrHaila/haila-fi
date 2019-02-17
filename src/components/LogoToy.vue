@@ -13,7 +13,7 @@ div#toy-container
 
 #bottom-list
   margin-bottom: 0.5rem
-  margin-left: 0.5rem
+  margin-left: 1rem
   p
     margin-bottom: 0
 

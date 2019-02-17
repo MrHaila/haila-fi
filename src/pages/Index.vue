@@ -1,7 +1,7 @@
 <template lang="pug">
 div
   div#header.d-flex.justify-content-center
-    g-image(alt="Haila logo" src="~/assets/haila.png" width="120" fit="inside")
+    g-image(alt="Haila logo" src="~/assets/haila.png" width="100" fit="inside")
 
   logo-toy
   multipotentiality
@@ -48,10 +48,14 @@ $enable-shadows: true
 @import '~bootstrap/scss/bootstrap.scss'
 @import '~bootstrap-vue/src/index.scss'
 
+h1
+  font-weight: 700
+  font-size: 2.2rem
+
 #header
   background-color: rgb(255, 255, 255)
-  padding-top: 0.5rem
-  padding-bottom: 0.5rem
+  padding-top: 0.8rem
+  padding-bottom: 0.8rem
   position: sticky
 
 #footer
