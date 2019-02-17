@@ -3,34 +3,35 @@ div#job-wall-container.section-padding
   div.container
     h1.mb-3 CV Generator
     div.d-flex.justify-content-center.text-light
-      div#orange.box.flex-fill.text-center
-        small {{ (ticker % prefixes.length) + 1 }}/{{ prefixes.length }}
-        transition(name="slide")
-          p(:key="currentJob.prefix") {{ currentJob.prefix }}
-      div#blue.box.flex-fill.text-center.ml-2.mr-2
-        small {{ (ticker % jobs.length) + 1 }}/{{ jobs.length }}
-        transition(name="slide")
-          p(:key="currentJob.job") {{ currentJob.job }}
-      div#lila.box.flex-fill.text-center
-        small {{ (ticker % suffixes.length) + 1 }}/{{ suffixes.length }}
-        transition(name="slide")
-          p(:key="currentJob.suffix") {{ currentJob.suffix }}
+      div.col-lg-8.d-flex.justify-content-center
+        div#orange.box.flex-fill.text-center
+          small {{ (ticker % prefixes.length) + 1 }}/{{ prefixes.length }}
+          transition(name="slide")
+            p(:key="currentJob.prefix") {{ currentJob.prefix }}
+        div#blue.box.flex-fill.text-center.ml-2.mr-2
+          small {{ (ticker % jobs.length) + 1 }}/{{ jobs.length }}
+          transition(name="slide")
+            p(:key="currentJob.job") {{ currentJob.job }}
+        div#lila.box.flex-fill.text-center
+          small {{ (ticker % suffixes.length) + 1 }}/{{ suffixes.length }}
+          transition(name="slide")
+            p(:key="currentJob.suffix") {{ currentJob.suffix }}
 
     h4.d-flex.justify-content-center.mt-4.mb-4 at
 
-    div.row.text-center.align-items-center.mb-4
-      div.col-sm
+    div.row.text-center.align-items-center
+      div.col-sm.mb-4
         g-image(src="@/assets/rovio.png" width="90" fit="inside")
-      div.col-sm
+      div.col-sm.mb-4
         g-image(src="@/assets/playraven.png" width="160" fit="inside")
-      div.col-sm
+      div.col-sm.mb-4
         g-image(src="@/assets/wooga.png" width="130" fit="inside")
     div.row.text-center.align-items-center
-      div.col-sm
+      div.col-sm.mb-4
         g-image(src="@/assets/newfactory.png" width="130" fit="inside")
-      div.col-sm
+      div.col-sm.mb-4
         g-image(src="@/assets/neogames.png" width="90" fit="inside")
-      div.col-sm
+      div.col-sm.mb-4
         g-image(src="@/assets/igda.png" width="140" fit="inside")
 
     p#boring-label.d-flex.justify-content-center Looking for a boring list?
