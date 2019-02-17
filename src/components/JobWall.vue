@@ -1,5 +1,5 @@
 <template lang="pug">
-div#job-wall-container
+div#job-wall-container.section-padding
   div.d-flex.justify-content-center
     h5 Chief
     h5 Product
