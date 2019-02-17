@@ -1,6 +1,7 @@
 <template lang="pug">
 div#award-container.text-light.section-padding
-  i.content-placeholder.d-flex.justify-content-center Placeholder
+  div.d-flex.justify-content-center.mb-4
+    g-image(alt="IGDA Finland Lifetime Award" src="~/favicon.png")
   p In 2018 I got a lifetime award for my contributions to the Finnish game development scene.
 </template>
 
