@@ -2,12 +2,15 @@
 div#job-wall-container.section-padding
   h1.mb-3 CV
   div.d-flex.justify-content-center.text-light
-    div#orange.box
-      p Chief
-    div#blue.box
-      p Product
-    div#lila.box
-      p Officer
+    div#orange.box.flex-fill.text-center
+      transition(name="slide")
+        p(:key="currentJob.prefix") {{ currentJob.prefix }}
+    div#blue.box.flex-fill.text-center.ml-2.mr-2
+      transition(name="slide")
+        p(:key="currentJob.job") {{ currentJob.job }}
+    div#lila.box.flex-fill.text-center
+      transition(name="slide")
+        p(:key="currentJob.suffix") {{ currentJob.suffix }}
   h4.d-flex.justify-content-center.mt-3 at
   i.content-placeholder.d-flex.justify-content-center Placeholder
   p#boring-label.d-flex.justify-content-center Looking for a boring list?
@@ -16,20 +19,47 @@ div#job-wall-container.section-padding
       g-image(alt="LinkedIn" src="~/assets/linkedin.png" width="150")
 </template>
 
+<script>
+export default {
+  data: function () {
+    return {
+      ticker: 0
+    }
+  },
+  computed: {
+    // True Story™ Technology, patent pending
+    currentJob: function () {
+      const a = ['Senior', 'Lead', 'Chief']
+      const b = ['Product', 'Game', 'Analytics', 'Technology']
+      const c = ['Officer', 'Manager', 'Designer', 'Developer', 'Producer']
+      return {
+        prefix: a[this.ticker % a.length],
+        job: b[this.ticker % b.length],
+        suffix: c[this.ticker % c.length]
+      }
+    }
+  },
+  mounted: function () {
+    setInterval(() => { this.ticker++ }, 4000)
+  }
+}
+</script>
+
 <style lang="sass">
 #job-wall-container
 
 .box
   border-radius: 0.4rem
-  margin-left: 0.5rem
-  mergin-right: 0.5rem
+  height: 2rem
+  position: relative
 
   p
     font-size: 1.3rem
     font-weight: 700
     margin-bottom: 0
-    margin-left: 1rem
-    margin-right: 1rem
+    position: absolute
+    left: 0
+    right: 0
 
 #orange
   background-image: linear-gradient(rgb(235, 157, 28), rgb(216, 120, 42))
@@ -39,6 +69,17 @@ div#job-wall-container.section-padding
 
 #lila
   background-image: linear-gradient(rgb(182, 28, 235), rgb(149, 42, 216))
+
+.slide-enter-active, .slide-leave-active
+  transition: all .5s ease
+
+.slide-enter
+  transform: translateY(1rem)
+  opacity: 0
+
+.slide-leave-to
+  transform: translateY(-1rem)
+  opacity: 0
 
 #boring-label
   margin-top: 2rem
