@@ -1,7 +1,7 @@
 <template lang="pug">
 div#job-wall-container.section-padding
   div.container
-    h1.mb-3 CV
+    h1.mb-3 CV Generator
     div.d-flex.justify-content-center.text-light
       div#orange.box.flex-fill.text-center
         small {{ (ticker % prefixes.length) + 1 }}/{{ prefixes.length }}
@@ -20,7 +20,7 @@ div#job-wall-container.section-padding
 
     div.row.text-center.align-items-center.mb-4
       div.col-sm
-        g-image(src="@/assets/rovio.png" width="100" fit="inside")
+        g-image(src="@/assets/rovio.png" width="90" fit="inside")
       div.col-sm
         g-image(src="@/assets/playraven.png" width="160" fit="inside")
       div.col-sm
@@ -67,6 +67,7 @@ export default {
 
 <style lang="sass">
 #job-wall-container
+  margin-bottom: 2rem
 
 .box
   border-radius: 0.4rem
