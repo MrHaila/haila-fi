@@ -1,4 +1,13 @@
 <template lang="pug">
+// Copyright © 2019, Teemu Haila
+  Released under MIT License
+
+  Fira Code by Nikita Prokopov (http://tonsky.me)
+  SIL Open Font License
+
+  Jost* by Owen Earl (https://indestructibletype.com)
+  SIL Open Font License
+
 div
   div#header.d-flex.justify-content-center.fixed-top
     g-image(alt="Haila logo" src="~/assets/haila.png" width="100" fit="inside")
