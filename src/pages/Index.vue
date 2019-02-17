@@ -40,7 +40,7 @@ export default {
 
 <style lang="sass">
 @import url('https://indestructibletype.com/fonts/Jost.css')
-@import url(https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css)
+@import url('https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css')
 $font-family-sans-serif: "Jost", sans-serif
 $font-family-monospace: "Fira Code", monospace
 
@@ -58,6 +58,7 @@ h1
   padding-top: 0.8rem
   padding-bottom: 0.8rem
   z-index: 10
+  box-shadow: 1px 0px 2px rgba(0, 0, 0, .2)
 
 #empty-header
   height: 3.6rem
