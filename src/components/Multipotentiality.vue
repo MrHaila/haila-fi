@@ -1,7 +1,7 @@
 <template lang="pug">
 div#potentiality-container.text-light
   h1 MULTIPOTENTIALITY
-  small haila.fi:manifestos teemu$ cat 01.txt
+  small.text-monospace haila.fi:manifestos teemu$ cat 01.txt
   p 1. Eat
   p 2. Sleep
   p 3. Code

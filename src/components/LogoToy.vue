@@ -1,15 +1,21 @@
 <template lang="pug">
 div#toy-container
   i.content-placeholder.d-flex.justify-content-center Logo toy
-  ul
-    li BA Interactive Design
-    li MProf Games Development
-    li Games Industry Entrepreneur & Executive
+  div#bottom-list
+    p BA Interactive Design
+    p MProf Games Development
+    p Games Industry Entrepreneur & Executive
 </template>
 
 <style lang="sass">
 #toy-container
   background-image: linear-gradient(rgb(238, 238, 238), rgb(255, 255, 255))
+
+#bottom-list
+  margin-bottom: 0.5rem
+  margin-left: 0.5rem
+  p
+    margin-bottom: 0
 
 .content-placeholder
   padding-top: 130px
