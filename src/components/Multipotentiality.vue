@@ -1,5 +1,5 @@
 <template lang="pug">
-div#potentiality-container
+div#potentiality-container.text-light
   h1 MULTIPOTENTIALITY
   small haila.fi:manifestos teemu$ cat 01.txt
   p 1. Eat
@@ -12,5 +12,4 @@ div#potentiality-container
 <style lang="sass">
 #potentiality-container
   background-color: rgb(48, 48, 48)
-  color: white
 </style>

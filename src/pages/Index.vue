@@ -14,8 +14,6 @@ div
     p.d-flex.justify-content-center Email me, maybe?
     h4.d-flex.justify-content-center teemu@haila.fi
     div.d-flex.justify-content-center: small Handcrafted with ❤️ and 🍺 as <a href="">open source</a>.
-
-  g-image(alt="Example image" src="~/favicon.png" width="135")/
 </template>
 
 <script>
