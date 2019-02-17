@@ -7,16 +7,15 @@ div#photography-container
       h5 I chase the light
   BCarousel(id="photos" indicators img-height="10")
     div.carousel-item
-      g-image(alt="Test" src="~/assets/linkedin.png")/
+      img.img-fluid(alt="Test" src="@/assets/thailand.jpg")/
     div.carousel-item
-      g-image(alt="Test" src="~/assets/linkedin.png")/
+      img.img-fluid(alt="" src="@/assets/lizard.jpg")/
     div.carousel-item
-      g-image(alt="Test" src="~/assets/linkedin.png")/
+      img.img-fluid(alt="Test" src="@/assets/inkoo.jpg")/
     div.carousel-item
-      g-image(alt="Test" src="~/assets/linkedin.png")/
+      img.img-fluid(alt="Test" src="@/assets/berlin.jpg")/
     div.carousel-item
-      g-image(alt="Test" src="~/assets/linkedin.png")/
-  // g-image(alt="Test" src="~/assets/lizard.jpg" width="100")/
+      img.img-fluid(alt="Test" src="@/assets/wedding.jpg")/
 </template>
 
 <script>
@@ -39,6 +38,7 @@ export default {
 .overlapping-header
   position: absolute
   z-index: 9
+  margin-top: 1rem
 
   h4
     margin: 0
