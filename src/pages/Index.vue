@@ -68,4 +68,5 @@ h1
     margin: 0
   small
     margin-top: 4rem
+    margin-bottom: 0.3rem
 </style>
