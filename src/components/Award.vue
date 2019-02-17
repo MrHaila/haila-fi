@@ -1,5 +1,5 @@
 <template lang="pug">
-div#award-container.text-light
+div#award-container.text-light.section-padding
   i.content-placeholder.d-flex.justify-content-center Placeholder
   p In 2018 I got a lifetime award for my contributions to the Finnish game development scene.
 </template>
@@ -7,4 +7,5 @@ div#award-container.text-light
 <style lang="sass">
 #award-container
   background-image: linear-gradient(rgb(93, 93, 93), rgb(0, 0, 0))
+  padding-bottom: 1rem
 </style>
