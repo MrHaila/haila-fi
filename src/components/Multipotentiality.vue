@@ -1,7 +1,7 @@
 <template lang="pug">
 div#potentiality-container.text-light.section-padding
   h1 MULTIPOTENTIALITY
-  small.text-monospace.font-weight-light teemu@haila.fi ~/manifestos> cat 01.txt
+  small.text-monospace.font-weight-light teemu@haila.fi ~/manifestos> cat 01.txt#[span.caret.bg-light.text-light(v-show="showCaret") _]
 
   p.mt-4.ml-3 1. Eat
   p.ml-3 2. Sleep
@@ -43,6 +43,19 @@ div#potentiality-container.text-light.section-padding
   p.mt-4.ml-4 Ehhh, whatever.
 </template>
 
+<script>
+export default {
+  data: function () {
+    return {
+      showCaret: true
+    }
+  },
+  mounted: function () {
+    setInterval(() => { this.showCaret = !this.showCaret }, 1000)
+  }
+}
+</script>
+
 <style lang="sass">
 #potentiality-container
   background-color: rgb(48, 48, 48)
@@ -65,6 +78,10 @@ div#potentiality-container.text-light.section-padding
 
   .down
     line-height: 2.4rem
+
+  .caret
+    width: 1rem
+    height: 2rem
 
 .section-padding
   padding-top: 3rem
