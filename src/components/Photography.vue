@@ -30,6 +30,7 @@ export default {
 
 <style lang="sass">
 #photography-container
+  max-width: 1280px
   .dark
     background-color: rgba(0, 0, 0, 200)
   .light
