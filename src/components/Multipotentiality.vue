@@ -1,18 +1,44 @@
 <template lang="pug">
 div#potentiality-container.text-light.section-padding
   h1 MULTIPOTENTIALITY
-  // haila.fi:manifestos teemu$ cat 01.txt
   small.text-monospace.font-weight-light teemu@haila.fi ~/manifestos> cat 01.txt
 
   p.mt-4.ml-3 1. Eat
   p.ml-3 2. Sleep
-  p.ml-3 3. Code #[span.ml-4 Design]
-  p.ml-5 Photograph
-  p.ml-4 Play #[span.ml-4 Excercise]
-  p.ml-5 Cook #[span.ml-2 Fix]
-  p.ml-3 Read #[span.ml-3 Evagelise]
-  p.ml-4 Teach #[span.ml-4 Learn]
-  p.ml-2 Travel #[span.ml-4 Create]
+  p.ml-3
+    span 3.
+    span.overlay.ml-1   ------------
+    span  Code
+    span.ml-4.overlay.up --------------
+    span.ml-4 Design
+  p.ml-5
+    span.overlay.ml-1.up ----------------------
+    span Photograph
+  p.ml-4
+    span.overlay.ml-1 --------
+    span Play
+    span.ml-4.overlay.down -------------------
+    span.ml-4 Excercise
+  p.ml-5
+    span.overlay.ml-1.down ----------
+    span Cook
+    span.ml-2.overlay ------
+    span.ml-2 Fix
+  p.ml-3
+    span.overlay.ml-1 ----------
+    span Read
+    span.ml-3.overlay.down -------------------
+    span.ml-3 Evagelise
+  p.ml-4
+    span.overlay.ml-1.down -----------
+    span Teach
+    span.ml-4.overlay.up ------------
+    span.ml-4 Learn
+  p.ml-2
+    span.overlay.ml-1 ------------
+    span Travel
+    span.ml-4.overlay.down -------------
+    span.ml-4 Create
 
   p.mt-4.ml-4 Ehhh, whatever.
 </template>
@@ -28,6 +54,17 @@ div#potentiality-container.text-light.section-padding
   p
     margin-bottom: 0
     font-size: 1.5rem
+
+  .overlay
+    position: absolute
+    color: red
+    font-weight: 700
+
+  .up
+    line-height: 2rem
+
+  .down
+    line-height: 2.4rem
 
 .section-padding
   padding-top: 3rem
