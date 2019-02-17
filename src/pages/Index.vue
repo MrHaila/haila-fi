@@ -1,7 +1,8 @@
 <template lang="pug">
 div
-  div#header.d-flex.justify-content-center
+  div#header.d-flex.justify-content-center.fixed-top
     g-image(alt="Haila logo" src="~/assets/haila.png" width="100" fit="inside")
+  div#empty-header
 
   logo-toy
   multipotentiality
@@ -56,7 +57,10 @@ h1
   background-color: rgb(255, 255, 255)
   padding-top: 0.8rem
   padding-bottom: 0.8rem
-  position: sticky
+  z-index: 10
+
+#empty-header
+  height: 3.6rem
 
 #footer
   padding-top: 3rem
