@@ -8,7 +8,7 @@ div#award-container.text-light.section-padding
 
 <style lang="sass">
 #award-container
-  background-image: linear-gradient(rgb(40, 40, 40), rgb(5, 5, 5))
+  background-image: linear-gradient(rgb(20, 20, 20), rgb(5, 5, 5))
   padding-top: 4rem
   padding-bottom: 2rem
 </style>
