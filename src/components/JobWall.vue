@@ -20,24 +20,24 @@ div#job-wall-container.section-padding
     h4.d-flex.justify-content-center.mt-4.mb-4 at
 
     div.row.text-center.align-items-center
+      // div.col-sm.mb-4
+        g-image(src="@/assets/logo-rovio.png" width="90" fit="inside")
       div.col-sm.mb-4
-        g-image(src="@/assets/rovio.png" width="90" fit="inside")
+        g-image(src="@/assets/logo-playraven.png" width="160" fit="inside")
       div.col-sm.mb-4
-        g-image(src="@/assets/playraven.png" width="160" fit="inside")
-      div.col-sm.mb-4
-        g-image(src="@/assets/wooga.png" width="130" fit="inside")
+        g-image(src="@/assets/logo-wooga.png" width="130" fit="inside")
     div.row.text-center.align-items-center
       div.col-sm.mb-4
-        g-image(src="@/assets/newfactory.png" width="130" fit="inside")
+        g-image(src="@/assets/logo-newfactory.png" width="130" fit="inside")
       div.col-sm.mb-4
-        g-image(src="@/assets/neogames.png" width="90" fit="inside")
+        g-image(src="@/assets/logo-neogames.png" width="90" fit="inside")
       div.col-sm.mb-4
-        g-image(src="@/assets/igda.png" width="140" fit="inside")
+        g-image(src="@/assets/logo-igda.png" width="140" fit="inside")
 
     p#boring-label.d-flex.justify-content-center Looking for a boring list?
     div.d-flex.justify-content-center
       a(href="")
-        g-image(alt="LinkedIn" src="~/assets/linkedin.png" width="150")
+        g-image(alt="LinkedIn" src="~/assets/logo-linkedin.png" width="150")
 </template>
 
 <script>
