@@ -23,16 +23,16 @@ div#job-wall-container.section-padding
       // div.col-sm.mb-4
         g-image(src="@/assets/logo-rovio.png" width="90" fit="inside")
       div.col-sm.mb-4
-        g-image(src="@/assets/logo-playraven.png" width="160" fit="inside")
+        g-image(alt="PlayRaven logo" src="@/assets/logo-playraven.png" width="160" fit="inside")
       div.col-sm.mb-4
-        g-image(src="@/assets/logo-wooga.png" width="130" fit="inside")
+        g-image(alt="Wooga logo" src="@/assets/logo-wooga.png" width="130" fit="inside")
     div.row.text-center.align-items-center
       div.col-sm.mb-4
-        g-image(src="@/assets/logo-newfactory.png" width="130" fit="inside")
+        g-image(alt="NewFactory logo" src="@/assets/logo-newfactory.png" width="130" fit="inside")
       div.col-sm.mb-4
-        g-image(src="@/assets/logo-neogames.png" width="90" fit="inside")
+        g-image(alt="Neogames logo" src="@/assets/logo-neogames.png" width="90" fit="inside")
       div.col-sm.mb-4
-        g-image(src="@/assets/logo-igda.png" width="140" fit="inside")
+        g-image(alt="IGDA logo" src="@/assets/logo-igda.png" width="140" fit="inside")
 
     p#boring-label.d-flex.justify-content-center Looking for a boring list?
     div.d-flex.justify-content-center
