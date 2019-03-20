@@ -3,7 +3,7 @@ div.section-padding
   div.container
     div.col-lg-8
       h4.mb-4.font-weight-bold Serious Business Since 1987
-      p I’ve fiddled with everything that computes for as long as I can remember. Combine endless curiosity with a passion for interactive design and you get… well, mostly video games.
+      p I’ve fiddled with everything that computes for as long as I can remember. Combine endless curiosity with a passion for interaction design and you get… well, mostly video games.
       p I’ve learned that I’m most comfortable here, in the intersection of all creative disciplines, because only from here can one find something #[i truly interesting].
 
       h5.font-weight-bold.mt-5.mb-2 Project Gallery
