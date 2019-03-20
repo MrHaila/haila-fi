@@ -23,7 +23,7 @@ div
   div#footer
     p.d-flex.justify-content-center Email me, maybe?
     h4.d-flex.justify-content-center teemu@haila.fi
-    div.d-flex.justify-content-center: small Handcrafted with ❤️ and 🍺 as <a href="">open source</a>.
+    div.d-flex.justify-content-center: small Handcrafted with ❤️ and 🍺 as <a href="https://gitlab.com/dasinf/haila.fi-v2">open source</a>.
 </template>
 
 <script>
