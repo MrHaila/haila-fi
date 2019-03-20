@@ -1,18 +1,18 @@
 # Haila.fi
 
-2019 iteration of my personal website. Open sourced incase someone is interested in any particular implementation details.
+2019 iteration of my personal website. Open sourced for science!
 
 Pull requests are welcome, if unlikely :)
 
 ## Tech
 
-* Scaffolding: Gridsome
-* JS framework: Vue
-* Layout: Bootstrap
+* Scaffolding: [Gridsome](https://gridsome.org/)
+* JS framework: [Vue](https://vuejs.org/)
+* Layout: [Bootstrap 4](https://getbootstrap.com/)
 
 ## Instructions
 
-To run the project you need Node.js and Gridsome installed. After those...
+To run the project you need [Node.js](https://github.com/creationix/nvm) installed. After that...
 
 ### Develop
 
