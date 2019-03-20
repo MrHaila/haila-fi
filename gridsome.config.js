@@ -4,7 +4,7 @@
 module.exports = {
   siteName: 'Haila.fi',
   siteUrl: 'https://haila.fi',
-  siteDescription: "Teemu Haila's online property. No trespassing!",
+  siteDescription: "Teemu Haila's online property. No camping or unsupervised fires.",
   plugins: [],
   chainWebpack: config => {
     config.module

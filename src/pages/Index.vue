@@ -36,6 +36,12 @@ import Photography from '~/components/Photography.vue'
 
 export default {
   name: 'Index',
+  metaInfo: {
+    title: 'Home',
+    meta: [
+      { name: 'author', content: 'Teemu Haila' }
+    ]
+  },
   components: {
     LogoToy,
     Multipotentiality,
