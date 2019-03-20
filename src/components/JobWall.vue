@@ -20,8 +20,6 @@ div#job-wall-container.section-padding
     h4.d-flex.justify-content-center.mt-4.mb-4 at
 
     div.row.text-center.align-items-center
-      // div.col-sm.mb-4
-        g-image(src="@/assets/logo-rovio.png" width="90" fit="inside")
       div.col-sm.mb-4
         g-image(alt="PlayRaven logo" src="@/assets/logo-playraven.png" width="160" fit="inside")
       div.col-sm.mb-4
