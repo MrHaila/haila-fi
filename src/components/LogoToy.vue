@@ -1,7 +1,7 @@
 <template lang="pug">
 div#toy-container
   div.container
-    i.content-placeholder.d-flex.justify-content-center Logo toy
+    i.content-placeholder.d-flex.justify-content-center < Header content TBD >
     div#bottom-list
       p BA Interactive Design
       p MProf Games Development
