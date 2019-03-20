@@ -59,8 +59,6 @@ export default {
 $font-family-sans-serif: "Jost", sans-serif
 $font-family-monospace: "Fira Code", monospace
 
-$enable-shadows: true
-
 @import '~bootstrap/scss/bootstrap.scss'
 
 h1
