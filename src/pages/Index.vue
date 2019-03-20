@@ -10,7 +10,7 @@
 
 div
   div#header.d-flex.justify-content-center.fixed-top
-    g-image(alt="Haila logo" src="~/assets/logo-haila.png" width="100" fit="inside")
+    img(alt="Haila logo" srcset="@/assets/logo-haila-small1x.png 1x, @/assets/logo-haila-small2x.png 2x" src="@/assets/logo-haila-small1x.png")
   div#empty-header
 
   logo-toy
