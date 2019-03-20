@@ -23,8 +23,8 @@ div#potentiality-container.text-light.section-padding
       p.ml-4
         span.overlay.ml-1 --------
         span Play
-        span.ml-4.overlay.down -------------------
-        span.ml-4 Excercise
+        span.ml-4.overlay.down ----------------
+        span.ml-4 Exercise
       p.ml-5
         span.overlay.ml-1.down ----------
         span Cook
@@ -33,8 +33,8 @@ div#potentiality-container.text-light.section-padding
       p.ml-3
         span.overlay.ml-1 ----------
         span Read
-        span.ml-3.overlay.down -------------------
-        span.ml-3 Evagelise
+        span.ml-3.overlay.down ---------------------
+        span.ml-3 Evangelise
       p.ml-4
         span.overlay.ml-1.down -----------
         span Teach

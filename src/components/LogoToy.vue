@@ -3,7 +3,7 @@ div#toy-container
   div.container
     i.content-placeholder.d-flex.justify-content-center < Header content TBD >
     div#bottom-list
-      p BA Interactive Design
+      p BA Interaction Design
       p MProf Games Development
       p Games Industry Entrepreneur & Executive
 </template>

@@ -78,7 +78,7 @@ div.section-padding
         div.card-body
           h4.card-title.mb-2 Score
           h6.card-subtitle.text-muted.mb-2 Community
-          p.card-text I founded Finland's first game development club in Tampere Polytechnic University with a goal of improving the available games education.
+          p.card-text I founded Finland's first game development club in Tampere University of Applied Sciences with a goal of improving the available games education.
 
       div.card
         g-image.card-img-top(src="@/assets/card-highscore.png" alt="Logo" width="480")
