@@ -5,17 +5,17 @@ div#photography-container
       h4 Everyone needs a hobby
     div.light.d-inline-flex
       h5 I chase the light
-  BCarousel(id="photos" indicators img-height="10")
+  BCarousel(id="photos" indicators)
+    div.carousel-item.active
+      img.d-block.w-100(alt="Thailand" src="@/assets/thailand.jpg")/
     div.carousel-item
-      img.img-fluid(alt="Test" src="@/assets/thailand.jpg")/
+      img.d-block.w-100(alt="Lizard" src="@/assets/lizard.jpg")/
     div.carousel-item
-      img.img-fluid(alt="" src="@/assets/lizard.jpg")/
+      img.d-block.w-100(alt="Inkoo" src="@/assets/inkoo.jpg")/
     div.carousel-item
-      img.img-fluid(alt="Test" src="@/assets/inkoo.jpg")/
+      img.d-block.w-100(alt="Berlin" src="@/assets/berlin.jpg")/
     div.carousel-item
-      img.img-fluid(alt="Test" src="@/assets/berlin.jpg")/
-    div.carousel-item
-      img.img-fluid(alt="Test" src="@/assets/wedding.jpg")/
+      img.d-block.w-100(alt="Wedding" src="@/assets/wedding.jpg")/
 </template>
 
 <script>

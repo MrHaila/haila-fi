@@ -62,7 +62,6 @@ $font-family-monospace: "Fira Code", monospace
 $enable-shadows: true
 
 @import '~bootstrap/scss/bootstrap.scss'
-@import '~bootstrap-vue/src/index.scss'
 
 h1
   font-weight: 700
