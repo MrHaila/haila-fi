@@ -5,17 +5,17 @@ div#photography-container
       h4 Everyone needs a hobby
     div.light.d-inline-flex
       h5 I chase the light
-  BCarousel(id="photos" indicators)
-    div.carousel-item.active
-      img.d-block.w-100(alt="Thailand" src="@/assets/thailand.jpg")/
+  BCarousel(id="photos" indicators controls)
     div.carousel-item
-      img.d-block.w-100(alt="Lizard" src="@/assets/lizard.jpg")/
+      g-image.d-block.w-100(alt="Alps" src="@/assets/photo-alps.jpeg" width="1920" height="1080")/
     div.carousel-item
-      img.d-block.w-100(alt="Inkoo" src="@/assets/inkoo.jpg")/
+      g-image.d-block.w-100(alt="Lizard" src="@/assets/photo-lizard.jpg" width="1920" height="1080")/
     div.carousel-item
-      img.d-block.w-100(alt="Berlin" src="@/assets/berlin.jpg")/
+      g-image.d-block.w-100(alt="Inkoo" src="@/assets/photo-inkoo.jpg" width="1920" height="1080")/
     div.carousel-item
-      img.d-block.w-100(alt="Wedding" src="@/assets/wedding.jpg")/
+      g-image.d-block.w-100(alt="Berlin" src="@/assets/photo-berlin.jpg" width="1920" height="1080")/
+    div.carousel-item
+      g-image.d-block.w-100(alt="Tampere" src="@/assets/photo-tampere.jpg" width="1920" height="1080")/
 </template>
 
 <script>
@@ -30,7 +30,6 @@ export default {
 
 <style lang="sass">
 #photography-container
-  max-width: 1280px
   .dark
     background-color: rgba(0, 0, 0, 200)
   .light
