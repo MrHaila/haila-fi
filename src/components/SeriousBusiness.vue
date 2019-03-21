@@ -98,13 +98,13 @@ div.section-padding
         g-image.card-img-top(src="@/assets/card-runepoli.png" alt="Logo" width="480")
         div.card-body
           h4.card-title.mb-2 Runepoli
-          h6.card-subtitle.text-muted.mb-2 Company
+          h6.card-subtitle.text-muted.mb-2 Community
           p.card-text I founded Finland's biggest Runescape community that united the various trade forums under a single banner. It survives to this day and is officially supported by Jagex.
 
       div.card
         g-image.card-img-top(src="@/assets/card-refugees.jpg" alt="Logo" width="480")
         div.card-body
           h4.card-title.mb-2 Refugee Work
-          h6.card-subtitle.text-muted.mb-2 Company
+          h6.card-subtitle.text-muted.mb-2 Charity
           p.card-text I am a volunteer photographer in a program that organises Lapland tours for refugees to help with societal integration.
 </template>
