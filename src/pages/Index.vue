@@ -54,12 +54,9 @@ export default {
 </script>
 
 <style lang="sass">
-@import url('https://indestructibletype.com/fonts/Jost.css')
-@import url('https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css')
-$font-family-sans-serif: "Jost", sans-serif
-$font-family-monospace: "Fira Code", monospace
 
-@import '~bootstrap/scss/bootstrap.scss'
+
+// @import '~bootstrap/scss/bootstrap.scss'
 
 h1
   font-weight: 700
