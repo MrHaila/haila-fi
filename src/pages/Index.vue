@@ -26,6 +26,16 @@ div
     div.d-flex.justify-content-center: small Handcrafted with ❤️ and 🍺 as <a href="https://gitlab.com/dasinf/haila.fi-v2">open source</a>.
 </template>
 
+<page-query>
+query {
+  metaData {
+    siteName,
+    siteUrl,
+    siteDescription
+  }
+}
+</page-query>
+
 <script>
 import LogoToy from '~/components/LogoToy.vue'
 import Multipotentiality from '~/components/Multipotentiality.vue'
@@ -36,11 +46,18 @@ import Photography from '~/components/Photography.vue'
 
 export default {
   name: 'Index',
-  metaInfo: {
-    title: 'Home',
-    meta: [
-      { name: 'author', content: 'Teemu Haila' }
-    ]
+  metaInfo: function () {
+    return {
+      title: 'Home',
+      meta: [
+        { name: 'author', content: 'Teemu Haila' },
+        { name: 'og:title', content: this.$page.metaData.siteName },
+        { name: 'og:description', content: this.$page.metaData.siteDescription },
+        { name: 'og:type', content: 'website' },
+        { name: 'og:image', content: this.$page.metaData.siteUrl + '/og.jpg' },
+        { name: 'og:url', content: this.$page.metaData.siteUrl }
+      ]
+    }
   },
   components: {
     LogoToy,
@@ -54,10 +71,6 @@ export default {
 </script>
 
 <style lang="sass">
-
-
-// @import '~bootstrap/scss/bootstrap.scss'
-
 h1
   font-weight: 700
   font-size: 2.2rem
