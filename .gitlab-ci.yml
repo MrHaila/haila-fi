@@ -6,6 +6,7 @@ pages:
     - node_modules/
   script:
   - npm update
+  - npm i -g gridsome
   - npm run build
   artifacts:
     paths:
