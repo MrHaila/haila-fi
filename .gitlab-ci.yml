@@ -6,10 +6,11 @@ pages:
     - node_modules/
   script:
   - npm update
-  - npm i -g gridsome
+  - npm i -g --unsafe-perm gridsome
   - gridsome build
+  - mv dist public
   artifacts:
     paths:
-    - dist
+    - public
   only:
   - master
