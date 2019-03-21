@@ -13,7 +13,7 @@ div
     img(alt="Haila logo" srcset="@/assets/logo-haila-small1x.png 1x, @/assets/logo-haila-small2x.png 2x" src="@/assets/logo-haila-small1x.png")
   div#empty-header
 
-  logo-toy
+  header-toy
   multipotentiality
   serious-business
   award
@@ -37,7 +37,7 @@ query {
 </page-query>
 
 <script>
-import LogoToy from '~/components/LogoToy.vue'
+import HeaderToy from '~/components/HeaderToy.vue'
 import Multipotentiality from '~/components/Multipotentiality.vue'
 import SeriousBusiness from '~/components/SeriousBusiness.vue'
 import Award from '~/components/Award.vue'
@@ -60,7 +60,7 @@ export default {
     }
   },
   components: {
-    LogoToy,
+    HeaderToy,
     Multipotentiality,
     SeriousBusiness,
     Award,
