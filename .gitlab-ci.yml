@@ -7,7 +7,7 @@ pages:
   script:
   - npm update
   - npm i -g gridsome
-  - npm run build
+  - gridsome build
   artifacts:
     paths:
     - dist
