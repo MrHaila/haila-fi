@@ -5,7 +5,7 @@ pages:
     paths:
     - node_modules/
   script:
-  - npm update
+  - npm install
   - npm i -g --unsafe-perm gridsome
   - gridsome build
   - mv dist public
