@@ -6,15 +6,15 @@ div#photography-container
     div.light.d-inline-flex
       h5 I chase the light
   BCarousel(id="photos" indicators controls)
-    div.carousel-item
+    div.carousel-item(role="listitem")
       g-image.d-block.w-100(alt="Alps" src="@/assets/photo-alps.jpeg" width="1920" height="1080")/
-    div.carousel-item
+    div.carousel-item(role="listitem")
       g-image.d-block.w-100(alt="Lizard" src="@/assets/photo-lizard.jpg" width="1920" height="1080")/
-    div.carousel-item
+    div.carousel-item(role="listitem")
       g-image.d-block.w-100(alt="Inkoo" src="@/assets/photo-inkoo.jpg" width="1920" height="1080")/
-    div.carousel-item
+    div.carousel-item(role="listitem")
       g-image.d-block.w-100(alt="Berlin" src="@/assets/photo-berlin.jpg" width="1920" height="1080")/
-    div.carousel-item
+    div.carousel-item(role="listitem")
       g-image.d-block.w-100(alt="Tampere" src="@/assets/photo-tampere.jpg" width="1920" height="1080")/
 </template>
 
