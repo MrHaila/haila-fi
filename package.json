@@ -4,8 +4,7 @@
   "scripts": {
     "build": "gridsome build",
     "serve": "gridsome develop",
-    "explore": "gridsome explore",
-    "publish": "gridsome build && firebase deploy"
+    "explore": "gridsome explore"
   },
   "dependencies": {
     "@gridsome/plugin-critical": "^0.1.1",
