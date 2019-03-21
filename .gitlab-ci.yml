@@ -1,6 +1,14 @@
-before_script:
-  - npm install
+image: node:11-alpine
 
-build:
+pages:
+  cache:
+    paths:
+    - node_modules/
   script:
-    - npm run build
+  - npm update
+  - npm run build
+  artifacts:
+    paths:
+    - dist
+  only:
+  - master
