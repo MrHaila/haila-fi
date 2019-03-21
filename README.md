@@ -1,5 +1,5 @@
 # Haila.fi
-[![pipeline status](https://gitlab.com/dasinf/haila.fi-v2/badges/master/pipeline.svg)](https://gitlab.com/dasinf/haila.fi-v2/commits/master) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/067a7963-2ed9-4218-9782-bebce700e33a/deploy-status)](https://app.netlify.com/sites/haila/deploys) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 2019 iteration of my personal website. Open sourced for science!
 
