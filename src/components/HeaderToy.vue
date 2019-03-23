@@ -15,8 +15,6 @@ import {
   Vector3,
   Color3,
   ArcRotateCamera,
-  HemisphericLight,
-  Mesh,
   CubeTexture,
   SceneLoader,
   PBRMetallicRoughnessMaterial
@@ -40,31 +38,22 @@ export default {
     scene.autoClear = false
     scene.autoClearDepthAndStencil = false
 
-    let light = new HemisphericLight('ambientLight', Vector3.Up(), scene)
-    light.intensity = 0.2
-
     // Step 2: Camera
-    let camera = new ArcRotateCamera('camera', 0, 0, 2, new Vector3(0, 2, -10), scene)
+    let camera = new ArcRotateCamera('camera', 0, 0, 2, new Vector3(0, -1.5, 10), scene)
     camera.setTarget(Vector3.Zero())
-    camera.attachControl(canvas, true)
-    camera.upperBetaLimit = Math.PI / 2.1
+    // camera.attachControl(canvas, true)
 
     // Step 3: Models and materials
-    let material = new PBRMetallicRoughnessMaterial('pbr', scene)
-    material.baseColor = new Color3(1.000, 0.766, 0.336)
-    material.metallic = 1
-    material.roughness = 0.2
-
     SceneLoader.ImportMeshAsync(null, '/assets/', 'haila.glb', scene).then((result) => {
-      // console.log(result)
-      for (let i = 0; i < result.meshes.length; i++) {
-        console.log(result.meshes[i])
-        result.meshes[i].material = material
+      // Generate unique materials for each letter so they can be messed with individually
+      for (let i = 1; i < result.meshes.length; i++) {
+        result.meshes[i].material = new PBRMetallicRoughnessMaterial('pbr', scene)
+        result.meshes[i].material.baseColor = new Color3(1.000, 0.766, 0.336)
+        result.meshes[i].material.metallic = 1
+        result.meshes[i].material.roughness = 0.2
+        result.meshes[i].material.sideOrientation = 0
       }
     })
-
-    // let cube = Mesh.CreateBox('cube', 1, scene)
-    // cube.material = material
 
     // Step 4: Inputs
     scene.onPointerPick = function (evt, pickInfo) {
