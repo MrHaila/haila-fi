@@ -39,7 +39,9 @@ export default {
 
     // Step 1: Environment (env texture from Babylon Playground)
     const environmentTexture = CubeTexture.CreateFromPrefilteredData('/assets/environment.env', scene)
-    scene.createDefaultSkybox(environmentTexture, true, 100, 0.4, true)
+    environmentTexture.gammaSpace = false
+    let skybox = scene.createDefaultSkybox(environmentTexture, true, 100, 0.4, true)
+    skybox.material.alpha = 0.25
     scene.autoClear = false
     scene.autoClearDepthAndStencil = false
 
@@ -86,9 +88,9 @@ export default {
       for (let i = 1; i < result.meshes.length; i++) {
         // Generate unique materials for each char so they can be messed with individually
         result.meshes[i].material = new PBRMetallicRoughnessMaterial('pbr', scene)
-        result.meshes[i].material.baseColor = new Color3(1.000, 0.766, 0.336)
-        result.meshes[i].material.metallic = 1
-        result.meshes[i].material.roughness = 0.2
+        result.meshes[i].material.baseColor = new Color3(0.05, 0.05, 0.05)
+        result.meshes[i].material.metallic = 0.30
+        result.meshes[i].material.roughness = 0.18
         result.meshes[i].material.sideOrientation = 0
 
         // Create per-character fly-in animation
@@ -128,7 +130,6 @@ export default {
     // Step 4: Inputs
     scene.onPointerPick = function (evt, pickInfo) {
       if (pickInfo.hit) {
-        // pickInfo.pickedMesh.material.baseColor = new Color3(Math.random(), Math.random(), Math.random())
         // Character color animation
         let characterColor = new Animation('characterColor', 'material.baseColor', 30, Animation.ANIMATIONTYPE_COLOR3, Animation.ANIMATIONLOOPMODE_CONSTANT)
         characterColor.setKeys([
