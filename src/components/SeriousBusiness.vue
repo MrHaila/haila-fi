@@ -85,7 +85,7 @@ div.section-padding
         div.card-body
           h4.card-title.mb-2 High Score
           h6.card-subtitle.text-muted.mb-2 Company
-          p.card-text I founded a series of non-profit copmanies on top of game development clubs as a part of building a stronger career path for aspiring developers in Finland.
+          p.card-text I founded a series of non-profit companies on top of game development clubs as a part of building a stronger career path for aspiring developers in Finland.
 
       div.card
         g-image.card-img-top(src="@/assets/card-fingamers.png" alt="Fingamers screenshot" width="480")
