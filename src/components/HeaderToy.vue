@@ -21,7 +21,7 @@ import {
   SceneLoader,
   PBRMetallicRoughnessMaterial
 } from '@babylonjs/core'
-// import '@babylonjs/loaders'
+import '@babylonjs/loaders'
 
 // import '@babylonjs/core/Debug/debugLayer'
 // import '@babylonjs/inspector'
@@ -50,19 +50,21 @@ export default {
     camera.upperBetaLimit = Math.PI / 2.1
 
     // Step 3: Models and materials
-    /* SceneLoader.LoadAssetContainerAsync('/assets/haila.glb', undefined, scene).then(container => {
-      const root = container.meshes[0]
-      root.id = root.name = 'model'
-      container.addAllToScene()
-    }) */
-
     let material = new PBRMetallicRoughnessMaterial('pbr', scene)
     material.baseColor = new Color3(1.000, 0.766, 0.336)
     material.metallic = 1
     material.roughness = 0.2
 
-    let cube = Mesh.CreateBox('cube', 1, scene)
-    cube.material = material
+    SceneLoader.ImportMeshAsync(null, '/assets/', 'haila.glb', scene).then((result) => {
+      // console.log(result)
+      for (let i = 0; i < result.meshes.length; i++) {
+        console.log(result.meshes[i])
+        result.meshes[i].material = material
+      }
+    })
+
+    // let cube = Mesh.CreateBox('cube', 1, scene)
+    // cube.material = material
 
     // Step 4: Inputs
     scene.onPointerPick = function (evt, pickInfo) {
