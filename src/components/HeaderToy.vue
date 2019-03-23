@@ -179,4 +179,12 @@ export default {
 
     p
       margin-bottom: 0
+
+@media (max-width: 575.98px)
+  #toy-container
+    height: 15rem
+
+    .text-overlay
+      top: 13.5rem
+      left: 1rem
 </style>
