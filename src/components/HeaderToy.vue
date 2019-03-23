@@ -1,7 +1,8 @@
 <template lang="pug">
 div#toy-container
-  div.score.text-center(v-if="clicks > 0")
-    h6(:style="scoreStyle") {{clicks}}
+  div.score(v-if="clicks > 0")
+    div.d-flex.justify-content-center.text-center
+      h6(:style="scoreStyle") {{clicks}}
 
   div.text-overlay
     div
@@ -26,7 +27,7 @@ div#toy-container
   .score
     position: absolute
     z-index: 2
-    left: 50%
+    width: 100%
     top: 4rem
 
     h6
