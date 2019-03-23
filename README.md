@@ -9,7 +9,8 @@ Pull requests are welcome, if unlikely :)
 
 * Scaffolding: [Gridsome](https://gridsome.org/)
 * JS framework: [Vue](https://vuejs.org/)
-* Layout: [Bootstrap 4](https://getbootstrap.com/)
+* Layout: [Bootstrap](https://getbootstrap.com/)
+* 3D shenanigans: [Babylon](https://www.babylonjs.com/)
 
 ## Instructions
 
@@ -22,8 +23,8 @@ To run the project you need [Node.js](https://github.com/creationix/nvm) install
 
 ### Build
 
-1. `npm run build` to build to /dist
+1. `npm run build` to build to /dist
 
 ## License
 
-MIT License for my original content.
+MIT License for my original content. Bits and bobs from other people documented in the sources.
