@@ -1,5 +1,8 @@
 <template lang="pug">
 div#toy-container
+  div.score.text-center(v-if="clicks > 0")
+    h6(:style="scoreStyle") {{clicks}}
+
   div.text-overlay
     div
       p BA Interaction Design
@@ -7,6 +10,47 @@ div#toy-container
       p Games Industry Entrepreneur & Executive
   canvas(ref="headerCanvas")
 </template>
+
+<style lang="sass">
+#toy-container
+  background-image: linear-gradient(rgb(238, 238, 238), rgb(255, 255, 255))
+  height: 25rem
+
+  canvas
+    width: 100%
+    height: 100%
+    display: block
+    font-size: 0
+    outline: none
+
+  .score
+    position: absolute
+    z-index: 2
+    left: 50%
+    top: 4rem
+
+    h6
+      margin-bottom: 0
+      padding: 0.2rem 0.3rem 0 0.3rem
+      border-radius: 0.5rem
+
+  .text-overlay
+    position: absolute
+    z-index: 1
+    top: 23rem
+    left: 10%
+
+    p
+      margin-bottom: 0
+
+@media (max-width: 575.98px)
+  #toy-container
+    height: 15rem
+
+    .text-overlay
+      top: 13.5rem
+      left: 1rem
+</style>
 
 <script>
 import {
@@ -30,6 +74,15 @@ import '@babylonjs/loaders'
 // import '@babylonjs/inspector'
 
 export default {
+  data: function () {
+    return {
+      clicks: 0,
+      scoreStyle: {
+        'background-image': 'linear-gradient(rgb(238, 238, 238), rgb(255, 255, 255))',
+        color: 'black'
+      }
+    }
+  },
   mounted: function () {
     const canvas = this.$refs.headerCanvas
     const engine = new Engine(canvas)
@@ -128,10 +181,11 @@ export default {
     })
 
     // Step 4: Inputs
-    scene.onPointerPick = function (evt, pickInfo) {
+    scene.onPointerPick = (evt, pickInfo) => {
       if (pickInfo.hit) {
         // Character color & spin animation
         let characterColor = new Animation('characterColor', 'material.baseColor', 30, Animation.ANIMATIONTYPE_COLOR3, Animation.ANIMATIONLOOPMODE_CONSTANT)
+        let color = new Color3(Math.random(), Math.random(), Math.random())
         characterColor.setKeys([
           {
             frame: 0,
@@ -139,7 +193,7 @@ export default {
           },
           {
             frame: 20,
-            value: new Color3(Math.random(), Math.random(), Math.random())
+            value: color
           }
         ])
 
@@ -162,6 +216,16 @@ export default {
         pickInfo.pickedMesh.animations.push(characterColor)
         pickInfo.pickedMesh.animations.push(characterSpin)
         scene.beginAnimation(pickInfo.pickedMesh, 0, 20, false)
+
+        this.clicks++
+        let r = Math.floor(color.r * 256)
+        let g = Math.floor(color.g * 256)
+        let b = Math.floor(color.b * 256)
+        let r2 = Math.round(Math.min(Math.max(0, r + (r * 0.2))))
+        let g2 = Math.round(Math.min(Math.max(0, g + (g * 0.2))))
+        let b2 = Math.round(Math.min(Math.max(0, b + (b * 0.2))))
+        this.scoreStyle['background-image'] = 'linear-gradient(rgb(' + r2 + ',' + g2 + ',' + b2 + '), rgb(' + r + ',' + g + ',' + b + ')'
+        this.scoreStyle.color = (r * 0.299 + g * 0.587 + b * 0.114) > 186 ? 'black' : 'white'
       }
     }
 
@@ -175,33 +239,3 @@ export default {
   }
 }
 </script>
-
-<style lang="sass">
-#toy-container
-  background-image: linear-gradient(rgb(238, 238, 238), rgb(255, 255, 255))
-  height: 25rem
-
-  canvas
-    width: 100%
-    height: 100%
-    display: block
-    font-size: 0
-    outline: none
-
-  .text-overlay
-    position: absolute
-    z-index: 1
-    top: 23rem
-    left: 10%
-
-    p
-      margin-bottom: 0
-
-@media (max-width: 575.98px)
-  #toy-container
-    height: 15rem
-
-    .text-overlay
-      top: 13.5rem
-      left: 1rem
-</style>
