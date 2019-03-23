@@ -41,7 +41,7 @@ export default {
     const environmentTexture = CubeTexture.CreateFromPrefilteredData('/assets/environment.env', scene)
     environmentTexture.gammaSpace = false
     let skybox = scene.createDefaultSkybox(environmentTexture, true, 100, 0.4, true)
-    skybox.material.alpha = 0.25
+    skybox.material.alpha = 0.05
     scene.autoClear = false
     scene.autoClearDepthAndStencil = false
 
