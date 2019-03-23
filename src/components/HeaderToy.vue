@@ -20,7 +20,9 @@ import {
   PBRMetallicRoughnessMaterial,
   Animation,
   QuinticEase,
-  EasingFunction
+  CircleEase,
+  EasingFunction,
+  Quaternion
 } from '@babylonjs/core'
 import '@babylonjs/loaders'
 
@@ -64,15 +66,52 @@ export default {
 
     // Step 3: Models and materials
     SceneLoader.ImportMeshAsync(null, '/assets/', 'haila.glb', scene).then((result) => {
-      // Generate unique materials for each letter so they can be messed with individually
+      // Create character animations
+      let characterRotation = new Animation('characterRotation', 'rotationQuaternion', 30, Animation.ANIMATIONTYPE_QUATERNION, Animation.ANIMATIONLOOPMODE_CONSTANT)
+      characterRotation.setKeys([
+        {
+          frame: 0,
+          value: new Quaternion(0, 0, 0, -1)
+        },
+        {
+          frame: 20,
+          value: new Quaternion(0.707, 0, 0, 0.707)
+        }
+      ])
+      let easingFunction = new CircleEase()
+      easingFunction.setEasingMode(EasingFunction.EASINGMODE_EASEOUT)
+      characterRotation.setEasingFunction(easingFunction)
+
+      // For each character...
       for (let i = 1; i < result.meshes.length; i++) {
+        // Generate unique materials for each char so they can be messed with individually
         result.meshes[i].material = new PBRMetallicRoughnessMaterial('pbr', scene)
         result.meshes[i].material.baseColor = new Color3(1.000, 0.766, 0.336)
         result.meshes[i].material.metallic = 1
         result.meshes[i].material.roughness = 0.2
         result.meshes[i].material.sideOrientation = 0
+
+        let characterPosition = new Animation('characterPosition', 'position', 30, Animation.ANIMATIONTYPE_VECTOR3, Animation.ANIMATIONLOOPMODE_CONSTANT)
+        characterPosition.setKeys([
+          {
+            frame: 0,
+            value: new Vector3(i * 2 - 2, -20, -30)
+          },
+          {
+            frame: 20,
+            value: result.meshes[i].position
+          }
+        ])
+        characterPosition.setEasingFunction(easingFunction)
+        result.meshes[i].position = new Vector3(4, -30, -30)
+
+        // Setup animations
+        result.meshes[i].animations.push(characterRotation)
+        result.meshes[i].animations.push(characterPosition)
+        setTimeout(() => scene.beginAnimation(result.meshes[i], 0, 20, true), i * 70)
       }
 
+      // Delayed start to camera animation
       setTimeout(() => scene.beginAnimation(camera, 0, 300, true), 5000)
     })
 
