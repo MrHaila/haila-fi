@@ -9,21 +9,15 @@ div#toy-container
 </template>
 
 <script>
-import {
-  Engine,
-  Scene,
-  Vector3,
-  Color3,
-  ArcRotateCamera,
-  CubeTexture,
-  SceneLoader,
-  PBRMetallicRoughnessMaterial,
-  Animation,
-  QuinticEase,
-  CircleEase,
-  EasingFunction,
-  Quaternion
-} from '@babylonjs/core'
+import { Engine } from '@babylonjs/core/Engines/engine'
+import { Scene } from '@babylonjs/core/scene'
+import { Vector3, Quaternion, Color3 } from '@babylonjs/core/Maths/math'
+import { ArcRotateCamera } from '@babylonjs/core/Cameras/arcRotateCamera'
+import { Animation, QuinticEase, CircleEase, EasingFunction } from '@babylonjs/core/Animations/index'
+import { CubeTexture } from '@babylonjs/core/Materials/Textures/cubeTexture'
+import { SceneLoader } from '@babylonjs/core/Loading/sceneLoader'
+import { PBRMetallicRoughnessMaterial } from '@babylonjs/core/Materials/PBR/pbrMetallicRoughnessMaterial'
+
 import '@babylonjs/loaders'
 
 // import '@babylonjs/core/Debug/debugLayer'
