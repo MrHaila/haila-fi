@@ -89,7 +89,7 @@ export default {
         // Generate unique materials for each char so they can be messed with individually
         result.meshes[i].material = new PBRMetallicRoughnessMaterial('pbr', scene)
         result.meshes[i].material.baseColor = new Color3(0.05, 0.05, 0.05)
-        result.meshes[i].material.metallic = 0.30
+        result.meshes[i].material.metallic = 0.2
         result.meshes[i].material.roughness = 0.18
         result.meshes[i].material.sideOrientation = 0
 
@@ -130,21 +130,38 @@ export default {
     // Step 4: Inputs
     scene.onPointerPick = function (evt, pickInfo) {
       if (pickInfo.hit) {
-        // Character color animation
+        // Character color & spin animation
         let characterColor = new Animation('characterColor', 'material.baseColor', 30, Animation.ANIMATIONTYPE_COLOR3, Animation.ANIMATIONLOOPMODE_CONSTANT)
         characterColor.setKeys([
           {
-            frame: 20,
+            frame: 0,
             value: new Color3(1, 1, 1)
           },
           {
-            frame: 40,
+            frame: 20,
             value: new Color3(Math.random(), Math.random(), Math.random())
           }
         ])
+
+        let characterSpin = new Animation('characterSpin', 'rotation.z', 30, Animation.ANIMATIONTYPE_FLOAT, Animation.ANIMATIONLOOPMODE_RELATIVE)
+        characterSpin.setKeys([
+          {
+            frame: 0,
+            value: 0
+          },
+          {
+            frame: 20,
+            value: 0.1
+          }
+        ])
+        let easingFunction = new CircleEase()
+        easingFunction.setEasingMode(EasingFunction.EASINGMODE_EASEOUT)
+        characterSpin.setEasingFunction(easingFunction)
+
         pickInfo.pickedMesh.animations = []
         pickInfo.pickedMesh.animations.push(characterColor)
-        scene.beginAnimation(pickInfo.pickedMesh, 20, 40, true)
+        pickInfo.pickedMesh.animations.push(characterSpin)
+        scene.beginAnimation(pickInfo.pickedMesh, 0, 20, false)
       }
     }
 
