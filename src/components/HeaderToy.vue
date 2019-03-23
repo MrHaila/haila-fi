@@ -114,6 +114,15 @@ export default {
 
       // Delayed start to camera animation
       setTimeout(() => scene.beginAnimation(camera, 0, 300, true), 5000)
+
+      // Wireframe animation
+      setInterval(() => {
+        result.meshes[1].material.wireframe = !result.meshes[1].material.wireframe
+        result.meshes[2].material.wireframe = !result.meshes[2].material.wireframe
+        result.meshes[3].material.wireframe = !result.meshes[3].material.wireframe
+        result.meshes[4].material.wireframe = !result.meshes[4].material.wireframe
+        result.meshes[5].material.wireframe = !result.meshes[5].material.wireframe
+      }, 10000)
     })
 
     // Step 4: Inputs
