@@ -36,21 +36,21 @@ div.section-padding
         div.card-body
           h4.card-title.mb-2 Robocide
           h6.card-subtitle.text-muted.mb-2 Mobile Game
-          p.card-text Micro RTS where you direct a swarm of hundreds of robots with just one finger. Top X strategy in X countries.
+          p.card-text Micro RTS where you direct a swarm of hundreds of robots with just one finger. Top 1 strategy in 41 and top 5 in 104 countries.
 
       div.card
         g-image.card-img-top(src="@/assets/card-winterstate.jpg" alt="Winterstate key art" width="480")
         div.card-body
           h4.card-title.mb-2 Winterstate
           h6.card-subtitle.text-muted.mb-2 Mobile Game
-          p.card-text Cars with guns in froze USA. Vehicle RTS with a campaign and async multiplayer. Top X strategy in X countries.
+          p.card-text Cars with guns in frozen USA. Vehicle RTS with a campaign and async multiplayer. Top 5 strategy in 133 countries.
 
       div.card
         g-image.card-img-top(src="@/assets/card-spymaster1.jpg" alt="Spymaster key art" width="480")
         div.card-body
           h4.card-title.mb-2 Spymaster
           h6.card-subtitle.text-muted.mb-2 Mobile Game
-          p.card-text A second world war spy manager. Train a roster of agents and direct them on dangerous missions behind the enemy lines. Top X strategy in X countries.
+          p.card-text A second world war spy manager. Train a roster of agents and direct them on dangerous missions behind the enemy lines. Top 5 strategy in 102 countries.
 
       div.card
         g-image.card-img-top(src="@/assets/card-bi.png" alt="Bubble Island 2 key art" width="480")
