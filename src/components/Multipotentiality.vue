@@ -1,47 +1,47 @@
 <template lang="pug">
 div#potentiality-container.text-light
   div.container.section-padding
-    h1 MULTIPOTENTIALITY
-    small.text-monospace.font-weight-light teemu@haila.fi ~/manifestos> cat 01.txt#[span.caret.bg-light.text-light(v-show="showCaret") _]
+    h1.outline-on-mobile MULTIPOTENTIALITY
+    small.text-monospace.font-weight-light.outline-on-mobile teemu@haila.fi ~/manifestos> cat 01.txt#[span.caret.bg-light.text-light(v-show="showCaret") _]
 
-    p.mt-4.ml-3 1. Eat
-    p.ml-3 2. Sleep
+    p.mt-4.ml-3.outline-on-mobile 1. Eat
+    p.ml-3.outline-on-mobile 2. Sleep
     p.ml-3
-      span 3.
+      span.outline-on-mobile 3.
       span.overlay.ml-1   ------------
-      span  Code
+      span.outline-on-mobile  Code
       span.ml-4.overlay.up --------------
-      span.ml-4 Design
+      span.ml-4.outline-on-mobile Design
     p.ml-5
       span.overlay.ml-1.up ----------------------
-      span Photograph
+      span.outline-on-mobile Photograph
     p.ml-4
       span.overlay.ml-1 --------
-      span Play
+      span.outline-on-mobile Play
       span.ml-4.overlay.down ----------------
-      span.ml-4 Exercise
+      span.ml-4.outline-on-mobile Exercise
     p.ml-5
       span.overlay.ml-1.down ----------
-      span Cook
+      span.outline-on-mobile Cook
       span.ml-2.overlay ------
-      span.ml-2 Fix
+      span.ml-2.outline-on-mobile Fix
     p.ml-3
       span.overlay.ml-1 ----------
-      span Read
+      span.outline-on-mobile Read
       span.ml-3.overlay.down ---------------------
-      span.ml-3 Evangelise
+      span.ml-3.outline-on-mobile Evangelise
     p.ml-4
       span.overlay.ml-1.down -----------
-      span Teach
+      span.outline-on-mobile Teach
       span.ml-4.overlay.up ------------
-      span.ml-4 Learn
+      span.ml-4.outline-on-mobile Learn
     p.ml-2
       span.overlay.ml-1 ------------
-      span Travel
+      span.outline-on-mobile Travel
       span.ml-4.overlay.down -------------
-      span.ml-4 Create
+      span.ml-4.outline-on-mobile Create
 
-    p.mt-4.ml-4 Ehhh, whatever.
+    p.mt-4.ml-4.outline-on-mobile Ehhh, whatever.
 </template>
 
 <script>
@@ -107,12 +107,9 @@ export default {
 
 @media (max-width: 767.98px)
   #potentiality-container
-    p, small, h1
+    .outline-on-mobile
       color: rgb(255, 255, 255)
       text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000
-
-      span
-        text-shadow: none
 
 @media (max-width: 575.98px)
   #potentiality-container
