@@ -64,9 +64,9 @@ export default {
     camera.animations.push(cameraAnimation)
     // camera.attachControl(canvas, true)
 
-    // Step 3: Models and materials
+    // Step 3: Models, materials and animations
     SceneLoader.ImportMeshAsync(null, '/assets/', 'haila.glb', scene).then((result) => {
-      // Create character animations
+      // Character fly-in rotation animation
       let characterRotation = new Animation('characterRotation', 'rotationQuaternion', 30, Animation.ANIMATIONTYPE_QUATERNION, Animation.ANIMATIONLOOPMODE_CONSTANT)
       characterRotation.setKeys([
         {
@@ -91,6 +91,7 @@ export default {
         result.meshes[i].material.roughness = 0.2
         result.meshes[i].material.sideOrientation = 0
 
+        // Create per-character fly-in animation
         let characterPosition = new Animation('characterPosition', 'position', 30, Animation.ANIMATIONTYPE_VECTOR3, Animation.ANIMATIONLOOPMODE_CONSTANT)
         characterPosition.setKeys([
           {
@@ -118,7 +119,22 @@ export default {
     // Step 4: Inputs
     scene.onPointerPick = function (evt, pickInfo) {
       if (pickInfo.hit) {
-        pickInfo.pickedMesh.material.baseColor = new Color3(Math.random(), Math.random(), Math.random())
+        // pickInfo.pickedMesh.material.baseColor = new Color3(Math.random(), Math.random(), Math.random())
+        // Character color animation
+        let characterColor = new Animation('characterColor', 'material.baseColor', 30, Animation.ANIMATIONTYPE_COLOR3, Animation.ANIMATIONLOOPMODE_CONSTANT)
+        characterColor.setKeys([
+          {
+            frame: 20,
+            value: new Color3(1, 1, 1)
+          },
+          {
+            frame: 40,
+            value: new Color3(Math.random(), Math.random(), Math.random())
+          }
+        ])
+        pickInfo.pickedMesh.animations = []
+        pickInfo.pickedMesh.animations.push(characterColor)
+        scene.beginAnimation(pickInfo.pickedMesh, 20, 40, true)
       }
     }
 
