@@ -17,7 +17,10 @@ import {
   ArcRotateCamera,
   CubeTexture,
   SceneLoader,
-  PBRMetallicRoughnessMaterial
+  PBRMetallicRoughnessMaterial,
+  Animation,
+  QuinticEase,
+  EasingFunction
 } from '@babylonjs/core'
 import '@babylonjs/loaders'
 
@@ -41,6 +44,22 @@ export default {
     // Step 2: Camera
     let camera = new ArcRotateCamera('camera', 0, 0, 2, new Vector3(0, -1.5, 10), scene)
     camera.setTarget(Vector3.Zero())
+
+    let cameraAnimation = new Animation('cameraAnimation', 'alpha', 30, Animation.ANIMATIONTYPE_FLOAT, Animation.ANIMATIONLOOPMODE_RELATIVE)
+    cameraAnimation.setKeys([
+      {
+        frame: 0,
+        value: Math.PI * 0.5
+      },
+      {
+        frame: 300,
+        value: Math.PI + Math.PI * 0.5
+      }
+    ])
+    let easingFunction = new QuinticEase()
+    easingFunction.setEasingMode(EasingFunction.EASINGMODE_EASEINOUT)
+    cameraAnimation.setEasingFunction(easingFunction)
+    camera.animations.push(cameraAnimation)
     // camera.attachControl(canvas, true)
 
     // Step 3: Models and materials
@@ -53,6 +72,8 @@ export default {
         result.meshes[i].material.roughness = 0.2
         result.meshes[i].material.sideOrientation = 0
       }
+
+      setTimeout(() => scene.beginAnimation(camera, 0, 300, true), 5000)
     })
 
     // Step 4: Inputs
