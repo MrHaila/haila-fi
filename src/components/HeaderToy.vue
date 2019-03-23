@@ -184,19 +184,6 @@ export default {
     scene.onPointerPick = (evt, pickInfo) => {
       if (pickInfo.hit) {
         // Character color & spin animation
-        let characterColor = new Animation('characterColor', 'material.baseColor', 30, Animation.ANIMATIONTYPE_COLOR3, Animation.ANIMATIONLOOPMODE_CONSTANT)
-        let color = new Color3(Math.random(), Math.random(), Math.random())
-        characterColor.setKeys([
-          {
-            frame: 0,
-            value: new Color3(1, 1, 1)
-          },
-          {
-            frame: 20,
-            value: color
-          }
-        ])
-
         let characterSpin = new Animation('characterSpin', 'rotation.z', 30, Animation.ANIMATIONTYPE_FLOAT, Animation.ANIMATIONLOOPMODE_RELATIVE)
         characterSpin.setKeys([
           {
@@ -212,15 +199,29 @@ export default {
         easingFunction.setEasingMode(EasingFunction.EASINGMODE_EASEOUT)
         characterSpin.setEasingFunction(easingFunction)
 
+        let characterColor = new Animation('characterColor', 'material.emissiveColor', 30, Animation.ANIMATIONTYPE_COLOR3, Animation.ANIMATIONLOOPMODE_CONSTANT)
+        characterColor.setKeys([
+          {
+            frame: 0,
+            value: new Color3(1, 1, 1)
+          },
+          {
+            frame: 20,
+            value: new Color3(0, 0, 0)
+          }
+        ])
+
         pickInfo.pickedMesh.animations = []
         pickInfo.pickedMesh.animations.push(characterColor)
         pickInfo.pickedMesh.animations.push(characterSpin)
         scene.beginAnimation(pickInfo.pickedMesh, 0, 20, false)
 
         this.clicks++
-        let r = Math.floor(color.r * 256)
-        let g = Math.floor(color.g * 256)
-        let b = Math.floor(color.b * 256)
+        pickInfo.pickedMesh.material.baseColor = new Color3(Math.random(), Math.random(), Math.random())
+
+        let r = Math.floor(pickInfo.pickedMesh.material.baseColor.r * 256)
+        let g = Math.floor(pickInfo.pickedMesh.material.baseColor.g * 256)
+        let b = Math.floor(pickInfo.pickedMesh.material.baseColor.b * 256)
         let r2 = Math.round(Math.min(Math.max(0, r + (r * 0.2))))
         let g2 = Math.round(Math.min(Math.max(0, g + (g * 0.2))))
         let b2 = Math.round(Math.min(Math.max(0, b + (b * 0.2))))
