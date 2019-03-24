@@ -14,7 +14,7 @@ div#toy-container
       strong(:style="scoreStyle.a5" v-show="localClicks.a5 > 0").ml-1 {{localClicks.a5}}
       strong(v-if="totalLocalClicks >= 20") {{ feedback }}
     div.d-flex.justify-content-center.text-center
-      strong Everyone: {{totalClicks}}
+      strong You: {{totalLocalClicks}} / Everyone: {{totalClicks}}
 
   div.text-overlay
     div
