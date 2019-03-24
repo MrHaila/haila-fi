@@ -24,7 +24,7 @@ div
     p.d-flex.justify-content-center Email me, maybe?
     h4.d-flex.justify-content-center teemu@haila.fi
     div.bottom.text-center
-      small.text-muted Global logo tapping 👆 stats: #[strong H] {{clicks.h1}}, #[strong A] {{clicks.a2}}, #[strong I] {{clicks.i3}}, #[strong L] {{clicks.l4}}, #[strong A] {{clicks.a2}}
+      small.text-muted Global logo tapping 👆 stats: #[strong H] {{clicks.h1}}, #[strong A] {{clicks.a2}}, #[strong I] {{clicks.i3}}, #[strong L] {{clicks.l4}}, #[strong A] {{clicks.a5}}
       br/
       small Handcrafted with ❤️ and 🍺 as <a href="https://gitlab.com/dasinf/haila.fi-v2">open source</a>.
 </template>
