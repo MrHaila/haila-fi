@@ -4,9 +4,17 @@ div#toy-container
     div.d-flex.justify-content-center.text-center
       h4 🎨 Loading... 🤹‍
 
-  div.score(v-if="clicks > 0")
+  div.score(v-if="totalLocalClicks > 0")
     div.d-flex.justify-content-center.text-center
-      h6(:style="scoreStyle") {{clicks}}
+      strong(v-if="totalLocalClicks >= 20") {{ feedback }}
+      strong(:style="scoreStyle.h1" v-show="localClicks.h1 > 0") {{localClicks.h1}}
+      strong(:style="scoreStyle.a2" v-show="localClicks.a2 > 0").ml-1 {{localClicks.a2}}
+      strong(:style="scoreStyle.i3" v-show="localClicks.i3 > 0").ml-1 {{localClicks.i3}}
+      strong(:style="scoreStyle.l4" v-show="localClicks.l4 > 0").ml-1 {{localClicks.l4}}
+      strong(:style="scoreStyle.a5" v-show="localClicks.a5 > 0").ml-1 {{localClicks.a5}}
+      strong(v-if="totalLocalClicks >= 20") {{ feedback }}
+    div.d-flex.justify-content-center.text-center
+      strong Everyone: {{totalClicks}}
 
   div.text-overlay
     div
@@ -40,7 +48,7 @@ div#toy-container
     width: 100%
     top: 4rem
 
-    h6
+    strong
       margin-bottom: 0
       padding: 0.2rem 0.3rem 0 0.3rem
       border-radius: 0.5rem
@@ -80,19 +88,75 @@ import {
   Quaternion
 } from '@babylonjs/core'
 import '@babylonjs/loaders'
-
 // import '@babylonjs/core/Debug/debugLayer'
 // import '@babylonjs/inspector'
+
+import Firebase from 'firebase/app'
+import 'firebase/firestore'
 
 export default {
   data: function () {
     return {
       isEngineLoaded: false,
-      clicks: 0,
       scoreStyle: {
-        'background-image': 'linear-gradient(rgb(238, 238, 238), rgb(255, 255, 255))',
-        color: 'black'
+        h1: {
+          'background-image': 'linear-gradient(rgb(238, 238, 238), rgb(255, 255, 255))',
+          color: 'black'
+        },
+        a2: {
+          'background-image': 'linear-gradient(rgb(238, 238, 238), rgb(255, 255, 255))',
+          color: 'black'
+        },
+        i3: {
+          'background-image': 'linear-gradient(rgb(238, 238, 238), rgb(255, 255, 255))',
+          color: 'black'
+        },
+        l4: {
+          'background-image': 'linear-gradient(rgb(238, 238, 238), rgb(255, 255, 255))',
+          color: 'black'
+        },
+        a5: {
+          'background-image': 'linear-gradient(rgb(238, 238, 238), rgb(255, 255, 255))',
+          color: 'black'
+        }
+      },
+      firestore: null,
+      clicks: {
+        h1: 0,
+        a2: 0,
+        i3: 0,
+        l4: 0,
+        a5: 0
+      },
+      localClicks: {
+        h1: 0,
+        a2: 0,
+        i3: 0,
+        l4: 0,
+        a5: 0
       }
+    }
+  },
+  computed: {
+    totalClicks: function () {
+      return this.clicks.h1 + this.clicks.a2 + this.clicks.i3 + this.clicks.l4 + this.clicks.a5
+    },
+    totalLocalClicks: function () {
+      return this.localClicks.h1 + this.localClicks.a2 + this.localClicks.i3 + this.localClicks.l4 + this.localClicks.a5
+    },
+    feedback: function () {
+      if (this.totalLocalClicks >= 700) return '🤯'
+      else if (this.totalLocalClicks >= 600) return '💣'
+      else if (this.totalLocalClicks >= 500) return '💶'
+      else if (this.totalLocalClicks >= 400) return '📈'
+      else if (this.totalLocalClicks >= 300) return '🍾'
+      else if (this.totalLocalClicks >= 200) return '🍻'
+      else if (this.totalLocalClicks >= 150) return '🤩'
+      else if (this.totalLocalClicks >= 100) return '⭐️'
+      else if (this.totalLocalClicks >= 75) return '❤️'
+      else if (this.totalLocalClicks >= 45) return '🧡'
+      else if (this.totalLocalClicks >= 20) return '💛'
+      else return ''
     }
   },
   mounted: function () {
@@ -201,7 +265,7 @@ export default {
     // Step 4: Inputs
     scene.onPointerPick = (evt, pickInfo) => {
       if (pickInfo.hit) {
-        // Character color & spin animation
+        // Setup color & spin animation
         let characterSpin = new Animation('characterSpin', 'rotation.z', 30, Animation.ANIMATIONTYPE_FLOAT, Animation.ANIMATIONLOOPMODE_RELATIVE)
         characterSpin.setKeys([
           {
@@ -232,24 +296,44 @@ export default {
         pickInfo.pickedMesh.animations = []
         pickInfo.pickedMesh.animations.push(characterColor)
         pickInfo.pickedMesh.animations.push(characterSpin)
-        scene.beginAnimation(pickInfo.pickedMesh, 0, 20, false)
 
-        this.clicks++
+        // Actually do stuff
+        scene.beginAnimation(pickInfo.pickedMesh, 0, 20, false)
         pickInfo.pickedMesh.material.baseColor = new Color3(Math.random(), Math.random(), Math.random())
 
+        // Update HUD
+        this.localClicks[pickInfo.pickedMesh.name]++
         let r = Math.floor(pickInfo.pickedMesh.material.baseColor.r * 256)
         let g = Math.floor(pickInfo.pickedMesh.material.baseColor.g * 256)
         let b = Math.floor(pickInfo.pickedMesh.material.baseColor.b * 256)
         let r2 = Math.round(Math.min(Math.max(0, r + (r * 0.2))))
         let g2 = Math.round(Math.min(Math.max(0, g + (g * 0.2))))
         let b2 = Math.round(Math.min(Math.max(0, b + (b * 0.2))))
-        this.scoreStyle['background-image'] = 'linear-gradient(rgb(' + r2 + ',' + g2 + ',' + b2 + '), rgb(' + r + ',' + g + ',' + b + ')'
-        this.scoreStyle.color = (r * 0.299 + g * 0.587 + b * 0.114) > 186 ? 'black' : 'white'
+        this.scoreStyle[pickInfo.pickedMesh.name]['background-image'] = 'linear-gradient(rgb(' + r2 + ',' + g2 + ',' + b2 + '), rgb(' + r + ',' + g + ',' + b + ')'
+        this.scoreStyle[pickInfo.pickedMesh.name].color = (r * 0.299 + g * 0.587 + b * 0.114) > 186 ? 'black' : 'white'
+
+        // Update database
+        const doc = this.firestore.collection('logo').doc('clicks')
+        return this.firestore.runTransaction(transaction => {
+          return transaction.get(doc).then(current => {
+            let newData = {}
+            newData[pickInfo.pickedMesh.name] = current.data()[pickInfo.pickedMesh.name] + 1
+            transaction.update(doc, newData)
+          })
+        }).catch(err => console.log('Updating database failed: ', err))
       }
     }
 
     // Handle window resizing
     window.addEventListener('resize', () => engine.resize())
+
+    // Step 5: Firestore
+    Firebase.initializeApp({
+      apiKey: 'AIzaSyD37dmxeMAhz7JhQrWRZM6EpS6kx60iHNU',
+      projectId: 'haila-fi-v2'
+    })
+    this.firestore = Firebase.firestore()
+    this.firestore.collection('logo').doc('clicks').onSnapshot(doc => { this.clicks = doc.data() })
   }
 }
 </script>
