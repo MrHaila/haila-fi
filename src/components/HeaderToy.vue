@@ -313,12 +313,10 @@ export default {
         this.scoreStyle[pickInfo.pickedMesh.name].color = (r * 0.299 + g * 0.587 + b * 0.114) > 186 ? 'black' : 'white'
 
         // Update database
-        const doc = this.firestore.collection('logo').doc('clicks')
+        const doc = this.firestore.collection('logo').doc(pickInfo.pickedMesh.name)
         return this.firestore.runTransaction(transaction => {
           return transaction.get(doc).then(current => {
-            let newData = {}
-            newData[pickInfo.pickedMesh.name] = current.data()[pickInfo.pickedMesh.name] + 1
-            transaction.update(doc, newData)
+            transaction.update(doc, { count: current.data().count + 1 })
           })
         }).catch(err => console.log('Updating database failed: ', err))
       }
@@ -333,9 +331,11 @@ export default {
       projectId: 'haila-fi-v2'
     })
     this.firestore = Firebase.firestore()
-    this.firestore.collection('logo').doc('clicks').onSnapshot(doc => {
-      this.clicks = doc.data()
-      this.$emit('updateclicks', doc.data())
+    this.firestore.collection('logo').onSnapshot(snapshot => {
+      for (let doc of snapshot.docs) {
+        this.clicks[doc.id] = doc.data().count
+      }
+      this.$emit('updateclicks', this.clicks)
     })
   }
 }
