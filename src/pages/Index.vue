@@ -23,7 +23,10 @@ div
   div#footer
     p.d-flex.justify-content-center Email me, maybe?
     h4.d-flex.justify-content-center teemu@haila.fi
-    div.d-flex.justify-content-center: small Handcrafted with ❤️ and 🍺 as <a href="https://gitlab.com/dasinf/haila.fi-v2">open source</a>.
+    div.bottom.text-center
+      small.text-muted Btw you can tap the 3D logo 👆
+      br/
+      small Handcrafted with ❤️ and 🍺 as <a href="https://gitlab.com/dasinf/haila.fi-v2">open source</a>.
 </template>
 
 <page-query>
@@ -89,7 +92,7 @@ h1
   padding-top: 5rem
   p
     margin: 0
-  small
+  .bottom
     margin-top: 4rem
     margin-bottom: 0.3rem
 </style>
