@@ -180,14 +180,8 @@ export default {
 
     let cameraAnimation = new Animation('cameraAnimation', 'alpha', 30, Animation.ANIMATIONTYPE_FLOAT, Animation.ANIMATIONLOOPMODE_RELATIVE)
     cameraAnimation.setKeys([
-      {
-        frame: 0,
-        value: Math.PI * 0.5
-      },
-      {
-        frame: 300,
-        value: Math.PI + Math.PI * 0.5
-      }
+      { frame: 0, value: Math.PI * 0.5 },
+      { frame: 300, value: Math.PI + Math.PI * 0.5 }
     ])
     let easingFunction = new QuinticEase()
     easingFunction.setEasingMode(EasingFunction.EASINGMODE_EASEINOUT)
@@ -200,14 +194,8 @@ export default {
       // Character fly-in rotation animation
       let characterRotation = new Animation('characterRotation', 'rotationQuaternion', 30, Animation.ANIMATIONTYPE_QUATERNION, Animation.ANIMATIONLOOPMODE_CONSTANT)
       characterRotation.setKeys([
-        {
-          frame: 0,
-          value: new Quaternion(0, 0, 0, -1)
-        },
-        {
-          frame: 20,
-          value: new Quaternion(0.707, 0, 0, 0.707)
-        }
+        { frame: 0, value: new Quaternion(0, 0, 0, -1) },
+        { frame: 20, value: new Quaternion(0.707, 0, 0, 0.707) }
       ])
       let easingFunction = new CircleEase()
       easingFunction.setEasingMode(EasingFunction.EASINGMODE_EASEOUT)
@@ -225,14 +213,8 @@ export default {
         // Create per-character fly-in animation
         let characterPosition = new Animation('characterPosition', 'position', 30, Animation.ANIMATIONTYPE_VECTOR3, Animation.ANIMATIONLOOPMODE_CONSTANT)
         characterPosition.setKeys([
-          {
-            frame: 0,
-            value: new Vector3(i * 2 - 2, -20, -30)
-          },
-          {
-            frame: 20,
-            value: result.meshes[i].position
-          }
+          { frame: 0, value: new Vector3(i * 2 - 2, -20, -30) },
+          { frame: 20, value: result.meshes[i].position }
         ])
         characterPosition.setEasingFunction(easingFunction)
         result.meshes[i].position = new Vector3(4, -30, -30)
@@ -268,14 +250,8 @@ export default {
         // Setup color & spin animation
         let characterSpin = new Animation('characterSpin', 'rotation.z', 30, Animation.ANIMATIONTYPE_FLOAT, Animation.ANIMATIONLOOPMODE_RELATIVE)
         characterSpin.setKeys([
-          {
-            frame: 0,
-            value: 0
-          },
-          {
-            frame: 20,
-            value: 0.105
-          }
+          { frame: 0, value: 0 },
+          { frame: 20, value: 0.105 }
         ])
         let easingFunction = new CircleEase()
         easingFunction.setEasingMode(EasingFunction.EASINGMODE_EASEOUT)
@@ -283,14 +259,8 @@ export default {
 
         let characterColor = new Animation('characterColor', 'material.emissiveColor', 30, Animation.ANIMATIONTYPE_COLOR3, Animation.ANIMATIONLOOPMODE_CONSTANT)
         characterColor.setKeys([
-          {
-            frame: 0,
-            value: new Color3(1, 1, 1)
-          },
-          {
-            frame: 20,
-            value: new Color3(0, 0, 0)
-          }
+          { frame: 0, value: new Color3(1, 1, 1) },
+          { frame: 20, value: new Color3(0, 0, 0) }
         ])
 
         pickInfo.pickedMesh.animations = []
