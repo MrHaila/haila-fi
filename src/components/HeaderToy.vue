@@ -1,5 +1,9 @@
 <template lang="pug">
 div#toy-container
+  div.loader(v-if="!isEngineLoaded")
+    div.d-flex.justify-content-center.text-center
+      h4 🎨 Loading... 🤹‍
+
   div.score(v-if="clicks > 0")
     div.d-flex.justify-content-center.text-center
       h6(:style="scoreStyle") {{clicks}}
@@ -23,6 +27,12 @@ div#toy-container
     display: block
     font-size: 0
     outline: none
+
+  .loader
+    position: absolute
+    z-index: 3
+    width: 100%
+    top: 10rem
 
   .score
     position: absolute
@@ -77,6 +87,7 @@ import '@babylonjs/loaders'
 export default {
   data: function () {
     return {
+      isEngineLoaded: false,
       clicks: 0,
       scoreStyle: {
         'background-image': 'linear-gradient(rgb(238, 238, 238), rgb(255, 255, 255))',
@@ -179,6 +190,12 @@ export default {
         result.meshes[4].material.wireframe = !result.meshes[4].material.wireframe
         result.meshes[5].material.wireframe = !result.meshes[5].material.wireframe
       }, 10000)
+
+      // Start rendering
+      engine.runRenderLoop(() => {
+        scene.render()
+        this.isEngineLoaded = true
+      })
     })
 
     // Step 4: Inputs
@@ -193,7 +210,7 @@ export default {
           },
           {
             frame: 20,
-            value: 0.1
+            value: 0.07
           }
         ])
         let easingFunction = new CircleEase()
@@ -233,11 +250,6 @@ export default {
 
     // Handle window resizing
     window.addEventListener('resize', () => engine.resize())
-
-    // Start rendering
-    engine.runRenderLoop(() => {
-      scene.render()
-    })
   }
 }
 </script>
