@@ -333,7 +333,10 @@ export default {
       projectId: 'haila-fi-v2'
     })
     this.firestore = Firebase.firestore()
-    this.firestore.collection('logo').doc('clicks').onSnapshot(doc => { this.clicks = doc.data() })
+    this.firestore.collection('logo').doc('clicks').onSnapshot(doc => {
+      this.clicks = doc.data()
+      this.$emit('updateclicks', doc.data())
+    })
   }
 }
 </script>

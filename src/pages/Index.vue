@@ -13,18 +13,18 @@ div
     img(alt="Haila logo" srcset="@/assets/logo-haila-small1x.png 1x, @/assets/logo-haila-small2x.png 2x" src="@/assets/logo-haila-small1x.png")
   div#empty-header
 
-  header-toy
-  multipotentiality
-  serious-business
-  award
-  job-wall
-  photography
+  header-toy(@updateclicks="updateClicks")/
+  multipotentiality/
+  serious-business/
+  award/
+  job-wall/
+  photography/
 
   div#footer
     p.d-flex.justify-content-center Email me, maybe?
     h4.d-flex.justify-content-center teemu@haila.fi
     div.bottom.text-center
-      small.text-muted Btw you can tap the 3D logo 👆
+      small.text-muted Global logo tapping 👆 stats: #[strong H] {{clicks.h1}}, #[strong A] {{clicks.a2}}, #[strong I] {{clicks.i3}}, #[strong L] {{clicks.l4}}, #[strong A] {{clicks.a2}}
       br/
       small Handcrafted with ❤️ and 🍺 as <a href="https://gitlab.com/dasinf/haila.fi-v2">open source</a>.
 </template>
@@ -69,6 +69,16 @@ export default {
     Award,
     JobWall,
     Photography
+  },
+  data: function () {
+    return {
+      clicks: {}
+    }
+  },
+  methods: {
+    updateClicks: function (data) {
+      this.clicks = data
+    }
   }
 }
 </script>
