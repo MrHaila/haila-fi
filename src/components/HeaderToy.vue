@@ -153,8 +153,8 @@ export default {
       else if (this.totalLocalClicks >= 200) return '🍻'
       else if (this.totalLocalClicks >= 150) return '🤩'
       else if (this.totalLocalClicks >= 100) return '⭐️'
-      else if (this.totalLocalClicks >= 75) return '❤️'
-      else if (this.totalLocalClicks >= 45) return '🧡'
+      else if (this.totalLocalClicks >= 75) return '🔥'
+      else if (this.totalLocalClicks >= 45) return '🐬'
       else if (this.totalLocalClicks >= 20) return '💛'
       else return ''
     }
