@@ -210,7 +210,7 @@ export default {
           },
           {
             frame: 20,
-            value: 0.07
+            value: 0.105
           }
         ])
         let easingFunction = new CircleEase()
