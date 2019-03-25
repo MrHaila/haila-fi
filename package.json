@@ -4,7 +4,8 @@
   "scripts": {
     "build": "gridsome build",
     "serve": "gridsome develop",
-    "explore": "gridsome explore"
+    "explore": "gridsome explore",
+    "size": "ls -lahR dist/assets | grep -E '.env|.dds|.js|.css|.glb'"
   },
   "devDependencies": {
     "@babylonjs/core": "^4.0.0-alpha.18",
