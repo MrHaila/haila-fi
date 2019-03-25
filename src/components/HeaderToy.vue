@@ -167,8 +167,9 @@ export default {
     // scene.debugLayer.show()
 
     // Step 1: Environment (env texture from Babylon Playground)
-    const environmentTexture = CubeTexture.CreateFromPrefilteredData('/assets/environment.env', scene)
+    const environmentTexture = CubeTexture.CreateFromPrefilteredData('/assets/environment_64.env', scene)
     environmentTexture.gammaSpace = false
+    environmentTexture.rotationY = 2.8
     let skybox = scene.createDefaultSkybox(environmentTexture, true, 100, 0.4, true)
     skybox.material.alpha = 0.05
     scene.autoClear = false
@@ -207,7 +208,7 @@ export default {
         result.meshes[i].material = new PBRMetallicRoughnessMaterial('pbr', scene)
         result.meshes[i].material.baseColor = new Color3(0.05, 0.05, 0.05)
         result.meshes[i].material.metallic = 0.2
-        result.meshes[i].material.roughness = 0.18
+        result.meshes[i].material.roughness = 0.25
         result.meshes[i].material.sideOrientation = 0
 
         // Create per-character fly-in animation
