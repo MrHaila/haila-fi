@@ -167,7 +167,7 @@ export default {
     // scene.debugLayer.show()
 
     // Step 1: Environment (env texture from Babylon Playground)
-    const environmentTexture = CubeTexture.CreateFromPrefilteredData('/assets/environment_64.env', scene)
+    const environmentTexture = CubeTexture.CreateFromPrefilteredData('/assets/environment_32.env', scene)
     environmentTexture.gammaSpace = false
     environmentTexture.rotationY = 2.8
     let skybox = scene.createDefaultSkybox(environmentTexture, true, 100, 0.4, true)
