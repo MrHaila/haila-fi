@@ -63,10 +63,10 @@ export default {
   height: 34rem
 
   .container
-      background-image: url('/assets/selfie3.png')
-      background-size: auto 100%
+      background-image: url('/assets/selfie1000v2.png')
+      background-size: auto 90%
       background-repeat: no-repeat
-      background-position: center right
+      background-position: bottom right
 
   h1
     margin-bottom: 0
@@ -95,29 +95,26 @@ export default {
   padding-top: 3rem
   padding-bottom: 2.5rem
 
-@media (max-width: 991.98px)
+@media (max-width: 767.98px)
   #potentiality-container
-    background-image: url('/assets/selfie3.png')
-    background-size: auto 100%
+    background-image: url('/assets/selfie1000v2.png')
+    background-size: auto 90%
     background-repeat: no-repeat
-    background-position: center right
+    background-position: bottom right
 
     .container
       background: none
 
-@media (max-width: 767.98px)
-  #potentiality-container
     .outline-on-mobile
       color: rgb(255, 255, 255)
       text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000
 
-@media (max-width: 575.98px)
+@media (max-width: 329.98px)
   #potentiality-container
-    background-image: url('/assets/selfie3.png')
-    background-size: auto 100%
-    background-repeat: no-repeat
-    background-position: center left
+    background-position: bottom left
 
-    .container
-      background: none
+    h1
+      margin-bottom: 0
+      line-height: 1.5rem
+      font-size: 1.8rem
 </style>
