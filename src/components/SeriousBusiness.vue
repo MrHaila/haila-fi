@@ -70,7 +70,7 @@ div.section-padding
         g-image.card-img-top(src="@/assets/card-emmi.png" alt="Emmi screenshot" width="480")
         div.card-body
           h4.card-title.mb-2 Emmi
-          h6.card-subtitle.text-muted.mb-2 Company
+          h6.card-subtitle.text-muted.mb-2 Fullstack Website
           p.card-text IGDA Finland's tech backbone that handles all events and memberships across thousands of people every year. Open sourced under MIT.
 
       div.card
@@ -91,8 +91,8 @@ div.section-padding
         g-image.card-img-top(src="@/assets/card-fingamers.png" alt="Fingamers screenshot" width="480")
         div.card-body
           h4.card-title.mb-2 Fingamers
-          h6.card-subtitle.text-muted.mb-2 Company
-          p.card-text I founded Finland's first online gaming community provider. We crowd funded and hosted some of the biggest MMO communities at the time.
+          h6.card-subtitle.text-muted.mb-2 Community
+          p.card-text I founded Finland's first online gaming community provider. We crowdfunded and hosted some of the biggest MMO communities at the time.
 
       div.card
         g-image.card-img-top(src="@/assets/card-runepoli.png" alt="Runepoli screenshot" width="480")

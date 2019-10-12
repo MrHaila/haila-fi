@@ -34,7 +34,7 @@ div#job-wall-container.section-padding
 
     p#boring-label.d-flex.justify-content-center Looking for a boring list?
     div.d-flex.justify-content-center
-      a(href="")
+      a(href="https://www.linkedin.com/in/dasinf/")
         g-image(alt="LinkedIn" src="~/assets/logo-linkedin.png" width="150")
 </template>
 
