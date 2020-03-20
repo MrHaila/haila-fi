@@ -1,7 +1,7 @@
 # Haila.fi
 [![Netlify Status](https://api.netlify.com/api/v1/badges/067a7963-2ed9-4218-9782-bebce700e33a/deploy-status)](https://app.netlify.com/sites/haila/deploys) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-2019 iteration of my personal website. Open sourced for science!
+2020 iteration of my personal website. Open sourced for science!
 
 Pull requests are welcome, if unlikely :)
 
@@ -29,11 +29,11 @@ To run the project you need [Node.js](https://github.com/creationix/nvm) install
 
 1. Download [CMFT](https://github.com/dariomanesku/cmft)
 2. Use it with `--output0params dds,rgba16f,cubemap`
-3. Drop the result into [Babylon Sandbox](https://sandbox.babylonjs.com/) and export as .env from setting panel for additional significant compression
+3. Drop the result into [Babylon Sandbox](https://sandbox.babylonjs.com/) and export as .env from settings panel for additional significant compression
 
 Example:
 
-```
+```bash
 ./cmft \
 --input ~/Desktop/environment.dds \
 --dstFaceSize 32 \
@@ -44,7 +44,7 @@ stat -f%z ~/Desktop/environment.dds && \
 stat -f%z ~/Desktop/environment_processed.dds
 ```
 
-_note: stat -f%z is specific to the version that ships with MacOS as of 10.14.3_
+Note: stat -f%z is specific to the version that ships with MacOS as of 10.14.3
 
 ## License
 

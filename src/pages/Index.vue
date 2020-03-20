@@ -1,5 +1,5 @@
 <template lang="pug">
-// Copyright © 2019, Teemu Haila
+// Copyright © 2020, Teemu Haila
   Released under MIT License
 
   Fira Code by Nikita Prokopov (http://tonsky.me)
@@ -31,7 +31,7 @@ div
 
 <page-query>
 query {
-  metaData {
+  metadata {
     siteName,
     siteUrl,
     siteDescription
