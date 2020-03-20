@@ -54,11 +54,11 @@ export default {
       title: 'Home',
       meta: [
         { name: 'author', content: 'Teemu Haila' },
-        { name: 'og:title', content: this.$page.metaData.siteName },
-        { name: 'og:description', content: this.$page.metaData.siteDescription },
+        { name: 'og:title', content: this.$page.metadata.siteName },
+        { name: 'og:description', content: this.$page.metadata.siteDescription },
         { name: 'og:type', content: 'website' },
-        { name: 'og:image', content: this.$page.metaData.siteUrl + '/og.jpg' },
-        { name: 'og:url', content: this.$page.metaData.siteUrl }
+        { name: 'og:image', content: this.$page.metadata.siteUrl + '/og.jpg' },
+        { name: 'og:url', content: this.$page.metadata.siteUrl }
       ]
     }
   },
