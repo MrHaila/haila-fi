@@ -19,7 +19,7 @@ div#photography-container
 </template>
 
 <script>
-import BCarousel from 'bootstrap-vue/es/components/carousel/carousel'
+import { BCarousel } from 'bootstrap-vue'
 
 export default {
   components: {

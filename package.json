@@ -10,24 +10,24 @@
   "devDependencies": {
     "@babylonjs/core": "^4.0.0-alpha.18",
     "@babylonjs/inspector": "^4.0.0-alpha.18",
-    "eslint": "^5.15.3",
-    "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-import": "^2.16.0",
-    "eslint-plugin-node": "^8.0.1",
-    "eslint-plugin-promise": "^4.0.1",
-    "eslint-plugin-standard": "^4.0.0",
-    "eslint-plugin-vue": "^5.2.2",
-    "firebase": "^5.9.1",
-    "node-sass": "^4.11.0",
-    "pug": "^2.0.3",
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-vue": "^6.2.2",
+    "firebase": "^7.12.0",
+    "node-sass": "^4.13.1",
+    "pug": "^2.0.4",
     "pug-plain-loader": "^1.0.0",
     "sass-loader": "^7.1.0"
   },
   "dependencies": {
-    "@gridsome/plugin-critical": "^0.1.1",
-    "bootstrap": "^4.3.1",
-    "bootstrap-vue": "^2.0.0-rc.15",
-    "gridsome": "^0.5.5",
-    "vue": "^2.6.10"
+    "@gridsome/plugin-critical": "^0.1.6",
+    "bootstrap": "^4.4.1",
+    "bootstrap-vue": "^2.7.0",
+    "gridsome": "^0.7.13",
+    "vue": "^2.6.11"
   }
 }
