@@ -9,11 +9,10 @@
   SIL Open Font License
 
 div
-  div#header.d-flex.justify-content-center.fixed-top
+  div#header.d-flex.justify-content-center.fixed-top(:class="$refs.toy && pos > $refs.toy.$el.clientHeight ? 'show' : 'hide'")
     img(alt="Haila logo" srcset="@/assets/logo-haila-small1x.png 1x, @/assets/logo-haila-small2x.png 2x" src="@/assets/logo-haila-small1x.png")
-  div#empty-header
 
-  header-toy(@updateclicks="updateClicks")/
+  header-toy(@updateclicks="updateClicks" ref="toy")/
   multipotentiality/
   metaplay/
   serious-business/
@@ -75,12 +74,23 @@ export default {
   },
   data: function () {
     return {
-      clicks: {}
+      clicks: {},
+      pos: 0
     }
+  },
+  created () {
+    window.addEventListener('scroll', this.onScroll, { passive: true })
+  },
+  destroyed () {
+    window.removeEventListener('scroll', this.onScroll)
   },
   methods: {
     updateClicks: function (data) {
       this.clicks = data
+    },
+    onScroll: function () {
+      this.pos = window.scrollY
+      //console.log(this.$refs.toy.$el.clientHeight)
     }
   }
 }
@@ -95,11 +105,20 @@ span.line
   display: inline-block
 
 #header
-  background-color: rgb(255, 255, 255)
+  background-color: white
   padding-top: 0.8rem
   padding-bottom: 0.8rem
   z-index: 10
   box-shadow: 1px 0px 2px rgba(0, 0, 0, .2)
+  width: 100vw
+
+.show
+  transition: 0.2s transform cubic-bezier(.3,.73,.3,.74)
+  transform: translateY(0)
+
+.hide
+  transition: 0.2s transform cubic-bezier(.3,.73,.3,.74)
+  transform: translateY(-100%)
 
 #empty-header
   height: 3.6rem

@@ -27,7 +27,7 @@ div#toy-container
 <style lang="sass">
 #toy-container
   background-image: linear-gradient(rgb(238, 238, 238), rgb(255, 255, 255))
-  height: 25rem
+  height: 35rem
 
   canvas
     width: 100%
@@ -56,7 +56,7 @@ div#toy-container
   .text-overlay
     position: absolute
     z-index: 1
-    top: 23rem
+    top: 29.4rem
     left: 10%
 
     p
@@ -67,7 +67,7 @@ div#toy-container
     height: 15rem
 
     .text-overlay
-      top: 13.5rem
+      top: 10rem
       left: 1rem
 </style>
 
