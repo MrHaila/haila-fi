@@ -8,40 +8,59 @@ div#potentiality-container.text-light
     p.ml-3.outline-on-mobile 2. Sleep
     p.ml-3
       span.outline-on-mobile 3.
-      span.overlay.ml-1   ------------
+      svg.overlay(height="100%" width="100%" stroke-width="5" stroke="red")
+        line(x1="6" x2="65" y1="22" y2="22")
       span.outline-on-mobile  Code
-      span.ml-4.overlay.up --------------
-      span.ml-4.outline-on-mobile Design
+      span.ml-4
+        svg.overlay(height="100%" width="100%" stroke-width="5" stroke="red")
+          line(x1="1" x2="77" y1="21" y2="21")
+        span.outline-on-mobile Design
     p.ml-5
-      span.overlay.ml-1.up ----------------------
+      svg.overlay(height="100%" width="100%" stroke-width="5" stroke="red")
+        line(x1="3" x2="125" y1="18" y2="18")
       span.outline-on-mobile Photograph
     p.ml-4
-      span.overlay.ml-1 --------
+      svg.overlay(height="100%" width="100%" stroke-width="5" stroke="red")
+        line(x1="0" x2="39" y1="20" y2="20")
       span.outline-on-mobile Play
-      span.ml-4.overlay.down ----------------
-      span.ml-4.outline-on-mobile Exercise
+      span.ml-4
+        svg.overlay(height="100%" width="100%" stroke-width="5" stroke="red")
+          line(x1="3" x2="85" y1="22" y2="22")
+        span.outline-on-mobile Exercise
     p.ml-5
-      span.overlay.ml-1.down ----------
+      svg.overlay(height="100%" width="100%" stroke-width="5" stroke="red")
+        line(x1="0" x2="50" y1="18" y2="18")
       span.outline-on-mobile Cook
-      span.ml-2.overlay ------
-      span.ml-2.outline-on-mobile Fix
+      span.ml-2
+        svg.overlay(height="100%" width="100%" stroke-width="5" stroke="red")
+          line(x1="1" x2="35" y1="19" y2="19")
+        span.outline-on-mobile DIY
     p.ml-3
-      span.overlay.ml-1 ----------
+      svg.overlay(height="100%" width="100%" stroke-width="5" stroke="red")
+        line(x1="0" x2="47" y1="22" y2="22")
       span.outline-on-mobile Read
-      span.ml-3.overlay.down ---------------------
-      span.ml-3.outline-on-mobile Evangelise
+      span.ml-3
+        svg.overlay(height="100%" width="100%" stroke-width="5" stroke="red")
+          line(x1="1" x2="110" y1="19" y2="21")
+        span.outline-on-mobile Evangelise
     p.ml-4
-      span.overlay.ml-1.down -----------
+      svg.overlay(height="100%" width="100%" stroke-width="5" stroke="red")
+        line(x1="4" x2="58" y1="19" y2="19")
       span.outline-on-mobile Teach
-      span.ml-4.overlay.up ------------
-      span.ml-4.outline-on-mobile Learn
+      span.ml-4
+        svg.overlay(height="100%" width="100%" stroke-width="5" stroke="red")
+          line(x1="1" x2="60" y1="21" y2="21")
+        span.outline-on-mobile Learn
     p.ml-2
-      span.overlay.ml-1 ------------
+      svg.overlay(height="100%" width="100%" stroke-width="5" stroke="red")
+        line(x1="3" x2="54" y1="22" y2="22")
       span.outline-on-mobile Travel
-      span.ml-4.overlay.down -------------
-      span.ml-4.outline-on-mobile Create
+      span.ml-4
+        svg.overlay(height="100%" width="100%" stroke-width="5" stroke="red")
+          line(x1="1" x2="69" y1="20" y2="20")
+        span.outline-on-mobile Create
 
-    p.mt-4.ml-4.outline-on-mobile Ehhh, whatever.
+    p.mt-4.ml-4.outline-on-mobile.text-small Ehhh, whatever.
 </template>
 
 <script>
@@ -78,18 +97,14 @@ export default {
 
   .overlay
     position: absolute
-    color: red
-    font-weight: 700
-
-  .up
-    line-height: 2rem
-
-  .down
-    line-height: 2.4rem
 
   .caret
     width: 1rem
     height: 2rem
+
+  .text-small
+    font-size: 1.3rem
+    margin-bottom: 0.4rem
 
 .section-padding
   padding-top: 3rem
