@@ -15,6 +15,7 @@ div
 
   header-toy(@updateclicks="updateClicks")/
   multipotentiality/
+  metaplay/
   serious-business/
   award/
   job-wall/
@@ -42,6 +43,7 @@ query {
 <script>
 import HeaderToy from '~/components/HeaderToy.vue'
 import Multipotentiality from '~/components/Multipotentiality.vue'
+import Metaplay from '~/components/Metaplay.vue'
 import SeriousBusiness from '~/components/SeriousBusiness.vue'
 import Award from '~/components/Award.vue'
 import JobWall from '~/components/JobWall.vue'
@@ -65,6 +67,7 @@ export default {
   components: {
     HeaderToy,
     Multipotentiality,
+    Metaplay,
     SeriousBusiness,
     Award,
     JobWall,
@@ -87,6 +90,9 @@ export default {
 h1
   font-weight: 700
   font-size: 2.2rem
+
+span.line
+  display: inline-block
 
 #header
   background-color: rgb(255, 255, 255)
