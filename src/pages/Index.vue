@@ -79,10 +79,14 @@ export default {
     }
   },
   created () {
-    window.addEventListener('scroll', this.onScroll, { passive: true })
+    if (process.isClient) {
+      window.addEventListener('scroll', this.onScroll, { passive: true })
+    }
   },
   destroyed () {
-    window.removeEventListener('scroll', this.onScroll)
+    if (process.isClient) {
+      window.removeEventListener('scroll', this.onScroll)
+    }
   },
   methods: {
     updateClicks: function (data) {
@@ -90,7 +94,6 @@ export default {
     },
     onScroll: function () {
       this.pos = window.scrollY
-      //console.log(this.$refs.toy.$el.clientHeight)
     }
   }
 }
