@@ -21,6 +21,8 @@ div#job-wall-container.section-padding
 
     div.row.text-center.align-items-center
       div.col-sm.mb-4
+        g-image(alt="Metaplay logo" src="@/assets/logo-metaplay.png" width="260" fit="inside" v-scroll-reveal="{ delay: 200 }")
+      div.col-sm.mb-4
         g-image(alt="PlayRaven logo" src="@/assets/logo-playraven.png" width="160" fit="inside" v-scroll-reveal="{ delay: 200 }")
       div.col-sm.mb-4
         g-image(alt="Wooga logo" src="@/assets/logo-wooga.png" width="130" fit="inside" v-scroll-reveal="{ delay: 200 }")
