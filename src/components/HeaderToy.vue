@@ -46,7 +46,7 @@ div#toy-container
     position: absolute
     z-index: 2
     width: 100%
-    top: 4rem
+    top: 1rem
 
     strong
       margin-bottom: 0
