@@ -28,6 +28,7 @@
     "bootstrap": "^4.4.1",
     "bootstrap-vue": "^2.7.0",
     "gridsome": "^0.7.13",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-scroll-reveal": "^1.0.11"
   }
 }
