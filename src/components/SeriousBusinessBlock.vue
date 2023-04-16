@@ -1,5 +1,5 @@
 <template lang="pug">
-div(class="py-8 container mx-auto px-4 space-y-8 bg-gradient-to-b from-white to-neutral-100")
+div(class="px-4 py-8 sm:p-10 container mx-auto space-y-8 bg-gradient-to-b from-white to-neutral-100")
   div(class="max-w-2xl space-y-3")
     h4(class="text-xl font-bold") Serious Business Since 1987
     p I've fiddled with everything that computes for as long as I can remember. Combine endless curiosity with a passion for interaction design and you get… well, mostly video games.
@@ -9,7 +9,7 @@ div(class="py-8 container mx-auto px-4 space-y-8 bg-gradient-to-b from-white to-
     h5(class="text-xl font-bold") Project Gallery
     p Here are a few interesting projects that are not under a metric ton of NDAs 😉
 
-  div(class="sm:flex justify-between sm:space-x-3 space-y-4")
+  div(class="sm:flex justify-between sm:space-x-3 space-y-4 sm:space-y-0")
     //- Col 1
     div(class="sm:flex flex-col space-y-3 w-full")
       div(class="bg-neutral-100 rounded-xl shadow-lg")
@@ -54,7 +54,7 @@ div(class="py-8 container mx-auto px-4 space-y-8 bg-gradient-to-b from-white to-
         div(class="p-4")
           h6(class="text font-bold") Eve: War of Ascension
           aside(class="text-neutral-500 text-xs mb-2") Mobile Game
-          p(class="text-sm") An ambitious take on 4X style MMOs on mobile in collaboration with CCP. We had exceptional soft launch metrics but shifted to work on an unannounced title after the acquisition by Rovio.
+          p(class="text-sm") An ambitious take on 4X style MMOs on mobile in collaboration with CCP. The company was aquired by Rovio during soft launch and the project was rebooted under a different brand.
 
       div(class="bg-neutral-100 rounded-xl shadow-lg")
         image(src="/assets/card-ddios.png" class="rounded-t-xl" alt="Diamond Dash key art")

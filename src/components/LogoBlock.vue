@@ -1,5 +1,5 @@
 <template lang="pug">
-div(class="bg-gradient-to-t from-neutral-100 to-white h-60 sm:h-96 relative")
+div(class="bg-gradient-to-t from-neutral-100 to-white max-h-screen relative")
   p(
     v-show="!isEngineLoaded"
     class="absolute z-10 w-full top-40 text-center text-xl text-neutral-600"
@@ -19,8 +19,8 @@ div(class="bg-gradient-to-t from-neutral-100 to-white h-60 sm:h-96 relative")
       span(v-if="totalLocalClicks >= 20") {{ feedback }}
     div(class="text-center text-sm") You: {{totalLocalClicks}} / Everyone: {{totalClicks}}
 
-  div(class="absolute z-10 bottom-4 left-4 sm:bottom-5 sm:left-10 text-sm sm:text-base")
-    ul
+  div(class="absolute z-10 bottom-4 left-0 right-0 sm:bottom-5 text-sm sm:text-base")
+    ul(class="px-4 sm:px-10 container mx-auto")
       li BA Interaction Design
       li MProf Games Development
       li Games Industry Entrepreneur & Executive
@@ -127,7 +127,7 @@ const feedback = computed(() => {
 
 const headerCanvas = ref<HTMLCanvasElement>()
 
-onMounted(() => {
+onMounted(async () => {
   if (!headerCanvas.value) throw new Error('Header canvas not found')
   const engine = new Engine(headerCanvas.value)
   const scene = new Scene(engine)
@@ -160,59 +160,58 @@ onMounted(() => {
   // camera.attachControl(canvas, true)
 
   // Step 3: Models, materials and animations
-  SceneLoader.ImportMeshAsync(null, '/assets/', 'haila.glb', scene).then((result) => {
-    // Character fly-in rotation animation
-    const characterRotation = new Animation('characterRotation', 'rotationQuaternion', 30, Animation.ANIMATIONTYPE_QUATERNION, Animation.ANIMATIONLOOPMODE_CONSTANT)
-    characterRotation.setKeys([
-      { frame: 0, value: new Quaternion(0, 0, 0, -1) },
-      { frame: 20, value: new Quaternion(0.707, 0, 0, 0.707) }
+  const result = await SceneLoader.ImportMeshAsync(null, '/assets/', 'haila.glb', scene)
+  // Character fly-in rotation animation
+  const characterRotation = new Animation('characterRotation', 'rotationQuaternion', 30, Animation.ANIMATIONTYPE_QUATERNION, Animation.ANIMATIONLOOPMODE_CONSTANT)
+  characterRotation.setKeys([
+    { frame: 0, value: new Quaternion(0, 0, 0, -1) },
+    { frame: 20, value: new Quaternion(0.707, 0, 0, 0.707) }
+  ])
+  const easingFunction2 = new CircleEase()
+  easingFunction2.setEasingMode(EasingFunction.EASINGMODE_EASEOUT)
+  characterRotation.setEasingFunction(easingFunction2)
+
+  // For each character...
+  for (let i = 1; i < result.meshes.length; i++) {
+    // Generate unique materials for each char so they can be messed with individually
+    const material = new PBRMetallicRoughnessMaterial('pbr', scene)
+    material.baseColor = new Color3(0.05, 0.05, 0.05)
+    material.metallic = 0.2
+    material.roughness = 0.25
+    material.sideOrientation = 0
+    result.meshes[i].material = material
+
+    // Create per-character fly-in animation
+    const characterPosition = new Animation('characterPosition', 'position', 30, Animation.ANIMATIONTYPE_VECTOR3, Animation.ANIMATIONLOOPMODE_CONSTANT)
+    characterPosition.setKeys([
+      { frame: 0, value: new Vector3(i * 2 - 2, -20, -30) },
+      { frame: 20, value: result.meshes[i].position }
     ])
-    const easingFunction = new CircleEase()
-    easingFunction.setEasingMode(EasingFunction.EASINGMODE_EASEOUT)
-    characterRotation.setEasingFunction(easingFunction)
+    characterPosition.setEasingFunction(easingFunction)
+    result.meshes[i].position = new Vector3(4, -30, -30)
 
-    // For each character...
-    for (let i = 1; i < result.meshes.length; i++) {
-      // Generate unique materials for each char so they can be messed with individually
-      const material = new PBRMetallicRoughnessMaterial('pbr', scene)
-      material.baseColor = new Color3(0.05, 0.05, 0.05)
-      material.metallic = 0.2
-      material.roughness = 0.25
-      material.sideOrientation = 0
-      result.meshes[i].material = material
+    // Setup animations
+    result.meshes[i].animations.push(characterRotation)
+    result.meshes[i].animations.push(characterPosition)
+    setTimeout(() => scene.beginAnimation(result.meshes[i], 0, 20, true), i * 70, false)
+  }
 
-      // Create per-character fly-in animation
-      const characterPosition = new Animation('characterPosition', 'position', 30, Animation.ANIMATIONTYPE_VECTOR3, Animation.ANIMATIONLOOPMODE_CONSTANT)
-      characterPosition.setKeys([
-        { frame: 0, value: new Vector3(i * 2 - 2, -20, -30) },
-        { frame: 20, value: result.meshes[i].position }
-      ])
-      characterPosition.setEasingFunction(easingFunction)
-      result.meshes[i].position = new Vector3(4, -30, -30)
+  // Delayed start to camera animation
+  setTimeout(() => scene.beginAnimation(camera, 0, 300, true), 5000)
 
-      // Setup animations
-      result.meshes[i].animations.push(characterRotation)
-      result.meshes[i].animations.push(characterPosition)
-      setTimeout(() => scene.beginAnimation(result.meshes[i], 0, 20, true), i * 70, false)
-    }
+  // Wireframe animation
+  setInterval(() => {
+    if (result.meshes[1].material) result.meshes[1].material.wireframe = !result.meshes[1].material.wireframe
+    if (result.meshes[2].material) result.meshes[2].material.wireframe = !result.meshes[2].material.wireframe
+    if (result.meshes[3].material) result.meshes[3].material.wireframe = !result.meshes[3].material.wireframe
+    if (result.meshes[4].material) result.meshes[4].material.wireframe = !result.meshes[4].material.wireframe
+    if (result.meshes[5].material) result.meshes[5].material.wireframe = !result.meshes[5].material.wireframe
+  }, 10000)
 
-    // Delayed start to camera animation
-    setTimeout(() => scene.beginAnimation(camera, 0, 300, true), 5000)
-
-    // Wireframe animation
-    setInterval(() => {
-      if (result.meshes[1].material) result.meshes[1].material.wireframe = !result.meshes[1].material.wireframe
-      if (result.meshes[2].material) result.meshes[2].material.wireframe = !result.meshes[2].material.wireframe
-      if (result.meshes[3].material) result.meshes[3].material.wireframe = !result.meshes[3].material.wireframe
-      if (result.meshes[4].material) result.meshes[4].material.wireframe = !result.meshes[4].material.wireframe
-      if (result.meshes[5].material) result.meshes[5].material.wireframe = !result.meshes[5].material.wireframe
-    }, 10000)
-
-    // Start rendering
-    engine.runRenderLoop(() => {
-      scene.render()
-      isEngineLoaded.value = true
-    })
+  // Start rendering
+  engine.runRenderLoop(() => {
+    scene.render()
+    isEngineLoaded.value = true
   })
 
   // Step 4: Inputs

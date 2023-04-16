@@ -1,7 +1,7 @@
 <template lang="pug">
 div(style="height: 40rem; background-color: #3f6731")
-  div(class="text-white container mx-auto px-4 flex flex-col justify-between h-full pt-44 pb-8")
-    div
+  div(class="text-white container mx-auto flex flex-col justify-between h-full px-4 py-8 sm:p-10")
+    div(class="mt-40")
       div(class="h-14 sm:h-24 text-center fill-white")
         svg(
           width="100%"
@@ -39,10 +39,6 @@ div(style="height: 40rem; background-color: #3f6731")
 
     p(class="block") I'm a co-founder and CPO at Metaplay, a games technology company in Helsinki, Finland.
 </template>
-
-<script lang="ts" setup>
-import MButton from '../components/MButton.vue'
-</script>
 
 <style>
 @media (max-width: 767.98px) {
