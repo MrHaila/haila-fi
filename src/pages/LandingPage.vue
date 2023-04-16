@@ -5,8 +5,8 @@ div#root
     )
     img(
       alt="Haila logo"
-      srcset="@/assets/logo-haila-small1x.png 1x, @/assets/logo-haila-small2x.png 2x"
-      src="@/assets/logo-haila-small1x.png"
+      srcset="/assets/logo-haila-small1x.png 1x, /assets/logo-haila-small2x.png 2x"
+      src="/assets/logo-haila-small1x.png"
       )
 
   LogoBlock(
@@ -16,29 +16,17 @@ div#root
   MultipotentialityBlock
   MetaplayBlock
   SeriousBusinessBlock
-  //- AwardBlock
-  //- JobWallBlock
-  //- photography/
+  AwardBlock
+  CvBlock
+  PhotographyBlock
 
   div(class="mt-20 text-center mb-2")
     p Email me, maybe?
-    h4(class="text-xl") teemu@haila.fi
+    h4(class="text-3xl mt-3 font-bold") teemu@haila.fi
     div(class="space-y-1 text-sm mt-16")
       p(class="text-neutral-400") Global logo tapping 👆 stats: #[span(class="font-bold") H] {{ clicks?.h1 }}, #[span(class="font-bold") A] {{ clicks?.a2 }}, #[span(class="font-bold") I] {{ clicks?.i3 }}, #[span(class="font-bold") L] {{ clicks?.l4 }}, #[span(class="font-bold") A] {{ clicks?.a5 }}
       p Handcrafted with ❤️ and 🍺 as <a href="https://gitlab.com/dasinf/haila.fi-v2">open source</a>.
 </template>
-
-<!--
-<page-query>
-query {
-  metadata {
-    siteName,
-    siteUrl,
-    siteDescription
-  }
-}
-</page-query>
--->
 
 <script lang="ts" setup>
 import { ref } from 'vue'
@@ -48,23 +36,9 @@ import LogoBlock from '../components/LogoBlock.vue'
 import MultipotentialityBlock from '../components/MultipotentialityBlock.vue'
 import MetaplayBlock from '../components/MetaplayBlock.vue'
 import SeriousBusinessBlock from '../components/SeriousBusinessBlock.vue'
-// import AwardBlock from '../components/AwardBlock.vue'
-// import JobWallBlock from '../components/JobWallBlock.vue'
-// import PhotographyBlock from '../components/PhotographyBlock.vue'
-
-// metaInfo: function () {
-//   return {
-//     title: 'Home',
-//     meta: [
-//       { name: 'author', content: 'Teemu Haila' },
-//       { name: 'og:title', content: this.$page.metadata.siteName },
-//       { name: 'og:description', content: this.$page.metadata.siteDescription },
-//       { name: 'og:type', content: 'website' },
-//       { name: 'og:image', content: this.$page.metadata.siteUrl + '/og.jpg' },
-//       { name: 'og:url', content: this.$page.metadata.siteUrl }
-//     ]
-//   }
-// },
+import AwardBlock from '../components/AwardBlock.vue'
+import CvBlock from '../components/CvBlock.vue'
+import PhotographyBlock from '../components/PhotographyBlock.vue'
 
 const toy = ref<HTMLDivElement>()
 

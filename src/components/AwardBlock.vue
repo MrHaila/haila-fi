@@ -1,14 +1,10 @@
 <template lang="pug">
-div#award-container.text-light.section-padding
-  div.container
-    div.d-flex.justify-content-center.mb-4
-      g-image(alt="IGDA Finland Lifetime Award" src="~/assets/award.png" width="300")
-    p.text-center In 2018 I got a lifetime award for my contributions to the Finnish game development scene.
+div(class="text-neutral-100 bg-gradient-to-t from-neutral-900 to-neutral-800 py-20 text-center")
+    img(
+      src="/assets/award.png"
+      alt="IGDA Finland Lifetime Award"
+      class="mx-auto mb-16"
+      width="300"
+      )
+    p In 2018 I got a lifetime award for my contributions to the Finnish game development scene.
 </template>
-
-<style lang="sass">
-#award-container
-  background-image: linear-gradient(rgb(20, 20, 20), rgb(5, 5, 5))
-  padding-top: 4rem
-  padding-bottom: 2rem
-</style>
