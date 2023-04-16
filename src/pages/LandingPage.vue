@@ -14,10 +14,10 @@ div#root
     ref="toy"
     )
   MultipotentialityBlock
-  //- metaplay/
-  //- serious-business/
-  //- award/
-  //- job-wall/
+  MetaplayBlock
+  SeriousBusinessBlock
+  //- AwardBlock
+  //- JobWallBlock
   //- photography/
 
   div(class="mt-20 text-center mb-2")
@@ -46,11 +46,11 @@ import { useScroll } from '@vueuse/core'
 
 import LogoBlock from '../components/LogoBlock.vue'
 import MultipotentialityBlock from '../components/MultipotentialityBlock.vue'
-// import Metaplay from '~/components/Metaplay.vue'
-// import SeriousBusiness from '~/components/SeriousBusiness.vue'
-// import Award from '~/components/Award.vue'
-// import JobWall from '~/components/JobWall.vue'
-// import Photography from '~/components/Photography.vue'
+import MetaplayBlock from '../components/MetaplayBlock.vue'
+import SeriousBusinessBlock from '../components/SeriousBusinessBlock.vue'
+// import AwardBlock from '../components/AwardBlock.vue'
+// import JobWallBlock from '../components/JobWallBlock.vue'
+// import PhotographyBlock from '../components/PhotographyBlock.vue'
 
 // metaInfo: function () {
 //   return {
@@ -79,15 +79,6 @@ function updateClicks (data: any) {
 </script>
 
 <style>
-h1 {
-  font-weight: 700;
-  font-size: 2.2rem;
-}
-
-span.line {
-  display: inline-block;
-}
-
 .show {
   transition: 0.2s transform cubic-bezier(.3,.73,.3,.74);
   transform: translateY(0);

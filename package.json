@@ -32,8 +32,5 @@
     "vite-plugin-eslint": "^1.8.1",
     "vue": "^3.2.47",
     "vue-tsc": "latest"
-  },
-  "devDependencies": {
-    "unplugin-vue-components": "^0.24.1"
   }
 }
