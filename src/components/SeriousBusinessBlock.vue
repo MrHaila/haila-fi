@@ -1,16 +1,17 @@
 <template lang="pug">
-div(class="py-5 container")
+div(class="py-8 container mx-auto px-4 space-y-8 bg-gradient-to-b from-white to-neutral-100")
   div(class="max-w-2xl space-y-3")
-    h4(class="mb-4 text-xl font-bold") Serious Business Since 1987
+    h4(class="text-xl font-bold") Serious Business Since 1987
     p I've fiddled with everything that computes for as long as I can remember. Combine endless curiosity with a passion for interaction design and you get… well, mostly video games.
     p I've learned that I'm most comfortable here, in the intersection of all creative disciplines, because only from here can one find something #[i truly interesting].
 
-    h5(class="text-xl font-bold mt-5 mb-2") Project Gallery
+  div(class="space-y-3")
+    h5(class="text-xl font-bold") Project Gallery
     p Here are a few interesting projects that are not under a metric ton of NDAs 😉
 
-  div(class="flex justify-between mt-4 space-x-3")
+  div(class="sm:flex justify-between sm:space-x-3 space-y-4")
     //- Col 1
-    div(class="flex flex-col space-y-3 w-full")
+    div(class="sm:flex flex-col space-y-3 w-full")
       div(class="bg-neutral-100 rounded-xl shadow-lg")
         image(src="/assets/card-playraven.jpg" class="rounded-t-xl" alt="PlayRaven logo")
         div(class="p-4")
@@ -47,7 +48,7 @@ div(class="py-5 container")
           p(class="text-sm") I founded Finland's biggest Runescape community that united the various trade forums under a single banner. It survives to this day and is officially supported by Jagex.
 
     //- Col 2
-    div(class="flex flex-col space-y-3 w-full")
+    div(class="sm:flex flex-col space-y-3 w-full")
       div(class="bg-neutral-100 rounded-xl shadow-lg")
         image(src="/assets/card-eve.png" class="rounded-t-xl" alt="Eve: WoA key art")
         div(class="p-4")
@@ -77,7 +78,7 @@ div(class="py-5 container")
           p(class="text-sm") I am a volunteer photographer in a program that organises Lapland wilderness tours for refugees to help with societal integration.
 
     //- Col 3
-    div(class="flex flex-col space-y-3 w-full")
+    div(class="sm:flex flex-col space-y-3 w-full")
       div(class="bg-neutral-100 rounded-xl shadow-lg")
         image(src="/assets/card-robocide.jpg" class="rounded-t-xl" alt="Robocide key art")
         div(class="p-4")
