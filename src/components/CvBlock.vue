@@ -68,10 +68,14 @@ div(class="container mx-auto")
         src="/assets/logo-igda.png"
         )
 
-    div(class="text-center mt-16")
-      p(class="mb-3") Looking for a boring list?
-      a(href="https://www.linkedin.com/in/dasinf/")
-        img(class="inline w-28 sm:w-36 mb-10" alt="LinkedIn" src="/assets/logo-linkedin.png")
+    div(class="text-center mt-16 mb-10")
+      p(class="mb-1") Looking for a boring list?
+      div(class="flex justify-center")
+        a(
+          href="https://www.linkedin.com/in/dasinf/"
+          class="rounded-lg hover:bg-neutral-300 active:bg-neutral-400 block w-fit py-2 px-3"
+          )
+          img(class="w-28 sm:w-36 " alt="LinkedIn" src="/assets/logo-linkedin.png")
 </template>
 
 <script lang="ts" setup>

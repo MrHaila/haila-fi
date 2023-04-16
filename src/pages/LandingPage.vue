@@ -1,7 +1,8 @@
 <template lang="pug">
 div#root
   div(
-    :class="['flex justify-center fixed bg-white py-3 z-10 shadow-sm w-full', toy && y > toy.clientHeight ? 'show' : 'hide']"
+    :class="['flex justify-center fixed bg-white hover:bg-neutral-100 active:bg-neutral-200 py-3 z-50 shadow w-full cursor-pointer', !headerIsVisible ? 'show' : 'hide']"
+    @click="scrollToTop"
     )
     img(
       alt="Haila logo"
@@ -11,7 +12,7 @@ div#root
 
   LogoBlock(
     @updateclicks="updateClicks"
-    ref="toy"
+    ref="header"
     )
   MultipotentialityBlock
   MetaplayBlock
@@ -30,7 +31,7 @@ div#root
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { useScroll } from '@vueuse/core'
+import { useIntersectionObserver } from '@vueuse/core'
 
 import LogoBlock from '../components/LogoBlock.vue'
 import MultipotentialityBlock from '../components/MultipotentialityBlock.vue'
@@ -48,15 +49,27 @@ type Clicks = {
   a5: number
 }
 
-const toy = ref<HTMLDivElement>()
+const header = ref<HTMLDivElement>()
+const headerIsVisible = ref(false)
 
-const root = ref<HTMLDivElement>()
-const { y, isScrolling, arrivedState, directions } = useScroll(root)
+useIntersectionObserver(
+  header,
+  ([{ isIntersecting }], observerElement) => {
+    headerIsVisible.value = isIntersecting
+  },
+)
 
 const clicks = ref<Clicks>()
 
 function updateClicks (data: Clicks) {
   clicks.value = data
+}
+
+function scrollToTop () {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  })
 }
 </script>
 
