@@ -9,11 +9,11 @@ div#root
       src="@/assets/logo-haila-small1x.png"
       )
 
-  HeaderToy(
+  LogoBlock(
     @updateclicks="updateClicks"
     ref="toy"
     )
-  //- multipotentiality/
+  MultipotentialityBlock
   //- metaplay/
   //- serious-business/
   //- award/
@@ -44,8 +44,8 @@ query {
 import { ref } from 'vue'
 import { useScroll } from '@vueuse/core'
 
-import HeaderToy from '../components/HeaderToy.vue'
-// import Multipotentiality from '~/components/Multipotentiality.vue'
+import LogoBlock from '../components/LogoBlock.vue'
+import MultipotentialityBlock from '../components/MultipotentialityBlock.vue'
 // import Metaplay from '~/components/Metaplay.vue'
 // import SeriousBusiness from '~/components/SeriousBusiness.vue'
 // import Award from '~/components/Award.vue'

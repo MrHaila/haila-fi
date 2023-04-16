@@ -12,8 +12,10 @@ declare module '@vue/runtime-core' {
     Award: typeof import('./src/components/Award.vue')['default']
     HeaderToy: typeof import('./src/components/HeaderToy.vue')['default']
     JobWall: typeof import('./src/components/JobWall.vue')['default']
+    LogoBlock: typeof import('./src/components/LogoBlock.vue')['default']
     Metaplay: typeof import('./src/components/Metaplay.vue')['default']
     Multipotentiality: typeof import('./src/components/Multipotentiality.vue')['default']
+    MultipotentialityBlock: typeof import('./src/components/MultipotentialityBlock.vue')['default']
     Photography: typeof import('./src/components/Photography.vue')['default']
     SeriousBusiness: typeof import('./src/components/SeriousBusiness.vue')['default']
   }
