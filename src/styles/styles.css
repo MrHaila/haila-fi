@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  a {
+    @apply text-sky-500;
+    @apply hover:text-sky-700;
+    @apply hover:underline;
+  }
+}
