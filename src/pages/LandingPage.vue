@@ -83,21 +83,4 @@ function scrollToTop () {
   transition: 0.2s transform cubic-bezier(.3,.73,.3,.74);
   transform: translateY(-100%);
 }
-
-#empty-header {
-  height: 3.6rem;
-}
-
-#footer {
-  padding-top: 5rem;
-}
-
-#footer p {
-  margin: 0;
-}
-
-#footer .bottom {
-  margin-top: 4rem;
-  margin-bottom: 0.3rem;
-}
 </style>
