@@ -17,7 +17,7 @@ div(class="bg-gradient-to-t from-neutral-100 to-white relative")
       span(class="px-2 rounded-lg" :style="scoreStyle.l4" v-show="localClicks.l4 > 0") {{localClicks.l4}}
       span(class="px-2 rounded-lg" :style="scoreStyle.a5" v-show="localClicks.a5 > 0") {{localClicks.a5}}
       span(v-if="totalLocalClicks >= 20") {{ feedback }}
-    div(class="text-center text-sm") You: {{totalLocalClicks}} / Everyone: {{totalClicks}}
+    div(class="text-center text-sm") You: {{totalLocalClicks}} / Everyone: {{ totalClicks }}
 
   div(class="absolute z-10 bottom-4 left-0 right-0 sm:bottom-5 text-sm sm:text-base")
     ul(class="px-4 sm:px-10 container mx-auto")
@@ -51,6 +51,7 @@ import '@babylonjs/loaders'
 // import 'firebase/firestore'
 
 import { ref, computed, onMounted } from 'vue'
+import { supabase, useSupabase } from '../useSupabase'
 
 const isEngineLoaded = ref(false)
 
@@ -86,24 +87,12 @@ type Clicks = {
   a5: number
 }
 
-const clicks = ref<Clicks>({
-  h1: 0,
-  a2: 0,
-  i3: 0,
-  l4: 0,
-  a5: 0
-})
-
 const localClicks = ref<Clicks>({
   h1: 0,
   a2: 0,
   i3: 0,
   l4: 0,
   a5: 0
-})
-
-const totalClicks = computed(() => {
-  return clicks.value.h1 + clicks.value.a2 + clicks.value.i3 + clicks.value.l4 + clicks.value.a5
 })
 
 const totalLocalClicks = computed(() => {
@@ -126,6 +115,8 @@ const feedback = computed(() => {
 })
 
 const headerCanvas = ref<HTMLCanvasElement>()
+
+const { totalClicks, h1, a2, i3, l4, a5 } = useSupabase()
 
 onMounted(async () => {
   if (!headerCanvas.value) throw new Error('Header canvas not found')
@@ -291,6 +282,8 @@ onMounted(async () => {
 
   // Handle window resizing
   window.addEventListener('resize', () => engine.resize())
+
+  // Step 5: Supabase
 
   // Step 5: Firestore
   // Firebase.initializeApp({
