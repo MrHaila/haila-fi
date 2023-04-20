@@ -1,5 +1,5 @@
 <template lang="pug">
-div(class="bg-gradient-to-t from-neutral-100 to-white max-h-screen relative")
+div(class="bg-gradient-to-t from-neutral-100 to-white relative")
   p(
     v-show="!isEngineLoaded"
     class="absolute z-10 w-full top-40 text-center text-xl text-neutral-600"

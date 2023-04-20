@@ -1,7 +1,7 @@
 <template lang="pug">
 div(class="text-white sm:text-neutral-100 bg-neutral-800 flex justify-center" style="height: 34rem")
   div(class="px-4 py-8 sm:p-10 container mx-auto bg-no-repeat bg-right-bottom" style="background-image: url('/assets/selfie1000v2.png'); background-size: auto 90%;")
-    h1(class="text-3xl sm:text-4xl font-bold") MULTIPOTENTIALITY
+    h1(class="text-3xl sm:text-4xl font-bold uppercase") Multipotentiality
     p(class="font-mono text-xs sm:text-sm font-light") teemu@haila.fi ~/manifestos> cat 01.txt#[span(class="bg-neutral-100 w-4 h-8" v-show="showCaret") _]
 
     ul(class="mt-10 ml-3 text-2xl")
