@@ -1,6 +1,6 @@
 import '@/styles/styles.css'
 import '@/styles/fira_code.css'
-import LandingPage from './pages/LandingPage.vue'
+import LandingPage from './LandingPage.vue'
 
 import { createApp } from 'vue'
 

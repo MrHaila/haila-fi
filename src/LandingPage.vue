@@ -33,13 +33,13 @@ div#root
 import { ref } from 'vue'
 import { useIntersectionObserver } from '@vueuse/core'
 
-import LogoBlock from '../components/LogoBlock.vue'
-import MultipotentialityBlock from '../components/MultipotentialityBlock.vue'
-import MetaplayBlock from '../components/MetaplayBlock.vue'
-import SeriousBusinessBlock from '../components/SeriousBusinessBlock.vue'
-import AwardBlock from '../components/AwardBlock.vue'
-import CvBlock from '../components/CvBlock.vue'
-import PhotographyBlock from '../components/PhotographyBlock.vue'
+import LogoBlock from './components/LogoBlock.vue'
+import MultipotentialityBlock from './components/MultipotentialityBlock.vue'
+import MetaplayBlock from './components/MetaplayBlock.vue'
+import SeriousBusinessBlock from './components/SeriousBusinessBlock.vue'
+import AwardBlock from './components/AwardBlock.vue'
+import CvBlock from './components/CvBlock.vue'
+import PhotographyBlock from './components/PhotographyBlock.vue'
 
 type Clicks = {
   h1: number

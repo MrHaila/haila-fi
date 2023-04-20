@@ -1,25 +1,27 @@
 <template lang="pug">
-div(class="container mx-auto")
+div(class="container mx-auto mt-12")
   div(class="px-4 py-8 sm:p-10")
-    h1(class="text-3xl sm:text-4xl font-bold mb-8") CV Generator
+    //-h1(class="text-3xl sm:text-4xl font-bold mb-8") CV Generator
+    //- Job title generator
     div(class="flex justify-center text-neutral-100 space-x-2")
-      div(class="text-center relative px-3 py-1 w-36 rounded-lg bg-gradient-to-t from-orange-500 to-orange-400")
-        span(class="absolute left-0 bottom-0.5 ml-1" style="font-size: 0.6rem") {{ (ticker % prefixes.length) + 1 }}/{{ prefixes.length }}
+      div(class="text-center relative px-3 py-1 w-36 h-7 rounded-lg bg-gradient-to-t from-orange-500 to-orange-400")
+        span(class="absolute left-0 bottom-0.5 ml-1" style="font-size: 0.6rem") {{ (tickerPrefix % prefixes.length) + 1 }}/{{ prefixes.length }}
         transition(name="slide")
-          p(class="font-semibold" :key="currentJob.prefix") {{ currentJob.prefix }}
+          p(class="font-semibold absolute top-1/2 -translate-y-1/2 left-0 right-0 text-center" :key="currentJob.prefix") {{ currentJob.prefix }}
 
-      div(class="text-center relative px-3 py-1 w-36 rounded-lg bg-gradient-to-t from-sky-500 to-sky-400")
-        span(class="absolute left-0 bottom-0.5 ml-1" style="font-size: 0.6rem") {{ (ticker % jobs.length) + 1 }}/{{ jobs.length }}
+      div(class="text-center relative px-3 py-1 w-36 h-7 rounded-lg bg-gradient-to-t from-sky-500 to-sky-400")
+        span(class="absolute left-0 bottom-0.5 ml-1" style="font-size: 0.6rem") {{ (tickerJob % jobs.length) + 1 }}/{{ jobs.length }}
         transition(name="slide")
-          p(class="font-semibold" :key="currentJob.job") {{ currentJob.job }}
+          p(class="font-semibold absolute top-1/2 -translate-y-1/2 left-0 right-0 text-center" :key="currentJob.job") {{ currentJob.job }}
 
-      div(class="text-center relative px-3 py-1 w-36 rounded-lg bg-gradient-to-t from-violet-500 to-violet-400")
-        span(class="absolute left-0 bottom-0.5 ml-1" style="font-size: 0.6rem") {{ (ticker % suffixes.length) + 1 }}/{{ suffixes.length }}
+      div(class="text-center relative px-3 py-1 w-36 h-7 rounded-lg bg-gradient-to-t from-violet-500 to-violet-400")
+        span(class="absolute left-0 bottom-0.5 ml-1" style="font-size: 0.6rem") {{ (tickerSuffix % suffixes.length) + 1 }}/{{ suffixes.length }}
         transition(name="slide")
-          p(class="font-semibold" :key="currentJob.suffix") {{ currentJob.suffix }}
+          p(class="font-semibold absolute top-1/2 -translate-y-1/2 left-0 right-0 text-center" :key="currentJob.suffix") {{ currentJob.suffix }}
 
     div(class="text-center my-10 sm:my-16") at
 
+    //- Logo list
     div(class="text-center sm:flex sm:justify-center sm:space-x-4 sm:items-center")
       svg(
         class="mb-7 h-10 mx-auto sm:mx-3 fill-green-800"
@@ -84,18 +86,36 @@ import { computed, ref } from 'vue'
 
 const prefixes = ref(['One-man', 'Senior', 'Lead', 'Chief'])
 const jobs = ref(['Product', 'Game', 'Analytics', 'Technology', 'Bizdev'])
-const suffixes = ref(['Officer', 'Manager', 'Designer', 'Developer', 'Producer', 'Artist'])
+const suffixes = ref(['Officer', 'Designer', 'Manager', 'Developer', 'Producer', 'Artist'])
 
 // True Story™ Technology, patent pending
-const currentJob = computed(() => {
-  return {
-    prefix: prefixes.value[ticker % prefixes.value.length],
-    job: jobs.value[ticker % jobs.value.length],
-    suffix: suffixes.value[ticker % suffixes.value.length]
+const tickerPrefix = ref(0)
+const tickerJob = ref(0)
+const tickerSuffix = ref(0)
+
+useInterval(1000, {
+  callback: (count) => {
+    switch (count % 3) {
+      case 0:
+        tickerPrefix.value++
+        break
+      case 1:
+        tickerJob.value++
+        break
+      case 2:
+        tickerSuffix.value++
+        break
+    }
   }
 })
 
-const { value: ticker } = useInterval(4000)
+const currentJob = computed(() => {
+  return {
+    prefix: prefixes.value[tickerPrefix.value % prefixes.value.length],
+    job: jobs.value[tickerJob.value % jobs.value.length],
+    suffix: suffixes.value[tickerSuffix.value % suffixes.value.length]
+  }
+})
 </script>
 
 <style>
@@ -103,7 +123,7 @@ const { value: ticker } = useInterval(4000)
 .slide-leave-active {
   transition: all 0.5s ease;
 }
-.slide-enter {
+.slide-enter-from {
   transform: translateY(1rem);
   opacity: 0;
 }
