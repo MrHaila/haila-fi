@@ -1,7 +1,13 @@
+import { createApp } from 'vue'
+
 import '@/styles/styles.css'
 import '@/styles/fira_code.css'
 import LandingPage from './LandingPage.vue'
 
-import { createApp } from 'vue'
+import MasonryWall from '@yeger/vue-masonry-wall'
 
-createApp(LandingPage).mount('#app')
+const app = createApp(LandingPage)
+
+app.use(MasonryWall)
+
+app.mount('#app')

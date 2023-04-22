@@ -1,7 +1,7 @@
 <template lang="pug">
-div(style="height: 40rem; background-color: #3f6731")
+div(style="height: 42rem; background-color: #3f6731")
   div(class="text-white container mx-auto flex flex-col justify-between h-full px-4 py-8 sm:p-10")
-    div(class="mt-40")
+    div(class="mt-48")
       div(class="h-14 sm:h-24 text-center fill-white")
         svg(
           width="100%"
@@ -34,7 +34,7 @@ div(style="height: 40rem; background-color: #3f6731")
           )
           button(
             type="button"
-            class="inline-flex items-center rounded-full border border-transparent font-medium leading-4 text-white shadow-sm transition-colors bg-neutral-800 hover:bg-neutral-900 active:bg-neutral-900 focus:ring-neutral-800 px-4 py-3"
+            class="inline-flex items-center rounded-full border border-transparent font-medium leading-4 text-white shadow-sm transition-colors bg-neutral-800 hover:bg-neutral-900 active:bg-neutral-900 focus:ring-neutral-800 px-5 py-3"
             ) Go to the website
 
     p(class="block") I'm a co-founder and CPO at Metaplay, a games technology company in Helsinki, Finland.
