@@ -1,7 +1,7 @@
 <template lang="pug">
 div#root
   div(
-    :class="['flex justify-center fixed bg-white hover:bg-neutral-100 active:bg-neutral-200 py-3 z-50 shadow w-full cursor-pointer', !headerIsVisible ? 'show' : 'hide']"
+    :class="['flex justify-center fixed bg-white hover:bg-neutral-100 active:bg-neutral-200 py-3 z-50 shadow w-full cursor-pointer', logoIsVisible ? 'hide' : 'show']"
     @click="scrollToTop"
     )
     img(
@@ -50,12 +50,12 @@ type Clicks = {
 }
 
 const header = ref<HTMLDivElement>()
-const headerIsVisible = ref(false)
+const logoIsVisible = ref(true)
 
 useIntersectionObserver(
   header,
-  ([{ isIntersecting }], observerElement) => {
-    headerIsVisible.value = isIntersecting
+  ([{ isIntersecting }]) => {
+    logoIsVisible.value = isIntersecting
   },
 )
 

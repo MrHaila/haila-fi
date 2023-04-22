@@ -54,6 +54,7 @@ import { ref, computed, onMounted } from 'vue'
 import { supabase, useSupabase } from '../useSupabase'
 
 const isEngineLoaded = ref(false)
+const emits = defineEmits(['loaded'])
 
 const scoreStyle = ref({
   h1: {
@@ -203,6 +204,7 @@ onMounted(async () => {
   engine.runRenderLoop(() => {
     scene.render()
     isEngineLoaded.value = true
+    emits('loaded')
   })
 
   // Step 4: Inputs
