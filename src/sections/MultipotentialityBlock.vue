@@ -41,7 +41,7 @@ div(class="text-white sm:text-neutral-100 bg-neutral-800 flex justify-center" st
 <script lang="ts" setup>
 import { useInterval } from '@vueuse/core'
 import { ref } from 'vue'
-import ManifestoItem from './ManifestoItem.vue'
+import ManifestoItem from '../components/ManifestoItem.vue'
 
 const showCaret = ref(true)
 

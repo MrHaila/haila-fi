@@ -1,5 +1,5 @@
 <template lang="pug">
-div(class="container mx-auto mt-12")
+div(class="container mx-auto mt-14")
   div(class="px-4 py-8 sm:p-10")
     //-h1(class="text-3xl sm:text-4xl font-bold mb-8") CV Generator
     //- Job title generator

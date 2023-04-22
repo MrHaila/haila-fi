@@ -14,8 +14,8 @@ div(class="px-4 py-8 sm:p-10 container mx-auto space-y-8 bg-gradient-to-b from-w
     :column-width="300"
     :gap="16"
   )
-    template(#default="{ item }")
-      div(class="bg-neutral-100 rounded-xl shadow-lg")
+    template(#default="{ item, index }")
+      FadeIn(class="bg-neutral-100 rounded-xl shadow-lg" :delay="index * 10")
         img(
           :src="item.image"
           :alt="item.imageAlt"
@@ -28,6 +28,8 @@ div(class="px-4 py-8 sm:p-10 container mx-auto space-y-8 bg-gradient-to-b from-w
 </template>
 
 <script lang="ts" setup>
+import FadeIn from '../components/FadeIn.vue'
+
 const items = [
   {
     title: 'Playraven',
