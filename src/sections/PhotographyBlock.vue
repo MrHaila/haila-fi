@@ -1,5 +1,5 @@
 <template lang="pug">
-div(class="absolute z-10 mt-4 ml-3")
+div(class="absolute z-10 mt-5 ml-4")
   div(class="bg-neutral-900 text-neutral-100 mb-3 max-w-xs sm:max-w-none")
     h4(class="text-3xl font-semibold py-2 px-4") Everyone needs a hobby
   div(class="bg-white w-fit")
