@@ -17,7 +17,7 @@ div(class="bg-gradient-to-t from-neutral-100 to-white relative")
       span(class="px-2 rounded-lg" :style="scoreStyle.l4" v-show="localClicks.l4 > 0") {{localClicks.l4}}
       span(class="px-2 rounded-lg" :style="scoreStyle.a5" v-show="localClicks.a5 > 0") {{localClicks.a5}}
       span(v-if="totalLocalClicks >= 20") {{ feedback }}
-    div(class="text-center text-sm") You: {{totalLocalClicks}} / Everyone: {{ totalClicks }}
+    // div(class="text-center text-sm") You: {{totalLocalClicks}} / Everyone: {{ totalClicks }}
 
   div(class="absolute z-10 bottom-4 left-0 right-0 sm:bottom-5 text-sm sm:text-base")
     ul(class="px-4 sm:px-10 container mx-auto")
@@ -47,11 +47,8 @@ import '@babylonjs/loaders'
 // import '@babylonjs/core/Debug/debugLayer'
 // import '@babylonjs/inspector'
 
-// import Firebase from 'firebase/app'
-// import 'firebase/firestore'
-
 import { ref, computed, onMounted } from 'vue'
-import { supabase, useSupabase } from '../useSupabase'
+// import { useSupabase } from '../useSupabase'
 
 const isEngineLoaded = ref(false)
 const emits = defineEmits(['loaded'])
@@ -117,7 +114,7 @@ const feedback = computed(() => {
 
 const headerCanvas = ref<HTMLCanvasElement>()
 
-const { totalClicks, h1, a2, i3, l4, a5 } = useSupabase()
+// const { totalClicks, h1, a2, i3, l4, a5, incrementClick } = useSupabase()
 
 onMounted(async () => {
   if (!headerCanvas.value) throw new Error('Header canvas not found')
@@ -272,32 +269,12 @@ onMounted(async () => {
         scoreStyle.value.a5.color = (r * 0.299 + g * 0.587 + b * 0.114) > 186 ? 'black' : 'white'
       }
 
-      // Update database
-      // const doc = firestore.value.collection('logo').doc(pickInfo.pickedMesh.name)
-      // return firestore.value.runTransaction(transaction => {
-      //   return transaction.get(doc).then(current => {
-      //     transaction.update(doc, { count: current.data().count + 1 })
-      //   })
-      // }).catch(err => console.log('Updating database failed: ', err))
+      // Update database (TS doesn't like this)
+      // incrementClick(pickInfo.pickedMesh.name)
     }
   }
 
   // Handle window resizing
   window.addEventListener('resize', () => engine.resize())
-
-  // Step 5: Supabase
-
-  // Step 5: Firestore
-  // Firebase.initializeApp({
-  //   apiKey: 'AIzaSyD37dmxeMAhz7JhQrWRZM6EpS6kx60iHNU',
-  //   projectId: 'haila-fi-v2'
-  // })
-  // firestore = Firebase.firestore()
-  // firestore.collection('logo').onSnapshot(snapshot => {
-  //   for (const doc of snapshot.docs) {
-  //     this.clicks[doc.id] = doc.data().count
-  //   }
-  //   this.$emit('updateclicks', this.clicks)
-  // })
 })
 </script>

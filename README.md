@@ -4,7 +4,7 @@
 
 2023 iteration of my personal website. Open sourced for science!
 
-Pull requests are welcome, if unlikely :)
+Pull requests are welcome, if unlikely 🙂
 
 ## Tech
 
@@ -12,6 +12,7 @@ Pull requests are welcome, if unlikely :)
 * JS framework: [Vue](https://vuejs.org/)
 * Styling: [Tailwind](https://tailwindcss.com/)
 * 3D shenanigans: [Babylon](https://www.babylonjs.com/)
+* Database: [Supabase](https://supabase.io/)
 
 ## Instructions
 
@@ -50,6 +51,8 @@ Note: stat -f%z is specific to the version that ships with MacOS as of 10.14.3
 ## License
 
 MIT License for my original content.
+
+Company and project logos and game key art licenses held by the respective companies and communities.
 
 Fira Code by Nikita Prokopov (http://tonsky.me)
 SIL Open Font License
