@@ -8,7 +8,10 @@ import path from 'path'
 export default defineConfig({
   plugins: [
     vue(),
-    ViteImageOptimizer(),
+    ViteImageOptimizer({
+      // Regexp to exclude all webp files
+      exclude: /.webp$/,
+    }),
   ],
   resolve: {
     alias: {
