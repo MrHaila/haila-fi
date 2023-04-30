@@ -1,5 +1,6 @@
 <template lang="pug">
-div(class="px-4 py-8 sm:p-10 container mx-auto space-y-8 bg-gradient-to-b from-white to-neutral-100")
+div(class="bg-gradient-to-b from-white to-neutral-100")
+div(class="px-4 py-8 sm:p-10 container mx-auto space-y-8")
   div(class="max-w-2xl space-y-3")
     h4(class="text-xl font-bold") Serious Business Since 1987
     p I've fiddled with everything that computes for as long as I can remember. Combine endless curiosity with a passion for interaction design and you get… well, mostly video games.
