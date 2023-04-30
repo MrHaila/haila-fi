@@ -8,7 +8,8 @@ div(class="absolute z-10 mt-5 ml-4")
 img(
   class="w-full max-h-screen object-cover"
   alt="Inkoo"
-  src="/assets/photo-inkoo.jpg"
+  src="/assets/photos/photo-inkoo.jpg"
+  srcset="/assets/photos/photo-inkoo@1x.webp 1x, /assets/photos/photo-inkoo@2x.webp 2x"
   style="min-height: 25rem"
   )
 </template>

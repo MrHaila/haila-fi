@@ -6,7 +6,8 @@ div(class="text-white sm:text-neutral-100 bg-neutral-800 flex justify-center" st
     div(class="absolute z-0 bottom-0 -right-20 sm:right-10 filter brightness-75 sm:filter-none" style="height: 90%")
       img(
         class="object-cover h-full w-full"
-        src="/assets/selfie1000v2.png"
+        src="/assets/selfie.png"
+        srcset="/assets/selfie@1x.webp 1x, /assets/selfie@2x.webp 2x"
         )
     div(class="z-10 relative")
       h1(class="text-3xl sm:text-4xl font-bold uppercase") Multipotentiality

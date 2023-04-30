@@ -1,7 +1,8 @@
 <template lang="pug">
 div(class="text-neutral-100 bg-gradient-to-t from-neutral-900 to-neutral-800 text-center relative")
   img(
-    src="/assets/award3.jpg"
+    src="/assets/photos/photo-award.jpg"
+    srcset="/assets/photos/photo-award@1x.webp 1x, /assets/photos/photo-award@2x.webp 2x"
     alt="IGDA Finland Lifetime Award"
     class="w-full max-h-screen object-cover"
     style="min-height: 25rem"

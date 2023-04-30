@@ -46,28 +46,33 @@ div(class="container mx-auto mt-14")
       img(
         class="mb-6 h-20 mx-auto sm:mx-0"
         alt="PlayRaven logo"
-        src="/assets/logo-playraven.png"
+        src="/assets/logos/logo-playraven.png"
+        srcset="/assets/logos/logo-playraven@1x.webp 1x, /assets/logos/logo-playraven@2x.webp 2x"
         )
       img(
         class="mb-4 h-24 mx-auto sm:mx-0"
         alt="Wooga logo"
-        src="/assets/logo-wooga.png"
+        src="/assets/logos/logo-wooga.png"
+        srcset="/assets/logos/logo-wooga@1x.webp 1x, /assets/logos/logo-wooga@2x.webp 2x"
         )
     div(class="sm:flex sm:justify-center sm:space-x-8 sm:items-center sm:mt-4")
       img(
         class="mb-4 h-24 mx-auto sm:mx-0"
         alt="NewFactory logo"
-        src="/assets/logo-newfactory.png"
+        src="/assets/logos/logo-newfactory.png"
+        srcset="/assets/logos/logo-newfactory@1x.webp 1x, /assets/logos/logo-newfactory@2x.webp 2x"
         )
       img(
         class="mb-6 h-24 mx-auto sm:mx-0"
         alt="Neogames logo"
-        src="/assets/logo-neogames.png"
+        src="/assets/logos/logo-neogames.png"
+        srcset="/assets/logos/logo-neogames@1x.webp 1x, /assets/logos/logo-neogames@2x.webp 2x"
         )
       img(
         class="mb-4 h-16 mx-auto sm:mx-0"
         alt="IGDA logo"
-        src="/assets/logo-igda.png"
+        src="/assets/logos/logo-igda.png"
+        srcset="/assets/logos/logo-igda@1x.webp 1x, /assets/logos/logo-igda@2x.webp 2x"
         )
 
     div(class="text-center mt-16 mb-10")
@@ -77,7 +82,12 @@ div(class="container mx-auto mt-14")
           href="https://www.linkedin.com/in/dasinf/"
           class="rounded-lg hover:bg-neutral-300 active:bg-neutral-400 block w-fit py-2 px-3"
           )
-          img(class="w-28 sm:w-36 " alt="LinkedIn" src="/assets/logo-linkedin.png")
+          img(
+            class="w-28 sm:w-36"
+            alt="LinkedIn logo"
+            src="/assets/logos/logo-linkedin.png"
+            srcset="/assets/logos/logo-linkedin@1x.webp 1x, /assets/logos/logo-linkedin@2x.webp 2x"
+            )
 </template>
 
 <script lang="ts" setup>

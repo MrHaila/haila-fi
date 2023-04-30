@@ -6,8 +6,8 @@ div#root
     )
     img(
       alt="Haila logo"
-      srcset="/assets/logo-haila-small1x.png 1x, /assets/logo-haila-small2x.png 2x"
-      src="/assets/logo-haila-small1x.png"
+      src="/assets/logos/logo-haila.png"
+      srcset="/assets/logos/logo-haila@1x.webp 1x, /assets/logos/logo-haila@2x.webp 2x"
       )
 
   LogoBlock(
