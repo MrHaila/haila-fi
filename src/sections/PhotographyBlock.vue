@@ -11,5 +11,6 @@ img(
   src="/assets/photos/photo-inkoo.jpg"
   srcset="/assets/photos/photo-inkoo@1x.webp 1x, /assets/photos/photo-inkoo@2x.webp 2x"
   style="min-height: 25rem"
+  loading="lazy"
   )
 </template>

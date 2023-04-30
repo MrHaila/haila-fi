@@ -6,6 +6,7 @@ div(class="text-neutral-100 bg-gradient-to-t from-neutral-900 to-neutral-800 tex
     alt="IGDA Finland Lifetime Award"
     class="w-full max-h-screen object-cover"
     style="min-height: 25rem"
+    loading="lazy"
     )
 
   div(class="bg-neutral-900 text-neutral-100 sm:bg-transparent rounded-lg sm:text-white absolute top-6 sm:top-10 left-4 right-4 text-center")

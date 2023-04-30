@@ -21,6 +21,7 @@ div(class="px-4 py-8 sm:p-10 container mx-auto space-y-8")
           :src="`/assets/cards/${item.image}.jpg`"
           :srcset="`/assets/cards/${item.image}@1x.webp 1x, /assets/cards/${item.image}@2x.webp 2x`"
           :alt="item.imageAlt"
+          loading="lazy"
           class="rounded-t-xl"
           )
         div(class="p-4")

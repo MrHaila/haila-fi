@@ -48,12 +48,14 @@ div(class="container mx-auto mt-14")
         alt="PlayRaven logo"
         src="/assets/logos/logo-playraven.png"
         srcset="/assets/logos/logo-playraven@1x.webp 1x, /assets/logos/logo-playraven@2x.webp 2x"
+        loading="lazy"
         )
       img(
         class="mb-4 h-24 mx-auto sm:mx-0"
         alt="Wooga logo"
         src="/assets/logos/logo-wooga.png"
         srcset="/assets/logos/logo-wooga@1x.webp 1x, /assets/logos/logo-wooga@2x.webp 2x"
+        loading="lazy"
         )
     div(class="sm:flex sm:justify-center sm:space-x-8 sm:items-center sm:mt-4")
       img(
@@ -61,18 +63,21 @@ div(class="container mx-auto mt-14")
         alt="NewFactory logo"
         src="/assets/logos/logo-newfactory.png"
         srcset="/assets/logos/logo-newfactory@1x.webp 1x, /assets/logos/logo-newfactory@2x.webp 2x"
+        loading="lazy"
         )
       img(
         class="mb-6 h-24 mx-auto sm:mx-0"
         alt="Neogames logo"
         src="/assets/logos/logo-neogames.png"
         srcset="/assets/logos/logo-neogames@1x.webp 1x, /assets/logos/logo-neogames@2x.webp 2x"
+        loading="lazy"
         )
       img(
         class="mb-4 h-16 mx-auto sm:mx-0"
         alt="IGDA logo"
         src="/assets/logos/logo-igda.png"
         srcset="/assets/logos/logo-igda@1x.webp 1x, /assets/logos/logo-igda@2x.webp 2x"
+        loading="lazy"
         )
 
     div(class="text-center mt-16 mb-10")
@@ -87,6 +92,7 @@ div(class="container mx-auto mt-14")
             alt="LinkedIn logo"
             src="/assets/logos/logo-linkedin.png"
             srcset="/assets/logos/logo-linkedin@1x.webp 1x, /assets/logos/logo-linkedin@2x.webp 2x"
+            loading="lazy"
             )
 </template>
 
