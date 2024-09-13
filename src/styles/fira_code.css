@@ -1,7 +1,8 @@
 @font-face {
   font-family: 'Fira Code';
-  src: url('@/fonts/fira_code/woff2/FiraCode-Light.woff2') format('woff2'),
-    url("@/fonts/fira_code/woff/FiraCode-Light.woff") format("woff");
+  src:
+    url('@/fonts/fira_code/woff2/FiraCode-Light.woff2') format('woff2'),
+    url('@/fonts/fira_code/woff/FiraCode-Light.woff') format('woff');
   font-weight: 300;
   font-style: normal;
 }

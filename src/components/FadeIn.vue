@@ -4,12 +4,13 @@ div(
   :class="['transition-all duration-500', { 'translate-y-0 opacity-100': hasBeenVisible, '-translate-y-24 opacity-0': !hasBeenVisible }]"
   :bind="props"
   )
-    slot
+  slot
 </template>
 
 <script lang="ts" setup>
-import { useIntersectionObserver } from '@vueuse/core'
 import { ref } from 'vue'
+
+import { useIntersectionObserver } from '@vueuse/core'
 
 const props = defineProps<{
   delay?: number
@@ -17,18 +18,15 @@ const props = defineProps<{
 
 const target = ref<HTMLDivElement>()
 const hasBeenVisible = ref(false)
-useIntersectionObserver(
-  target,
-  ([{ isIntersecting }]) => {
-    if (isIntersecting) {
-      if (props.delay) {
-        setTimeout(() => {
-          hasBeenVisible.value = true
-        }, props.delay)
-      } else {
+useIntersectionObserver(target, ([{ isIntersecting }]) => {
+  if (isIntersecting) {
+    if (props.delay) {
+      setTimeout(() => {
         hasBeenVisible.value = true
-      }
+      }, props.delay)
+    } else {
+      hasBeenVisible.value = true
     }
-  },
-)
+  }
+})
 </script>

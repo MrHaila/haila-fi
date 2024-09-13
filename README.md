@@ -8,24 +8,24 @@ Pull requests are welcome, if unlikely 🙂
 
 ## Tech
 
-* Scaffolding: [Vite](https://vitejs.dev/)
-* JS framework: [Vue](https://vuejs.org/)
-* Styling: [Tailwind](https://tailwindcss.com/)
-* 3D shenanigans: [Babylon](https://www.babylonjs.com/)
-* Database: [Supabase](https://supabase.io/)
+- Scaffolding: [Vite](https://vitejs.dev/)
+- JS framework: [Vue](https://vuejs.org/)
+- Styling: [Tailwind](https://tailwindcss.com/)
+- 3D shenanigans: [Babylon](https://www.babylonjs.com/)
+- Database: [Supabase](https://supabase.io/)
 
 ## Instructions
 
-To run the project you need [Node.js](https://github.com/creationix/nvm) and [PNPM](https://pnpm.io/) installed. After that...
+To run the project you need [Node.js](https://github.com/creationix/nvm) and [Bun](https://bun.sh/) installed. After that...
 
 ### Develop
 
-1. `pnpm install` to install dependencies
-2. `pnpm dev` to start the dev server
+1. `bun install` to install dependencies
+2. `bun dev` to start the dev server
 
 ### Build
 
-1. `pnpm build` to build to /dist
+1. `bun build` to build to /dist
 
 ### Work with DDS cubemaps on a Mac
 
@@ -57,5 +57,5 @@ Company and project logos and game key art licenses held by the respective compa
 Fira Code by Nikita Prokopov (http://tonsky.me)
 SIL Open Font License
 
-Jost* by Owen Earl (https://indestructibletype.com)
+Jost\* by Owen Earl (https://indestructibletype.com)
 SIL Open Font License

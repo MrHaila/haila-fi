@@ -1,12 +1,17 @@
-import { createClient } from '@supabase/supabase-js'
-import { Database } from './database-types'
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 
-export const supabase = createClient<Database>('https://rdalzkyfdsjwdxmhsbdk.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJkYWx6a3lmZHNqd2R4bWhzYmRrIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODIwMDcxMjUsImV4cCI6MTk5NzU4MzEyNX0.SR-FXMDGrmGfywlnEqXojJS8JDTfKJ0iUthSslqLOek')
+import { createClient } from '@supabase/supabase-js'
+
+import { Database } from './database-types'
+
+export const supabase = createClient<Database>(
+  'https://rdalzkyfdsjwdxmhsbdk.supabase.co',
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJkYWx6a3lmZHNqd2R4bWhzYmRrIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODIwMDcxMjUsImV4cCI6MTk5NzU4MzEyNX0.SR-FXMDGrmGfywlnEqXojJS8JDTfKJ0iUthSslqLOek'
+)
 
 supabase
   .channel('any')
-  .on('postgres_changes', { event: '*', schema: '*' }, payload => {
+  .on('postgres_changes', { event: '*', schema: '*' }, (payload) => {
     console.log('Change received!', payload)
   })
   .subscribe()
@@ -33,7 +38,7 @@ onMounted(async () => {
   }
 })
 
-async function incrementClick (target: 'h1' | 'a2' | 'i3' | 'l4' | 'a5') {
+async function incrementClick(target: 'h1' | 'a2' | 'i3' | 'l4' | 'a5') {
   let newValue = 0
   if (target === 'h1') newValue = h1.value
   if (target === 'a2') newValue = a2.value
@@ -53,7 +58,7 @@ async function incrementClick (target: 'h1' | 'a2' | 'i3' | 'l4' | 'a5') {
   if (target === 'a5') a5.value = newValue
 }
 
-export function useSupabase () {
+export function useSupabase() {
   return {
     h1,
     a2,
