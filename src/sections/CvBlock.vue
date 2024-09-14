@@ -40,7 +40,7 @@ div(class="container mx-auto mt-14")
     div(class="my-10 text-center sm:my-16") at
 
     //- Logo list
-    div(class="text-center sm:flex sm:items-center sm:justify-center sm:space-x-4")
+    div(class="text-center sm:flex sm:items-center sm:justify-center sm:gap-8")
       svg(
         class="mx-auto mb-7 h-10 fill-green-800 sm:mx-3"
         height="100%"
@@ -91,7 +91,8 @@ div(class="container mx-auto mt-14")
         srcset="/assets/logos/logo-wooga@1x.webp 1x, /assets/logos/logo-wooga@2x.webp 2x"
         loading="lazy"
         )
-    div(class="sm:mt-4 sm:flex sm:items-center sm:justify-center sm:space-x-8")
+
+    div(class="sm:mt-4 sm:flex sm:items-center sm:justify-center sm:gap-8")
       img(
         src="/assets/logos/logo-newfactory.png"
         class="mx-auto mb-4 h-24 sm:mx-0"

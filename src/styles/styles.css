@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 @layer base {
   a {
@@ -8,4 +6,9 @@
     @apply hover:text-sky-700;
     @apply hover:underline;
   }
+}
+
+@theme {
+  --font-family-sans: 'Jost', 'system-ui', sans-serif;
+  --font-family-mono: 'Fira Code', monospace;
 }
