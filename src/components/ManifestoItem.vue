@@ -1,6 +1,6 @@
 <template lang="pug">
 span(
-  ref="text"
+  ref="textRef"
   class="relative"
   ) {{ props.text }}
   svg(
@@ -32,6 +32,6 @@ const props = withDefaults(
   }
 )
 
-const text = ref<HTMLSpanElement>()
-const textLength = computed(() => text.value?.offsetWidth || 0)
+const textRef = ref<HTMLSpanElement>()
+const textLength = computed(() => textRef.value?.offsetWidth ?? 0)
 </script>

@@ -4,7 +4,7 @@ div(class="container mx-auto space-y-8 px-4 py-8 sm:p-10")
   div(class="max-w-2xl space-y-3")
     h4(class="text-xl font-bold") Serious Business Since 1987
     p I've fiddled with everything that computes for as long as I can remember. Combine endless curiosity with a passion for interaction design and you get… well, mostly video games.
-    p I've learned that I'm most comfortable here, in the intersection of all creative disciplines, because only from here can one find something #[i truly interesting].
+    p I've learned that I'm most comfortable here, in the intersection of all creative disciplines, because only from here can one find something #[i(class="italic") truly interesting].
 
   div(class="space-y-3")
     h5(class="text-xl font-bold") Project Gallery
@@ -41,7 +41,7 @@ const items = [
     title: 'Playraven',
     subtitle: 'Games Company',
     description:
-      'I co-founded a mobile games company focused on free-to-play strategy games. After 6 years, $10M raised capital and 5 shipped games we were aquired by Rovio.',
+      'I co-founded a mobile games company focused on free-to-play strategy games. After 6 years, $10M raised capital and 5 shipped games we were acquired by Rovio.',
     image: 'card-playraven',
     imageAlt: 'Playraven logo',
   },
@@ -49,7 +49,7 @@ const items = [
     title: 'Eve: War of Ascension',
     subtitle: 'Mobile Game',
     description:
-      'An ambitious take on 4X style MMOs on mobile in collaboration with CCP. The company was aquired by Rovio during soft launch and the project was rebooted under a different brand.',
+      'An ambitious take on 4X style MMOs on mobile in collaboration with CCP. The company was acquired by Rovio during soft launch and the project was rebooted under a different brand.',
     image: 'card-eve',
     imageAlt: 'Eve: War of Ascension key art',
   },
@@ -145,7 +145,7 @@ const items = [
     title: 'Refugee Work',
     subtitle: 'Charity',
     description:
-      'I am a volunteer photographer in a program that organises Lapland wilderness tours for refugees to help with societal integration.',
+      'I am a volunteer photographer in a program that organizes Lapland wilderness tours for refugees to help with societal integration.',
     image: 'card-refugees',
     imageAlt: 'Photo of refugees climbing Saana',
   },

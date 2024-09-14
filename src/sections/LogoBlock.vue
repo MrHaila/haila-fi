@@ -97,8 +97,7 @@ const scoreStyle = ref({
   },
 })
 
-// let firestore = null
-type Clicks = {
+interface Clicks {
   h1: number
   a2: number
   i3: number
@@ -246,7 +245,7 @@ onMounted(async () => {
   })
 
   // Step 4: Inputs
-  scene.onPointerPick = (evt, pickInfo) => {
+  scene.onPointerPick = (evt, pickInfo): void => {
     if (pickInfo.hit && pickInfo.pickedMesh) {
       // Setup color & spin animation
       const characterRotation = new Animation(
@@ -333,6 +332,8 @@ onMounted(async () => {
   }
 
   // Handle window resizing
-  window.addEventListener('resize', () => engine.resize())
+  window.addEventListener('resize', () => {
+    engine.resize()
+  })
 })
 </script>

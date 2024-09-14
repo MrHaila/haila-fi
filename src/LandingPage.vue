@@ -10,10 +10,7 @@ div#root
       srcset="/assets/logos/logo-haila@1x.webp 1x, /assets/logos/logo-haila@2x.webp 2x"
       )
 
-  LogoBlock(
-    ref="header"
-    @updateclicks="updateClicks"
-    )
+  LogoBlock(ref="header")
   MultipotentialityBlock
   MetaplayBlock
   SeriousBusinessBlock
@@ -42,7 +39,7 @@ import MultipotentialityBlock from './sections/MultipotentialityBlock.vue'
 import PhotographyBlock from './sections/PhotographyBlock.vue'
 import SeriousBusinessBlock from './sections/SeriousBusinessBlock.vue'
 
-type Clicks = {
+interface Clicks {
   h1: number
   a2: number
   i3: number
@@ -59,11 +56,11 @@ useIntersectionObserver(header, ([{ isIntersecting }]) => {
 
 const clicks = ref<Clicks>()
 
-function updateClicks(data: Clicks) {
+function updateClicks(data: Clicks): void {
   clicks.value = data
 }
 
-function scrollToTop() {
+function scrollToTop(): void {
   window.scrollTo({
     top: 0,
     behavior: 'smooth',

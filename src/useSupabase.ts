@@ -1,4 +1,4 @@
-import { computed, onMounted, onUnmounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 
 import { createClient } from '@supabase/supabase-js'
 
@@ -28,7 +28,8 @@ const totalClicks = computed(() => {
 
 onMounted(async () => {
   const { data, error } = await supabase.from('logo2').select()
-  if (error || !data) throw error || new Error('No data returned')
+  // eslint-disable-next-line @typescript-eslint/only-throw-error
+  if (error ?? !data) throw error ?? new Error('No data returned')
   for (const row of data) {
     if (row.id === 1) h1.value = row.count
     if (row.id === 2) a2.value = row.count
@@ -38,7 +39,7 @@ onMounted(async () => {
   }
 })
 
-async function incrementClick(target: 'h1' | 'a2' | 'i3' | 'l4' | 'a5') {
+async function incrementClick(target: 'h1' | 'a2' | 'i3' | 'l4' | 'a5'): Promise<void> {
   let newValue = 0
   if (target === 'h1') newValue = h1.value
   if (target === 'a2') newValue = a2.value
@@ -49,6 +50,7 @@ async function incrementClick(target: 'h1' | 'a2' | 'i3' | 'l4' | 'a5') {
 
   const res = await supabase.from('logo2').update({ count: newValue }).eq('id', parseInt(target[1]))
 
+  // eslint-disable-next-line @typescript-eslint/only-throw-error
   if (res.error) throw res.error
 
   if (target === 'h1') h1.value = newValue
@@ -58,6 +60,7 @@ async function incrementClick(target: 'h1' | 'a2' | 'i3' | 'l4' | 'a5') {
   if (target === 'a5') a5.value = newValue
 }
 
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export function useSupabase() {
   return {
     h1,
