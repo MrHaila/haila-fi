@@ -25,7 +25,7 @@ div(class="container mx-auto space-y-8 px-4 py-8 sm:p-10")
           :srcset="`/assets/cards/${item.image}@1x.webp 1x, /assets/cards/${item.image}@2x.webp 2x`"
           :alt="item.imageAlt"
           loading="lazy"
-          class="rounded-t-xl"
+          class="w-full rounded-t-xl"
           )
         div(class="p-4")
           h6(class="text font-bold") {{ item.title }}

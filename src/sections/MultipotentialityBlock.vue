@@ -1,10 +1,12 @@
 <template lang="pug">
 div(
-  class="flex justify-center bg-neutral-800 text-white sm:text-neutral-100"
+  class="bg-neutral-800 text-white sm:text-neutral-100"
   style="height: 34rem"
   )
-  // div(class="px-4 py-8 sm:p-10 container mx-auto bg-no-repeat bg-right-bottom" style="background-image: url('/assets/selfie1000v2.png'); background-size: auto 90%;")
-  div(class="container relative mx-auto bg-right-bottom bg-no-repeat px-4 py-8 sm:p-10")
+  div(
+    class="relative mx-auto h-full bg-right-bottom bg-no-repeat px-4 py-8 sm:p-10"
+    style="max-width: 70rem"
+    )
     div(
       class="absolute -right-20 bottom-0 z-0 brightness-75 filter sm:right-10 sm:filter-none"
       style="height: 90%"
@@ -14,6 +16,7 @@ div(
         class="h-full w-full object-cover"
         srcset="/assets/selfie@1x.webp 1x, /assets/selfie@2x.webp 2x"
         )
+
     div(class="relative z-10")
       h1(class="text-3xl font-bold uppercase sm:text-4xl") Multipotentiality
       p(class="font-mono text-xs font-light sm:text-sm") teemu@haila.fi ~/manifestos> cat 01.txt#[span(class="h-8 w-4 bg-neutral-100" v-show="showCaret") _]

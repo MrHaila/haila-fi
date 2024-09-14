@@ -1,7 +1,7 @@
 {
   "files.autoSave": "onFocusChange",
   "editor.tabSize": 2,
-  "eslint.validate": ["javascript", "vue"],
+  "eslint.validate": ["javascript", "typecript", "vue"],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
@@ -27,10 +27,14 @@
     "skybox",
     "supabase",
     "tailwindcss",
+    "trivago",
+    "typecheck",
     "vueuse",
     "Winterstate",
     "Wireframe",
     "Wooga's",
     "yeger"
-  ]
+  ],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
 }
