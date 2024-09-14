@@ -33,7 +33,7 @@ import { useIntersectionObserver } from '@vueuse/core'
 
 import AwardBlock from './sections/AwardBlock.vue'
 import CvBlock from './sections/CvBlock.vue'
-import LogoBlock from './sections/LogoBlock.vue'
+import LogoBlock from './sections/LogoBlockV2.vue'
 import MetaplayBlock from './sections/MetaplayBlock.vue'
 import MultipotentialityBlock from './sections/MultipotentialityBlock.vue'
 import PhotographyBlock from './sections/PhotographyBlock.vue'
