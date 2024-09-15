@@ -145,6 +145,7 @@ const scene = new Scene()
 const defaultMaterial = new MeshStandardMaterial({ color: new Color(0.7, 0.7, 0.7), roughness: 0.25, metalness: 0.2 })
 const hoverMaterial = new MeshStandardMaterial({ color: new Color(1, 1, 1), roughness: 0.6, metalness: 0.2 })
 const clickMaterial = new MeshStandardMaterial({ color: new Color(1, 0.3, 0), roughness: 0.6, metalness: 0.2 })
+const shadowMaterial = new MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 0.3 })
 
 const raycaster = new Raycaster()
 const mouse = new Vector2()
@@ -348,7 +349,7 @@ onMounted(async () => {
     const shadowScene = scene.clone()
     shadowScene.traverse((object) => {
       if (object instanceof Mesh) {
-        object.material = new MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 0.3 })
+        object.material = shadowMaterial
       }
     })
     shadowScene.position.z = -5
