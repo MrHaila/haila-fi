@@ -22,7 +22,7 @@ div#root
     p Email me, maybe?
     h4(class="mb-32 mt-3 text-2xl font-bold") teemu@haila.fi
     div(class="space-y-1 text-sm")
-      // p(class="text-neutral-400") Global logo tapping 👆 stats: #[span(class="font-bold") H] {{ clicks?.h1 }}, #[span(class="font-bold") A] {{ clicks?.a2 }}, #[span(class="font-bold") I] {{ clicks?.i3 }}, #[span(class="font-bold") L] {{ clicks?.l4 }}, #[span(class="font-bold") A] {{ clicks?.a5 }}
+      p(class="text-neutral-400") Global logo tapping 👆 stats: #[span(class="font-bold") H] {{ supabase.h1 }}, #[span(class="font-bold") A] {{ supabase.a2 }}, #[span(class="font-bold") I] {{ supabase.i3 }}, #[span(class="font-bold") L] {{ supabase.l4 }}, #[span(class="font-bold") A] {{ supabase.a5 }}
       p Handcrafted with ❤️ and 🍺 as <a href="https://github.com/MrHaila/haila-fi">open source</a>.
 </template>
 
@@ -38,27 +38,15 @@ import MetaplayBlock from './sections/MetaplayBlock.vue'
 import MultipotentialityBlock from './sections/MultipotentialityBlock.vue'
 import PhotographyBlock from './sections/PhotographyBlock.vue'
 import SeriousBusinessBlock from './sections/SeriousBusinessBlock.vue'
-
-interface Clicks {
-  h1: number
-  a2: number
-  i3: number
-  l4: number
-  a5: number
-}
+import { useSupabase } from './useSupabase'
 
 const header = ref<HTMLDivElement>()
 const logoIsVisible = ref(true)
+const supabase = useSupabase()
 
 useIntersectionObserver(header, ([{ isIntersecting }]) => {
   logoIsVisible.value = isIntersecting
 })
-
-const clicks = ref<Clicks>()
-
-function updateClicks(data: Clicks): void {
-  clicks.value = data
-}
 
 function scrollToTop(): void {
   window.scrollTo({
