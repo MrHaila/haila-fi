@@ -1,6 +1,7 @@
 <template lang="pug">
 div(
-  class="relative bg-gradient-to-t from-neutral-100 to-white"
+  ref="containerRef"
+  class="relative h-[25rem] bg-gradient-to-t from-neutral-100 to-white sm:h-[35rem]"
   :class="{ 'cursor-pointer': !!hoveredCharacter }"
   )
   p(
@@ -49,7 +50,7 @@ div(
       li Games Industry Entrepreneur & Executive
 
   canvas(
-    ref="headerCanvas"
+    ref="canvas"
     class="block h-full w-full outline-none"
     )
 </template>
@@ -117,7 +118,8 @@ const feedback = computed(() => {
 // const { totalClicks, h1, a2, i3, l4, a5, incrementClick } = useSupabase()
 
 // 3D Shenanigans -----------------------------------------------------------------------------------------------------
-const headerCanvas = ref<HTMLCanvasElement>()
+const containerRef = ref<HTMLDivElement>()
+const canvas = ref<HTMLCanvasElement>()
 const isWebGlAvailable = WebGL.isWebGL2Available()
 const isEngineLoaded = ref(false)
 
@@ -166,11 +168,16 @@ function update(sceneTime: number, deltaTime: number): void {
 
 onMounted(async () => {
   if (!isWebGlAvailable) return
-  if (!headerCanvas.value) throw new Error('Header canvas not found')
+  if (!canvas.value) throw new Error('Header canvas not found')
+  if (!containerRef.value) throw new Error('Header container not found')
 
   // Step 1: Camera
-  const camera = new PerspectiveCamera(35, headerCanvas.value.clientWidth / headerCanvas.value.clientHeight, 0.1, 1000)
-  camera.position.z = 12
+  const camera = new PerspectiveCamera(35, canvas.value.clientWidth / canvas.value.clientHeight, 0.1, 1000)
+  function repositionCamera(): void {
+    if (!containerRef.value) throw new Error('Header container not found')
+    camera.position.z = 30 - containerRef.value.clientWidth / 80
+  }
+  repositionCamera()
 
   // Step 2: Environment
   const hdr = '/assets/3d/cloudy_128.hdr'
@@ -213,29 +220,38 @@ onMounted(async () => {
   // Step 4: Inputs
   window.addEventListener('mousemove', (event) => {
     // Calculate mouse position inside the canvas.
-    if (!headerCanvas.value) return
-    mouse.x = (event.clientX / headerCanvas.value.clientWidth) * 2 - 1
-    mouse.y = -(event.clientY / headerCanvas.value.clientHeight) * 2 + 1
+    if (!canvas.value) return
+    mouse.x = (event.clientX / canvas.value.clientWidth) * 2 - 1
+    mouse.y = -(event.clientY / canvas.value.clientHeight) * 2 + 1
   })
 
   window.addEventListener('click', onClick)
 
   // Step 5: Renderer
   const renderer = new WebGLRenderer({
-    canvas: headerCanvas.value,
+    canvas: canvas.value,
     antialias: true,
     alpha: true,
   })
 
-  renderer.setSize(headerCanvas.value.clientWidth, headerCanvas.value.clientHeight)
+  renderer.setSize(canvas.value.clientWidth, canvas.value.clientHeight)
 
-  // Handle window resizing
-  // window.addEventListener('resize', () => {
-  //   if (!headerCanvas.value) return
-  //   camera.aspect = headerCanvas.value.clientWidth / headerCanvas.value.clientHeight
-  //   camera.updateProjectionMatrix()
-  //   renderer.setSize(headerCanvas.value.clientWidth, headerCanvas.value.clientHeight)
-  // })
+  // Handle window resizing.
+  const resizeObserver = new ResizeObserver(() => {
+    if (!containerRef.value) return
+    const width = containerRef.value.clientWidth
+    const height = containerRef.value.clientHeight
+
+    // Update renderer size.
+    renderer.setSize(width, height)
+
+    // Update camera aspect ratio and projection matrix.
+    camera.aspect = width / height
+    camera.updateProjectionMatrix()
+
+    repositionCamera()
+  })
+  resizeObserver.observe(containerRef.value)
 
   // Step 6: Update loop
   const sceneTimeStart = Date.now()
