@@ -9,6 +9,7 @@
     "babylonjs",
     "ddios",
     "Emmi",
+    "Equirectangular",
     "Fingamers",
     "gltf",
     "haila",
@@ -19,6 +20,8 @@
     "Multipotentiality",
     "Playraven",
     "Prefiltered",
+    "Raycaster",
+    "RGBE",
     "Robocide",
     "Rovio",
     "Runepoli",
@@ -36,5 +39,5 @@
     "yeger"
   ],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": true
 }
