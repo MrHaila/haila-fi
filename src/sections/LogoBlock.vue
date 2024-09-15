@@ -11,19 +11,34 @@ div(
 
   div(class="absolute top-4 z-10 w-full")
     div(class="flex justify-center space-x-1")
-      div(class="rounded-lg bg-neutral-100 px-1 pt-0.5 text-center opacity-70")
+      div(
+        class="rounded-lg bg-amber-100 px-1 pt-0.5 text-center opacity-70"
+        :style="{ backgroundColor: getBgColor(localAnimationOffsets.h1), transform: `scale(${localAnimationOffsets.h1 * -0.3 + 1}, ${localAnimationOffsets.h1 * 0.2 + 1}) translateY(${localAnimationOffsets.h1 * -4}px)` }"
+        )
         div(class="text-xs") H
         div(class="-mt-1 text-sm font-semibold") {{ supabase.h1 }}
-      div(class="rounded-lg bg-neutral-100 px-1 pt-0.5 text-center opacity-70")
+      div(
+        class="rounded-lg px-1 pt-0.5 text-center opacity-70"
+        :style="{ backgroundColor: getBgColor(localAnimationOffsets.a2), transform: `scale(${localAnimationOffsets.a2 * -0.3 + 1}, ${localAnimationOffsets.a2 * 0.2 + 1}) translateY(${localAnimationOffsets.a2 * -4}px)` }"
+        )
         div(class="text-xs") A
         div(class="-mt-1 text-sm font-semibold") {{ supabase.a2 }}
-      div(class="rounded-lg bg-neutral-100 px-1 pt-0.5 text-center opacity-70")
+      div(
+        class="rounded-lg px-1 pt-0.5 text-center opacity-70"
+        :style="{ backgroundColor: getBgColor(localAnimationOffsets.i3), transform: `scale(${localAnimationOffsets.i3 * -0.3 + 1}, ${localAnimationOffsets.i3 * 0.2 + 1}) translateY(${localAnimationOffsets.i3 * -4}px)` }"
+        )
         div(class="text-xs") I
         div(class="-mt-1 text-sm font-semibold") {{ supabase.i3 }}
-      div(class="rounded-lg bg-neutral-100 px-1 pt-0.5 text-center opacity-70")
+      div(
+        class="rounded-lg px-1 pt-0.5 text-center opacity-70"
+        :style="{ backgroundColor: getBgColor(localAnimationOffsets.l4), transform: `scale(${localAnimationOffsets.l4 * -0.3 + 1}, ${localAnimationOffsets.l4 * 0.2 + 1}) translateY(${localAnimationOffsets.l4 * -4}px)` }"
+        )
         div(class="text-xs") L
         div(class="-mt-1 text-sm font-semibold") {{ supabase.l4 }}
-      div(class="rounded-lg bg-neutral-100 px-1 pt-0.5 text-center opacity-70")
+      div(
+        class="rounded-lg px-1 pt-0.5 text-center opacity-70"
+        :style="{ backgroundColor: getBgColor(localAnimationOffsets.a5), transform: `scale(${localAnimationOffsets.a5 * -0.3 + 1}, ${localAnimationOffsets.a5 * 0.2 + 1}) translateY(${localAnimationOffsets.a5 * -4}px)` }"
+        )
         div(class="text-xs") A
         div(class="-mt-1 text-sm font-semibold") {{ supabase.a5 }}
     div(class="mt-1 text-center text-xs text-neutral-100") You: {{ totalLocalClicks }} / Everyone: {{ supabase.totalClicks }}
@@ -56,9 +71,11 @@ import {
 import WebGL from 'three/addons/capabilities/WebGL.js'
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js'
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, reactive } from 'vue'
 
 import { useSupabase } from '../useSupabase'
+
+// Stats -----------------------------------------------------------------------------------------------------
 
 interface Clicks {
   h1: number
@@ -74,6 +91,18 @@ const localClicks = ref<Clicks>({
   i3: 0,
   l4: 0,
   a5: 0,
+})
+
+const localAnimationOffsets = reactive<Clicks>({
+  h1: 0,
+  a2: 0,
+  i3: 0,
+  l4: 0,
+  a5: 0,
+})
+
+const h1Animation = reactive({
+  number: 0,
 })
 
 const totalLocalClicks = computed(() => {
@@ -92,7 +121,14 @@ onMounted(() => {
 
 function incrementLocalClick(character: 'h1' | 'a2' | 'i3' | 'l4' | 'a5'): void {
   localClicks.value[character]++
+  //gsap.to(test, { h1: 0, duration: 0.5 })
+  gsap.fromTo(localAnimationOffsets, { [character]: 1 }, { duration: 0.5, [character]: 0 })
   localStorage.setItem('localClicks', JSON.stringify(localClicks.value))
+}
+
+function getBgColor(animationOffset: number): string {
+  // Offset is from 0 to 1. Returns rgb(255, 0.3 * 255, 0) for 1 and rgb(255, 255, 255) for 0.
+  return `rgb(255, ${Math.round(255 - 0.5 * 255 * animationOffset)}, ${Math.round(255 - 255 * animationOffset)})`
 }
 
 const supabase = useSupabase()

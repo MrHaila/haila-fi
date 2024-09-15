@@ -66,7 +66,6 @@ async function incrementClick(target: 'h1' | 'a2' | 'i3' | 'l4' | 'a5'): Promise
   })
 
   if (error) console.error(error)
-  else console.log(data)
 }
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
