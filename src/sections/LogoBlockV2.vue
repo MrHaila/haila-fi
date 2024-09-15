@@ -56,6 +56,7 @@ div(
 </template>
 
 <script lang="ts" setup>
+import gsap from 'gsap'
 import {
   Scene,
   PerspectiveCamera,
@@ -126,17 +127,42 @@ const isEngineLoaded = ref(false)
 const scene = new Scene()
 
 const defaultMaterial = new MeshStandardMaterial({ color: new Color(0.7, 0.7, 0.7), roughness: 0.25, metalness: 0.2 })
-const hoverMaterial = new MeshStandardMaterial({ color: 0xff0000 })
-const clickMaterial = new MeshStandardMaterial({ color: 0x0000ff })
+const hoverMaterial = new MeshStandardMaterial({ color: new Color(1, 1, 1), roughness: 0.6, metalness: 0.2 })
+const clickMaterial = new MeshStandardMaterial({ color: new Color(1, 0.3, 0), roughness: 0.6, metalness: 0.2 })
 
 const raycaster = new Raycaster()
 const mouse = new Vector2()
 let hoveredMesh: Mesh | null = null
 const hoveredCharacter = ref<'h1' | 'a2' | 'i3' | 'l4' | 'a5'>()
+let originalScale = 1
 
 function onClick(): void {
   if (!hoveredMesh) return
   hoveredMesh.material = clickMaterial
+
+  gsap.to(hoveredMesh.rotation, {
+    z: hoveredMesh.rotation.z + Math.PI + Math.random() * 0.5,
+    duration: 0.5,
+    ease: 'power2.out',
+  })
+
+  gsap.fromTo(
+    hoveredMesh.scale,
+    {
+      x: originalScale + 20,
+      y: originalScale + 20,
+      z: originalScale + 20,
+      duration: 0.5,
+      ease: 'power2.out',
+    },
+    {
+      x: originalScale,
+      y: originalScale,
+      z: originalScale,
+    }
+  )
+
+  gsap.fromTo(clickMaterial.color, { r: 1, g: 0.3, b: 0 }, { r: 1, g: 1, b: 1, duration: 0.3 })
 }
 
 function onHover(mesh: Mesh): void {
@@ -205,6 +231,8 @@ onMounted(async () => {
           // Store the mesh in the characterObject array.
           // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
           characterObjects.push(obj)
+
+          originalScale = obj.scale.x
         }
       })
 
