@@ -102,6 +102,14 @@ const items = [
     imageAlt: 'Diamond Dash key art',
   },
   {
+    title: 'Conference Talks',
+    subtitle: 'Public Speaking',
+    description:
+      'I have hosted and/or spoken at dozens of conferences and events around the world about game development, technology and leadership.',
+    image: 'card-fga',
+    imageAlt: 'Finnish Game Awards 2024',
+  },
+  {
     title: 'Score',
     subtitle: 'Community',
     description:
