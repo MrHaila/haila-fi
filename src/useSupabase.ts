@@ -35,18 +35,21 @@ const totalClicks = computed(() => {
 })
 
 // Fetch the initial data.
-const { data, error } = await supabase.from('logo_stats').select()
-
-if (error) console.error(error)
-else if (data) {
-  for (const row of data) {
-    if (row.id === 1) h1.value = row.count
-    if (row.id === 2) a2.value = row.count
-    if (row.id === 3) i3.value = row.count
-    if (row.id === 4) l4.value = row.count
-    if (row.id === 5) a5.value = row.count
-  }
-}
+supabase
+  .from('logo_stats')
+  .select()
+  .then(({ data, error }) => {
+    if (error) console.error(error)
+    else if (data) {
+      for (const row of data) {
+        if (row.id === 1) h1.value = row.count
+        if (row.id === 2) a2.value = row.count
+        if (row.id === 3) i3.value = row.count
+        if (row.id === 4) l4.value = row.count
+        if (row.id === 5) a5.value = row.count
+      }
+    }
+  })
 
 /**
  * Call this to increment the click count of a target in Supabase.
@@ -61,7 +64,7 @@ async function incrementClick(target: 'h1' | 'a2' | 'i3' | 'l4' | 'a5'): Promise
   else if (target === 'a5') targetId = 5
   else throw new Error('Invalid target')
 
-  const { data, error } = await supabase.rpc('increment_logo_stats', {
+  const { error } = await supabase.rpc('increment_logo_stats', {
     target_id: targetId,
   })
 
