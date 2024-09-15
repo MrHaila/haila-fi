@@ -136,6 +136,24 @@ let hoveredMesh: Mesh | null = null
 const hoveredCharacter = ref<'h1' | 'a2' | 'i3' | 'l4' | 'a5'>()
 let originalScale = 1
 
+setInterval(() => {
+  if (isEngineLoaded.value) {
+    // Rotate the scene every 3 seconds.
+    gsap.to(scene.rotation, {
+      y: scene.rotation.y + Math.PI,
+      duration: 1,
+      ease: 'power2.inOut',
+    })
+
+    setTimeout(() => {
+      // Toggle wireframe halfways through the rotation.
+      defaultMaterial.wireframe = !defaultMaterial.wireframe
+      hoverMaterial.wireframe = !hoverMaterial.wireframe
+      clickMaterial.wireframe = !clickMaterial.wireframe
+    }, 500)
+  }
+}, 6000)
+
 function onClick(): void {
   if (!hoveredMesh) return
   hoveredMesh.material = clickMaterial
@@ -213,7 +231,7 @@ onMounted(async () => {
     scene.backgroundBlurriness = 0.2
   })
 
-  // Step 3: Models, materials and animations
+  // Step 3: Models & materials
   const characterObjects: Mesh[] = []
 
   const gltfLoader = new GLTFLoader()
