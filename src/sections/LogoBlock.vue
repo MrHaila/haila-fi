@@ -1,7 +1,7 @@
 <template lang="pug">
 div(
   ref="containerRef"
-  class="relative h-[25rem] bg-gradient-to-t from-neutral-100 to-white sm:h-[35rem]"
+  class="scrollingBackground relative h-[25rem] sm:h-[35rem]"
   :class="{ 'cursor-pointer': !!hoveredCharacter }"
   )
   p(
@@ -9,41 +9,26 @@ div(
     class="absolute top-40 z-10 w-full text-center text-xl text-neutral-600"
     ) 🎨 Loading... 🤹‍
 
-  //div(
-    v-if="totalLocalClicks > 0"
-    class="absolute top-4 z-10 w-full"
-    )
-    div(class="flex justify-center space-x-1 font-bold")
-      span(v-if="totalLocalClicks >= 20") {{ feedback }}
-      span(
-        class="rounded-lg px-2"
-        :style="scoreStyle.h1"
-        v-show="localClicks.h1 > 0"
-        ) {{ localClicks.h1 }}
-      span(
-        class="rounded-lg px-2"
-        :style="scoreStyle.a2"
-        v-show="localClicks.a2 > 0"
-        ) {{ localClicks.a2 }}
-      span(
-        class="rounded-lg px-2"
-        :style="scoreStyle.i3"
-        v-show="localClicks.i3 > 0"
-        ) {{ localClicks.i3 }}
-      span(
-        class="rounded-lg px-2"
-        :style="scoreStyle.l4"
-        v-show="localClicks.l4 > 0"
-        ) {{ localClicks.l4 }}
-      span(
-        class="rounded-lg px-2"
-        :style="scoreStyle.a5"
-        v-show="localClicks.a5 > 0"
-        ) {{ localClicks.a5 }}
-      span(v-if="totalLocalClicks >= 20") {{ feedback }}
+  div(class="absolute top-4 z-10 w-full")
+    div(class="flex justify-center space-x-1")
+      div(class="rounded-lg bg-neutral-100 px-1 pt-0.5 text-center opacity-70")
+        div(class="text-xs") H
+        div(class="-mt-1 font-bold") {{ localClicks.h1 }}
+      div(class="rounded-lg bg-neutral-100 px-1 pt-0.5 text-center opacity-70")
+        div(class="text-xs") A
+        div(class="-mt-1 font-bold") {{ localClicks.a2 }}
+      div(class="rounded-lg bg-neutral-100 px-1 pt-0.5 text-center opacity-70")
+        div(class="text-xs") I
+        div(class="-mt-1 font-bold") {{ localClicks.i3 }}
+      div(class="rounded-lg bg-neutral-100 px-1 pt-0.5 text-center opacity-70")
+        div(class="text-xs") L
+        div(class="-mt-1 font-bold") {{ localClicks.l4 }}
+      div(class="rounded-lg bg-neutral-100 px-1 pt-0.5 text-center opacity-70")
+        div(class="text-xs") A
+        div(class="-mt-1 font-bold") {{ localClicks.a5 }}
     // div(class="text-center text-sm") You: {{totalLocalClicks}} / Everyone: {{ totalClicks }}
 
-  div(class="absolute bottom-4 left-0 right-0 z-10 text-sm sm:bottom-5 sm:text-base")
+  div(class="absolute bottom-4 left-0 right-0 z-10 select-none text-sm text-neutral-200 sm:bottom-5 sm:text-base")
     ul(class="container mx-auto px-4 sm:px-10")
       li BA Interaction Design
       li MProf Games Development
@@ -61,15 +46,11 @@ import {
   Scene,
   PerspectiveCamera,
   WebGLRenderer,
-  BoxGeometry,
   Mesh,
-  AmbientLight,
-  DirectionalLight,
   MeshStandardMaterial,
   Color,
   Raycaster,
   Vector2,
-  DataTexture,
   EquirectangularReflectionMapping,
 } from 'three'
 import WebGL from 'three/addons/capabilities/WebGL.js'
@@ -99,21 +80,6 @@ const totalLocalClicks = computed(() => {
   return (
     localClicks.value.h1 + localClicks.value.a2 + localClicks.value.i3 + localClicks.value.l4 + localClicks.value.a5
   )
-})
-
-const feedback = computed(() => {
-  if (totalLocalClicks.value >= 700) return '🤯'
-  else if (totalLocalClicks.value >= 600) return '💣'
-  else if (totalLocalClicks.value >= 500) return '💶'
-  else if (totalLocalClicks.value >= 400) return '📈'
-  else if (totalLocalClicks.value >= 300) return '🍾'
-  else if (totalLocalClicks.value >= 200) return '🍻'
-  else if (totalLocalClicks.value >= 150) return '🤩'
-  else if (totalLocalClicks.value >= 100) return '⭐️'
-  else if (totalLocalClicks.value >= 75) return '🔥'
-  else if (totalLocalClicks.value >= 45) return '🐬'
-  else if (totalLocalClicks.value >= 20) return '💛'
-  else return ''
 })
 
 // const { totalClicks, h1, a2, i3, l4, a5, incrementClick } = useSupabase()
@@ -158,6 +124,11 @@ function onClick(): void {
   if (!hoveredMesh) return
   hoveredMesh.material = clickMaterial
 
+  // Increment the click count.
+  const character = hoveredMesh.name as 'h1' | 'a2' | 'i3' | 'l4' | 'a5'
+  localClicks.value[character]++
+
+  // Animations.
   gsap.to(hoveredMesh.rotation, {
     z: hoveredMesh.rotation.z + Math.PI + Math.random() * 0.5,
     duration: 0.5,
@@ -325,3 +296,30 @@ onMounted(async () => {
   isEngineLoaded.value = true
 })
 </script>
+
+<style>
+.scrollingBackground {
+  /* Set a background image with a 45° repeating pattern */
+  background-image: url('/assets/3d/AA.svg');
+  background-size: 120px 120px; /* Controls the size of the pattern */
+  background-color: var(--color-neutral-900);
+
+  /* Initial position */
+  background-position: 0 0;
+
+  /* Rotate 45° */
+
+  /* Animate the background position */
+  animation: moveBackground 10s linear infinite;
+}
+
+/* Keyframe animation to move the background */
+@keyframes moveBackground {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 120px -120px; /* Moves in a diagonal direction */
+  }
+}
+</style>
