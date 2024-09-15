@@ -1,8 +1,8 @@
 # Haila.fi
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/067a7963-2ed9-4218-9782-bebce700e33a/deploy-status)](https://app.netlify.com/sites/haila/deploys) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/067a7963-2ed9-4218-9782-bebce700e33a/deploy-status)](https://app.netlify.com/sites/haila/deploys)
 
-2023 iteration of my personal website. Open sourced for science!
+2024 iteration of my personal website. Open sourced for science!
 
 Pull requests are welcome, if unlikely 🙂
 
@@ -11,12 +11,12 @@ Pull requests are welcome, if unlikely 🙂
 - Scaffolding: [Vite](https://vitejs.dev/)
 - JS framework: [Vue](https://vuejs.org/)
 - Styling: [Tailwind](https://tailwindcss.com/)
-- 3D shenanigans: [Babylon](https://www.babylonjs.com/)
+- 3D shenanigans: [Three.js](https://threejs.org/)
 - Database: [Supabase](https://supabase.io/)
 
 ## Instructions
 
-To run the project you need [Node.js](https://github.com/creationix/nvm) and [Bun](https://bun.sh/) installed. After that...
+To run the project you need [Bun](https://bun.sh/) installed. After that...
 
 ### Develop
 
@@ -26,27 +26,6 @@ To run the project you need [Node.js](https://github.com/creationix/nvm) and [Bu
 ### Build
 
 1. `bun build` to build to /dist
-
-### Work with DDS cubemaps on a Mac
-
-1. Download [CMFT](https://github.com/dariomanesku/cmft)
-2. Use it with `--output0params dds,rgba16f,cubemap`
-3. Drop the result into [Babylon Sandbox](https://sandbox.babylonjs.com/) and export as .env from settings panel for additional significant compression
-
-Example:
-
-```bash
-./cmft \
---input ~/Desktop/environment.dds \
---dstFaceSize 32 \
---output0params dds,rgba16f,cubemap \
---generateMipChain false \
---output0 ~/Desktop/environment_processed && \
-stat -f%z ~/Desktop/environment.dds && \
-stat -f%z ~/Desktop/environment_processed.dds
-```
-
-Note: stat -f%z is specific to the version that ships with MacOS as of 10.14.3
 
 ## License
 

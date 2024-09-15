@@ -13,19 +13,19 @@ div(
     div(class="flex justify-center space-x-1")
       div(class="rounded-lg bg-neutral-100 px-1 pt-0.5 text-center opacity-70")
         div(class="text-xs") H
-        div(class="-mt-1 font-bold") {{ localClicks.h1 }}
+        div(class="-mt-1 font-bold") {{ supabase.h1 }}
       div(class="rounded-lg bg-neutral-100 px-1 pt-0.5 text-center opacity-70")
         div(class="text-xs") A
-        div(class="-mt-1 font-bold") {{ localClicks.a2 }}
+        div(class="-mt-1 font-bold") {{ supabase.a2 }}
       div(class="rounded-lg bg-neutral-100 px-1 pt-0.5 text-center opacity-70")
         div(class="text-xs") I
-        div(class="-mt-1 font-bold") {{ localClicks.i3 }}
+        div(class="-mt-1 font-bold") {{ supabase.i3 }}
       div(class="rounded-lg bg-neutral-100 px-1 pt-0.5 text-center opacity-70")
         div(class="text-xs") L
-        div(class="-mt-1 font-bold") {{ localClicks.l4 }}
+        div(class="-mt-1 font-bold") {{ supabase.l4 }}
       div(class="rounded-lg bg-neutral-100 px-1 pt-0.5 text-center opacity-70")
         div(class="text-xs") A
-        div(class="-mt-1 font-bold") {{ localClicks.a5 }}
+        div(class="-mt-1 font-bold") {{ supabase.a5 }}
     // div(class="text-center text-sm") You: {{totalLocalClicks}} / Everyone: {{ totalClicks }}
 
   div(class="absolute bottom-4 left-0 right-0 z-10 select-none text-sm text-neutral-200 sm:bottom-5 sm:text-base")
@@ -58,7 +58,7 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js'
 import { ref, computed, onMounted } from 'vue'
 
-// import { useSupabase } from '../useSupabase'
+import { useSupabase } from '../useSupabase'
 
 interface Clicks {
   h1: number
@@ -82,7 +82,7 @@ const totalLocalClicks = computed(() => {
   )
 })
 
-// const { totalClicks, h1, a2, i3, l4, a5, incrementClick } = useSupabase()
+const supabase = useSupabase()
 
 // 3D Shenanigans -----------------------------------------------------------------------------------------------------
 const containerRef = ref<HTMLDivElement>()
@@ -112,7 +112,7 @@ setInterval(() => {
     })
 
     setTimeout(() => {
-      // Toggle wireframe halfways through the rotation.
+      // Toggle wireframe halfway through the rotation.
       defaultMaterial.wireframe = !defaultMaterial.wireframe
       hoverMaterial.wireframe = !hoverMaterial.wireframe
       clickMaterial.wireframe = !clickMaterial.wireframe
@@ -127,6 +127,7 @@ function onClick(): void {
   // Increment the click count.
   const character = hoveredMesh.name as 'h1' | 'a2' | 'i3' | 'l4' | 'a5'
   localClicks.value[character]++
+  void supabase.incrementClick(character)
 
   // Animations.
   gsap.to(hoveredMesh.rotation, {
