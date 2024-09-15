@@ -1,101 +1,64 @@
 <template lang="pug">
-div(class="relative bg-gradient-to-t from-neutral-100 to-white")
+div(
+  ref="containerRef"
+  class="scrollingBackground relative h-[25rem] sm:h-[35rem]"
+  :class="{ 'cursor-pointer': !!hoveredCharacter }"
+  )
   p(
     v-show="!isEngineLoaded"
     class="absolute top-40 z-10 w-full text-center text-xl text-neutral-600"
     ) 🎨 Loading... 🤹‍
 
-  div(
-    v-if="totalLocalClicks > 0"
-    class="absolute top-4 z-10 w-full"
-    )
-    div(class="flex justify-center space-x-1 font-bold")
-      span(v-if="totalLocalClicks >= 20") {{ feedback }}
-      span(
-        class="rounded-lg px-2"
-        :style="scoreStyle.h1"
-        v-show="localClicks.h1 > 0"
-        ) {{ localClicks.h1 }}
-      span(
-        class="rounded-lg px-2"
-        :style="scoreStyle.a2"
-        v-show="localClicks.a2 > 0"
-        ) {{ localClicks.a2 }}
-      span(
-        class="rounded-lg px-2"
-        :style="scoreStyle.i3"
-        v-show="localClicks.i3 > 0"
-        ) {{ localClicks.i3 }}
-      span(
-        class="rounded-lg px-2"
-        :style="scoreStyle.l4"
-        v-show="localClicks.l4 > 0"
-        ) {{ localClicks.l4 }}
-      span(
-        class="rounded-lg px-2"
-        :style="scoreStyle.a5"
-        v-show="localClicks.a5 > 0"
-        ) {{ localClicks.a5 }}
-      span(v-if="totalLocalClicks >= 20") {{ feedback }}
+  div(class="absolute top-4 z-10 w-full")
+    div(class="flex justify-center space-x-1")
+      div(class="rounded-lg bg-neutral-100 px-1 pt-0.5 text-center opacity-70")
+        div(class="text-xs") H
+        div(class="-mt-1 font-bold") {{ localClicks.h1 }}
+      div(class="rounded-lg bg-neutral-100 px-1 pt-0.5 text-center opacity-70")
+        div(class="text-xs") A
+        div(class="-mt-1 font-bold") {{ localClicks.a2 }}
+      div(class="rounded-lg bg-neutral-100 px-1 pt-0.5 text-center opacity-70")
+        div(class="text-xs") I
+        div(class="-mt-1 font-bold") {{ localClicks.i3 }}
+      div(class="rounded-lg bg-neutral-100 px-1 pt-0.5 text-center opacity-70")
+        div(class="text-xs") L
+        div(class="-mt-1 font-bold") {{ localClicks.l4 }}
+      div(class="rounded-lg bg-neutral-100 px-1 pt-0.5 text-center opacity-70")
+        div(class="text-xs") A
+        div(class="-mt-1 font-bold") {{ localClicks.a5 }}
     // div(class="text-center text-sm") You: {{totalLocalClicks}} / Everyone: {{ totalClicks }}
 
-  div(class="absolute bottom-4 left-0 right-0 z-10 text-sm sm:bottom-5 sm:text-base")
+  div(class="absolute bottom-4 left-0 right-0 z-10 select-none text-sm text-neutral-200 sm:bottom-5 sm:text-base")
     ul(class="container mx-auto px-4 sm:px-10")
       li BA Interaction Design
       li MProf Games Development
       li Games Industry Entrepreneur & Executive
 
   canvas(
-    ref="headerCanvas"
+    ref="canvas"
     class="block h-full w-full outline-none"
     )
 </template>
 
 <script lang="ts" setup>
-// import '@babylonjs/core/Debug/debugLayer'
-// import '@babylonjs/inspector'
+import gsap from 'gsap'
+import {
+  Scene,
+  PerspectiveCamera,
+  WebGLRenderer,
+  Mesh,
+  MeshStandardMaterial,
+  Color,
+  Raycaster,
+  Vector2,
+  EquirectangularReflectionMapping,
+} from 'three'
+import WebGL from 'three/addons/capabilities/WebGL.js'
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
+import { RGBELoader } from 'three/addons/loaders/RGBELoader.js'
 import { ref, computed, onMounted } from 'vue'
 
-import { Animation, QuinticEase, CircleEase, EasingFunction } from '@babylonjs/core/Animations/index'
-import { ArcRotateCamera } from '@babylonjs/core/Cameras/arcRotateCamera'
-import { Engine } from '@babylonjs/core/Engines/engine'
-import '@babylonjs/core/Helpers/sceneHelpers'
-import { SceneLoader } from '@babylonjs/core/Loading/sceneLoader'
-import { PBRMetallicRoughnessMaterial } from '@babylonjs/core/Materials/PBR/pbrMetallicRoughnessMaterial'
-import '@babylonjs/core/Materials/Textures/Loaders/ddsTextureLoader'
-import { CubeTexture } from '@babylonjs/core/Materials/Textures/cubeTexture'
-import { Vector3, Quaternion, Color3 } from '@babylonjs/core/Maths/math'
-import '@babylonjs/core/Misc/dds'
-import { Scene } from '@babylonjs/core/scene'
-import '@babylonjs/loaders'
-
 // import { useSupabase } from '../useSupabase'
-
-const isEngineLoaded = ref(false)
-const emits = defineEmits(['loaded'])
-
-const scoreStyle = ref({
-  h1: {
-    'background-image': 'linear-gradient(rgb(238, 238, 238), rgb(255, 255, 255))',
-    color: 'black',
-  },
-  a2: {
-    'background-image': 'linear-gradient(rgb(238, 238, 238), rgb(255, 255, 255))',
-    color: 'black',
-  },
-  i3: {
-    'background-image': 'linear-gradient(rgb(238, 238, 238), rgb(255, 255, 255))',
-    color: 'black',
-  },
-  l4: {
-    'background-image': 'linear-gradient(rgb(238, 238, 238), rgb(255, 255, 255))',
-    color: 'black',
-  },
-  a5: {
-    'background-image': 'linear-gradient(rgb(238, 238, 238), rgb(255, 255, 255))',
-    color: 'black',
-  },
-})
 
 interface Clicks {
   h1: number
@@ -119,221 +82,244 @@ const totalLocalClicks = computed(() => {
   )
 })
 
-const feedback = computed(() => {
-  if (totalLocalClicks.value >= 700) return '🤯'
-  else if (totalLocalClicks.value >= 600) return '💣'
-  else if (totalLocalClicks.value >= 500) return '💶'
-  else if (totalLocalClicks.value >= 400) return '📈'
-  else if (totalLocalClicks.value >= 300) return '🍾'
-  else if (totalLocalClicks.value >= 200) return '🍻'
-  else if (totalLocalClicks.value >= 150) return '🤩'
-  else if (totalLocalClicks.value >= 100) return '⭐️'
-  else if (totalLocalClicks.value >= 75) return '🔥'
-  else if (totalLocalClicks.value >= 45) return '🐬'
-  else if (totalLocalClicks.value >= 20) return '💛'
-  else return ''
-})
-
-const headerCanvas = ref<HTMLCanvasElement>()
-
 // const { totalClicks, h1, a2, i3, l4, a5, incrementClick } = useSupabase()
 
-onMounted(async () => {
-  if (!headerCanvas.value) throw new Error('Header canvas not found')
-  const engine = new Engine(headerCanvas.value)
-  const scene = new Scene(engine)
+// 3D Shenanigans -----------------------------------------------------------------------------------------------------
+const containerRef = ref<HTMLDivElement>()
+const canvas = ref<HTMLCanvasElement>()
+const isWebGlAvailable = WebGL.isWebGL2Available()
+const isEngineLoaded = ref(false)
 
-  // scene.debugLayer.show()
+const scene = new Scene()
 
-  // Step 1: Environment (env texture from Babylon Playground)
-  const environmentTexture = CubeTexture.CreateFromPrefilteredData('/assets/environment_32.env', scene)
-  environmentTexture.gammaSpace = false
-  environmentTexture.rotationY = 2.8
-  const skybox = scene.createDefaultSkybox(environmentTexture, true, 100, 0.4, true)
-  if (!skybox?.material) throw new Error('Skybox material not found')
-  skybox.material.alpha = 0.05
-  scene.autoClear = false
-  scene.autoClearDepthAndStencil = false
+const defaultMaterial = new MeshStandardMaterial({ color: new Color(0.7, 0.7, 0.7), roughness: 0.25, metalness: 0.2 })
+const hoverMaterial = new MeshStandardMaterial({ color: new Color(1, 1, 1), roughness: 0.6, metalness: 0.2 })
+const clickMaterial = new MeshStandardMaterial({ color: new Color(1, 0.3, 0), roughness: 0.6, metalness: 0.2 })
 
-  // Step 2: Camera
-  const camera = new ArcRotateCamera('camera', 0, 0, 2, new Vector3(0, -1.5, 10), scene)
-  camera.setTarget(Vector3.Zero())
+const raycaster = new Raycaster()
+const mouse = new Vector2()
+let hoveredMesh: Mesh | null = null
+const hoveredCharacter = ref<'h1' | 'a2' | 'i3' | 'l4' | 'a5'>()
+let originalScale = 1
 
-  const cameraAnimation = new Animation(
-    'cameraAnimation',
-    'alpha',
-    30,
-    Animation.ANIMATIONTYPE_FLOAT,
-    Animation.ANIMATIONLOOPMODE_RELATIVE
-  )
-  cameraAnimation.setKeys([
-    { frame: 0, value: Math.PI * 0.5 },
-    { frame: 300, value: Math.PI + Math.PI * 0.5 },
-  ])
-  const easingFunction = new QuinticEase()
-  easingFunction.setEasingMode(EasingFunction.EASINGMODE_EASEINOUT)
-  cameraAnimation.setEasingFunction(easingFunction)
-  camera.animations.push(cameraAnimation)
-  // camera.attachControl(canvas, true)
+setInterval(() => {
+  if (isEngineLoaded.value) {
+    // Rotate the scene every 3 seconds.
+    gsap.to(scene.rotation, {
+      y: scene.rotation.y + Math.PI,
+      duration: 1,
+      ease: 'power2.inOut',
+    })
 
-  // Step 3: Models, materials and animations
-  const result = await SceneLoader.ImportMeshAsync(null, '/assets/', 'haila.glb', scene)
-  // Character fly-in rotation animation
-  const characterRotation = new Animation(
-    'characterRotation',
-    'rotationQuaternion',
-    30,
-    Animation.ANIMATIONTYPE_QUATERNION,
-    Animation.ANIMATIONLOOPMODE_CONSTANT
-  )
-  characterRotation.setKeys([
-    { frame: 0, value: new Quaternion(0, 0, 0, -1) },
-    { frame: 20, value: new Quaternion(0.707, 0, 0, 0.707) },
-  ])
-  const easingFunction2 = new CircleEase()
-  easingFunction2.setEasingMode(EasingFunction.EASINGMODE_EASEOUT)
-  characterRotation.setEasingFunction(easingFunction2)
-
-  // For each character...
-  for (let i = 1; i < result.meshes.length; i++) {
-    // Generate unique materials for each char so they can be messed with individually
-    const material = new PBRMetallicRoughnessMaterial('pbr', scene)
-    material.baseColor = new Color3(0.05, 0.05, 0.05)
-    material.metallic = 0.2
-    material.roughness = 0.25
-    material.sideOrientation = 0
-    result.meshes[i].material = material
-
-    // Create per-character fly-in animation
-    const characterPosition = new Animation(
-      'characterPosition',
-      'position',
-      30,
-      Animation.ANIMATIONTYPE_VECTOR3,
-      Animation.ANIMATIONLOOPMODE_CONSTANT
-    )
-    characterPosition.setKeys([
-      { frame: 0, value: new Vector3(i * 2 - 2, -20, -30) },
-      { frame: 20, value: result.meshes[i].position },
-    ])
-    characterPosition.setEasingFunction(easingFunction)
-    result.meshes[i].position = new Vector3(4, -30, -30)
-
-    // Setup animations
-    result.meshes[i].animations.push(characterRotation)
-    result.meshes[i].animations.push(characterPosition)
-    setTimeout(() => scene.beginAnimation(result.meshes[i], 0, 20, true), i * 70, false)
+    setTimeout(() => {
+      // Toggle wireframe halfways through the rotation.
+      defaultMaterial.wireframe = !defaultMaterial.wireframe
+      hoverMaterial.wireframe = !hoverMaterial.wireframe
+      clickMaterial.wireframe = !clickMaterial.wireframe
+    }, 500)
   }
+}, 6000)
 
-  // Delayed start to camera animation
-  setTimeout(() => scene.beginAnimation(camera, 0, 300, true), 5000)
+function onClick(): void {
+  if (!hoveredMesh) return
+  hoveredMesh.material = clickMaterial
 
-  // Wireframe animation
-  setInterval(() => {
-    if (result.meshes[1].material) result.meshes[1].material.wireframe = !result.meshes[1].material.wireframe
-    if (result.meshes[2].material) result.meshes[2].material.wireframe = !result.meshes[2].material.wireframe
-    if (result.meshes[3].material) result.meshes[3].material.wireframe = !result.meshes[3].material.wireframe
-    if (result.meshes[4].material) result.meshes[4].material.wireframe = !result.meshes[4].material.wireframe
-    if (result.meshes[5].material) result.meshes[5].material.wireframe = !result.meshes[5].material.wireframe
-  }, 10000)
+  // Increment the click count.
+  const character = hoveredMesh.name as 'h1' | 'a2' | 'i3' | 'l4' | 'a5'
+  localClicks.value[character]++
 
-  // Start rendering
-  engine.runRenderLoop(() => {
-    scene.render()
-    isEngineLoaded.value = true
-    emits('loaded')
+  // Animations.
+  gsap.to(hoveredMesh.rotation, {
+    z: hoveredMesh.rotation.z + Math.PI + Math.random() * 0.5,
+    duration: 0.5,
+    ease: 'power2.out',
   })
+
+  gsap.fromTo(
+    hoveredMesh.scale,
+    {
+      x: originalScale + 20,
+      y: originalScale + 20,
+      z: originalScale + 20,
+      duration: 0.5,
+      ease: 'power2.out',
+    },
+    {
+      x: originalScale,
+      y: originalScale,
+      z: originalScale,
+    }
+  )
+
+  gsap.fromTo(clickMaterial.color, { r: 1, g: 0.3, b: 0 }, { r: 1, g: 1, b: 1, duration: 0.3 })
+}
+
+function onHover(mesh: Mesh): void {
+  if (hoveredMesh !== mesh) {
+    // If a new object is being hovered, revert the old object's material.
+    if (hoveredMesh) hoveredMesh.material = defaultMaterial
+
+    // Set the new hovered object's material.
+    mesh.material = hoverMaterial
+    hoveredMesh = mesh
+    hoveredCharacter.value = mesh.name as 'h1' | 'a2' | 'i3' | 'l4' | 'a5'
+  }
+}
+
+function onNoHover(): void {
+  if (hoveredMesh) hoveredMesh.material = defaultMaterial
+  hoveredMesh = null
+  hoveredCharacter.value = undefined
+}
+
+function update(sceneTime: number, deltaTime: number): void {
+  const z = Math.sin(sceneTime * 0.0005) / 12
+  const x = Math.cos(sceneTime * 0.0009) / 5
+
+  // Sine wave rotation
+  scene.rotation.z = z
+  scene.rotation.x = x
+}
+
+onMounted(async () => {
+  if (!isWebGlAvailable) return
+  if (!canvas.value) throw new Error('Header canvas not found')
+  if (!containerRef.value) throw new Error('Header container not found')
+
+  // Step 1: Camera
+  const camera = new PerspectiveCamera(35, canvas.value.clientWidth / canvas.value.clientHeight, 0.1, 1000)
+  function repositionCamera(): void {
+    if (!containerRef.value) throw new Error('Header container not found')
+    camera.position.z = 30 - containerRef.value.clientWidth / 80
+  }
+  repositionCamera()
+
+  // Step 2: Environment
+  const hdr = '/assets/3d/cloudy_128.hdr'
+  new RGBELoader().load(hdr, (texture) => {
+    texture.mapping = EquirectangularReflectionMapping
+    scene.environment = texture
+    scene.backgroundBlurriness = 0.2
+  })
+
+  // Step 3: Models & materials
+  const characterObjects: Mesh[] = []
+
+  const gltfLoader = new GLTFLoader()
+  gltfLoader.load(
+    '/assets/3d/haila.glb',
+    (gltf) => {
+      const gltfScene = gltf.scene
+
+      // Traverse the scene and apply the default material to all meshes.
+      gltfScene.traverse((obj) => {
+        if (obj instanceof Mesh) {
+          obj.material = defaultMaterial
+          obj.geometry.computeVertexNormals()
+
+          // Store the mesh in the characterObject array.
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+          characterObjects.push(obj)
+
+          originalScale = obj.scale.x
+        }
+      })
+
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+      scene.add(gltfScene)
+    },
+    undefined,
+    (error) => {
+      console.error(error)
+    }
+  )
 
   // Step 4: Inputs
-  scene.onPointerPick = (evt, pickInfo): void => {
-    if (pickInfo.hit && pickInfo.pickedMesh) {
-      // Setup color & spin animation
-      const characterRotation = new Animation(
-        'characterRotation',
-        'rotationQuaternion',
-        30,
-        Animation.ANIMATIONTYPE_QUATERNION,
-        Animation.ANIMATIONLOOPMODE_CONSTANT
-      )
-      const random = (Math.random() - 0.5) * 0.15
-      characterRotation.setKeys([
-        { frame: 0, value: pickInfo.pickedMesh.rotationQuaternion },
-        { frame: 20, value: new Quaternion(0.707 + random, random, random, 0.707 + random) },
-      ])
-
-      const easingFunction = new CircleEase()
-      easingFunction.setEasingMode(EasingFunction.EASINGMODE_EASEOUT)
-      characterRotation.setEasingFunction(easingFunction)
-
-      const characterColor = new Animation(
-        'characterColor',
-        'material.emissiveColor',
-        30,
-        Animation.ANIMATIONTYPE_COLOR3,
-        Animation.ANIMATIONLOOPMODE_CONSTANT
-      )
-      characterColor.setKeys([
-        { frame: 0, value: new Color3(1, 1, 1) },
-        { frame: 20, value: new Color3(0, 0, 0) },
-      ])
-
-      pickInfo.pickedMesh.animations = []
-      pickInfo.pickedMesh.animations.push(characterColor)
-      pickInfo.pickedMesh.animations.push(characterRotation)
-
-      // Actually do stuff
-      scene.beginAnimation(pickInfo.pickedMesh, 0, 20, false)
-      if (!pickInfo.pickedMesh.material) throw new Error('Material not found')
-      const material = pickInfo.pickedMesh.material as PBRMetallicRoughnessMaterial
-      material.baseColor = new Color3(Math.random(), Math.random(), Math.random())
-
-      // Update HUD
-      const r = Math.floor(material.baseColor.r * 256)
-      const g = Math.floor(material.baseColor.g * 256)
-      const b = Math.floor(material.baseColor.b * 256)
-      const r2 = Math.round(Math.min(Math.max(0, r + r * 0.2)))
-      const g2 = Math.round(Math.min(Math.max(0, g + g * 0.2)))
-      const b2 = Math.round(Math.min(Math.max(0, b + b * 0.2)))
-
-      if (pickInfo.pickedMesh.name === 'h1') {
-        localClicks.value.h1++
-        scoreStyle.value.h1['background-image'] =
-          'linear-gradient(rgb(' + r2 + ',' + g2 + ',' + b2 + '), rgb(' + r + ',' + g + ',' + b + ')'
-        scoreStyle.value.h1.color = r * 0.299 + g * 0.587 + b * 0.114 > 186 ? 'black' : 'white'
-      }
-      if (pickInfo.pickedMesh.name === 'a2') {
-        localClicks.value.a2++
-        scoreStyle.value.a2['background-image'] =
-          'linear-gradient(rgb(' + r2 + ',' + g2 + ',' + b2 + '), rgb(' + r + ',' + g + ',' + b + ')'
-        scoreStyle.value.a2.color = r * 0.299 + g * 0.587 + b * 0.114 > 186 ? 'black' : 'white'
-      }
-      if (pickInfo.pickedMesh.name === 'i3') {
-        localClicks.value.i3++
-        scoreStyle.value.i3['background-image'] =
-          'linear-gradient(rgb(' + r2 + ',' + g2 + ',' + b2 + '), rgb(' + r + ',' + g + ',' + b + ')'
-        scoreStyle.value.i3.color = r * 0.299 + g * 0.587 + b * 0.114 > 186 ? 'black' : 'white'
-      }
-      if (pickInfo.pickedMesh.name === 'l4') {
-        localClicks.value.l4++
-        scoreStyle.value.l4['background-image'] =
-          'linear-gradient(rgb(' + r2 + ',' + g2 + ',' + b2 + '), rgb(' + r + ',' + g + ',' + b + ')'
-        scoreStyle.value.l4.color = r * 0.299 + g * 0.587 + b * 0.114 > 186 ? 'black' : 'white'
-      }
-      if (pickInfo.pickedMesh.name === 'a5') {
-        localClicks.value.a5++
-        scoreStyle.value.a5['background-image'] =
-          'linear-gradient(rgb(' + r2 + ',' + g2 + ',' + b2 + '), rgb(' + r + ',' + g + ',' + b + ')'
-        scoreStyle.value.a5.color = r * 0.299 + g * 0.587 + b * 0.114 > 186 ? 'black' : 'white'
-      }
-
-      // Update database (TS doesn't like this)
-      // incrementClick(pickInfo.pickedMesh.name)
-    }
-  }
-
-  // Handle window resizing
-  window.addEventListener('resize', () => {
-    engine.resize()
+  window.addEventListener('mousemove', (event) => {
+    // Calculate mouse position inside the canvas.
+    if (!canvas.value) return
+    mouse.x = (event.clientX / canvas.value.clientWidth) * 2 - 1
+    mouse.y = -(event.clientY / canvas.value.clientHeight) * 2 + 1
   })
+
+  window.addEventListener('click', onClick)
+
+  // Step 5: Renderer
+  const renderer = new WebGLRenderer({
+    canvas: canvas.value,
+    antialias: true,
+    alpha: true,
+  })
+
+  renderer.setSize(canvas.value.clientWidth, canvas.value.clientHeight)
+
+  // Handle window resizing.
+  const resizeObserver = new ResizeObserver(() => {
+    if (!containerRef.value) return
+    const width = containerRef.value.clientWidth
+    const height = containerRef.value.clientHeight
+
+    // Update renderer size.
+    renderer.setSize(width, height)
+
+    // Update camera aspect ratio and projection matrix.
+    camera.aspect = width / height
+    camera.updateProjectionMatrix()
+
+    repositionCamera()
+  })
+  resizeObserver.observe(containerRef.value)
+
+  // Step 6: Update loop
+  const sceneTimeStart = Date.now()
+  let lastTime = Date.now()
+  renderer.setAnimationLoop(() => {
+    // Animate the scene.
+    const time = Date.now()
+    update(time - sceneTimeStart, time - lastTime)
+    lastTime = time
+
+    // Input handling.
+    raycaster.setFromCamera(mouse, camera)
+    const intersects = raycaster.intersectObjects(characterObjects)
+    if (intersects.length > 0) {
+      const intersectedMesh = intersects[0].object as Mesh
+      onHover(intersectedMesh)
+    } else {
+      onNoHover()
+    }
+
+    // Render the scene.
+    renderer.render(scene, camera)
+  })
+
+  isEngineLoaded.value = true
 })
 </script>
+
+<style>
+.scrollingBackground {
+  /* Set a background image with a 45° repeating pattern */
+  background-image: url('/assets/3d/AA.svg');
+  background-size: 120px 120px; /* Controls the size of the pattern */
+  background-color: var(--color-neutral-900);
+
+  /* Initial position */
+  background-position: 0 0;
+
+  /* Rotate 45° */
+
+  /* Animate the background position */
+  animation: moveBackground 10s linear infinite;
+}
+
+/* Keyframe animation to move the background */
+@keyframes moveBackground {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 120px -120px; /* Moves in a diagonal direction */
+  }
+}
+</style>

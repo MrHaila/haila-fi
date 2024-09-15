@@ -4,7 +4,7 @@ div(
   style="height: 34rem"
   )
   div(
-    class="relative mx-auto h-full bg-right-bottom bg-no-repeat px-4 py-8 sm:p-10"
+    class="relative mx-auto h-full overflow-x-hidden bg-right-bottom bg-no-repeat px-4 py-8 sm:p-10"
     style="max-width: 70rem"
     )
     div(

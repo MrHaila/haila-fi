@@ -9,16 +9,21 @@
     "babylonjs",
     "ddios",
     "Emmi",
+    "Equirectangular",
     "Fingamers",
     "gltf",
+    "gsap",
     "haila",
     "highscore",
     "IGDA",
     "Jagex",
+    "metalness",
     "Metaplay",
     "Multipotentiality",
     "Playraven",
     "Prefiltered",
+    "Raycaster",
+    "RGBE",
     "Robocide",
     "Rovio",
     "Runepoli",
@@ -36,5 +41,5 @@
     "yeger"
   ],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": true
 }
