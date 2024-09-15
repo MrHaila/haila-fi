@@ -67,6 +67,7 @@ import {
   Raycaster,
   Vector2,
   EquirectangularReflectionMapping,
+  MeshBasicMaterial,
 } from 'three'
 import WebGL from 'three/addons/capabilities/WebGL.js'
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
@@ -301,6 +302,7 @@ onMounted(async () => {
     alpha: true,
   })
 
+  renderer.autoClear = false
   renderer.setSize(canvas.value.clientWidth, canvas.value.clientHeight)
 
   // Handle window resizing.
@@ -340,6 +342,19 @@ onMounted(async () => {
     }
 
     // Render the scene.
+    renderer.clear()
+
+    // Shadow scene. It's a duplicate of the main scene with black materials and offset.
+    const shadowScene = scene.clone()
+    shadowScene.traverse((object) => {
+      if (object instanceof Mesh) {
+        object.material = new MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 0.3 })
+      }
+    })
+    shadowScene.position.z = -5
+    shadowScene.position.y = -2
+
+    renderer.render(shadowScene, camera)
     renderer.render(scene, camera)
   })
 
