@@ -9,7 +9,10 @@ div(
     class="absolute top-40 z-10 w-full text-center text-xl text-neutral-600"
     ) 🎨 Loading... 🤹‍
 
-  div(class="absolute top-4 z-10 w-full")
+  div(
+    v-if="supabase.initialized"
+    class="absolute top-4 z-10 w-full"
+    )
     div(class="flex justify-center space-x-1")
       div(
         class="rounded-lg bg-amber-100 px-1 pt-0.5 text-center opacity-70"

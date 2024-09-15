@@ -29,6 +29,7 @@ const a2 = ref(0)
 const i3 = ref(0)
 const l4 = ref(0)
 const a5 = ref(0)
+const initialized = ref(false)
 
 const totalClicks = computed(() => {
   return h1.value + a2.value + i3.value + l4.value + a5.value
@@ -48,6 +49,8 @@ supabase
         if (row.id === 4) l4.value = row.count
         if (row.id === 5) a5.value = row.count
       }
+
+      initialized.value = true
     }
   })
 
@@ -81,5 +84,6 @@ export function useSupabase() {
     a5,
     totalClicks,
     incrementClick,
+    initialized,
   }
 }
