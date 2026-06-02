@@ -22,6 +22,24 @@ const tsConfig = {
     '@typescript-eslint/triple-slash-reference': 'off',
     '@typescript-eslint/explicit-function-return-type': 'warn',
     '@typescript-eslint/no-unused-vars': 'warn',
+
+    // --- Relax rules newly tightened by eslint-config-love 154 to match this project's style ---
+    // Pedantic/stylistic — fight graphics code (3D coords, color components, durations, logo ids 1-5).
+    '@typescript-eslint/no-magic-numbers': 'off',
+    '@typescript-eslint/prefer-destructuring': 'off',
+    'no-plusplus': 'off',
+    'no-param-reassign': 'off', // three.js traverse callbacks mutate obj.material etc.
+    '@typescript-eslint/no-unnecessary-condition': 'off', // noisy with defensive/exhaustive checks.
+    '@typescript-eslint/no-redundant-type-constituents': 'off', // generated Supabase types (empty Enums -> never).
+    // `any` is tolerated (see no-explicit-any: warn): three.js gltf + Supabase realtime payloads are untyped.
+    '@typescript-eslint/no-unsafe-assignment': 'off',
+    '@typescript-eslint/no-unsafe-call': 'off',
+    '@typescript-eslint/no-unsafe-member-access': 'off',
+    '@typescript-eslint/no-unsafe-argument': 'off',
+    '@typescript-eslint/no-unsafe-return': 'off',
+    '@typescript-eslint/no-unsafe-type-assertion': 'off',
+    // Allow diagnostic logging.
+    'no-console': ['error', { allow: ['warn', 'error'] }],
   },
 }
 

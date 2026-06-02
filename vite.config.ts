@@ -1,4 +1,4 @@
-import path from 'path'
+import path from 'node:path'
 import { defineConfig } from 'vite'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 
@@ -12,7 +12,7 @@ export default defineConfig({
     vue(),
     ViteImageOptimizer({
       // Regexp to exclude all webp files
-      exclude: /.webp$/,
+      exclude: /\.webp$/v,
     }),
   ],
   resolve: {

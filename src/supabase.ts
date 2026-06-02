@@ -19,9 +19,7 @@ export interface Database {
         Relationships: []
       }
     }
-    Views: {
-      [_ in never]: never
-    }
+    Views: Record<never, never>
     Functions: {
       increment_logo_stats: {
         Args: {
@@ -30,12 +28,8 @@ export interface Database {
         Returns: undefined
       }
     }
-    Enums: {
-      [_ in never]: never
-    }
-    CompositeTypes: {
-      [_ in never]: never
-    }
+    Enums: Record<never, never>
+    CompositeTypes: Record<never, never>
   }
 }
 

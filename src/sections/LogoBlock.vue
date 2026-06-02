@@ -236,7 +236,7 @@ function update(sceneTime: number, deltaTime: number): void {
   scene.rotation.x = x
 }
 
-onMounted(async () => {
+onMounted(() => {
   if (!isWebGlAvailable) return
   if (!canvas.value) throw new Error('Header canvas not found')
   if (!containerRef.value) throw new Error('Header container not found')
@@ -273,14 +273,12 @@ onMounted(async () => {
           obj.geometry.computeVertexNormals()
 
           // Store the mesh in the characterObject array.
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
           characterObjects.push(obj)
 
           originalScale = obj.scale.x
         }
       })
 
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       scene.add(gltfScene)
     },
     undefined,

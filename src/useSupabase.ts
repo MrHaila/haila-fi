@@ -74,7 +74,7 @@ async function incrementClick(target: 'h1' | 'a2' | 'i3' | 'l4' | 'a5'): Promise
   if (error) console.error(error)
 }
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type -- inferred composable bag of refs/computed
 export function useSupabase() {
   return {
     h1,
