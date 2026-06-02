@@ -74,7 +74,7 @@ import {
 } from 'three'
 import WebGL from 'three/addons/capabilities/WebGL.js'
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
-import { RGBELoader } from 'three/addons/loaders/RGBELoader.js'
+import { HDRLoader } from 'three/addons/loaders/HDRLoader.js'
 import { ref, computed, onMounted, reactive } from 'vue'
 
 import { useSupabase } from '../useSupabase'
@@ -251,7 +251,7 @@ onMounted(async () => {
 
   // Step 2: Environment
   const hdr = '/assets/3d/cloudy_128.hdr'
-  new RGBELoader().load(hdr, (texture) => {
+  new HDRLoader().load(hdr, (texture) => {
     texture.mapping = EquirectangularReflectionMapping
     scene.environment = texture
     scene.backgroundBlurriness = 0.2
