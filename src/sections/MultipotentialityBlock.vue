@@ -4,7 +4,7 @@ div(
   style="height: 34rem"
   )
   div(
-    class="relative mx-auto h-full overflow-x-hidden bg-right-bottom bg-no-repeat px-4 py-8 sm:p-10"
+    class="relative mx-auto h-full overflow-x-hidden bg-right-bottom bg-no-repeat py-8 px-4 sm:p-10"
     style="max-width: 70rem"
     )
     div(
@@ -21,7 +21,7 @@ div(
       h1(class="text-3xl font-bold uppercase sm:text-4xl") Multipotentiality
       p(class="font-mono text-xs font-light sm:text-sm") teemu@haila.fi ~/manifestos> cat 01.txt#[span(class="h-8 w-4 bg-neutral-100" v-show="showCaret") _]
 
-      ul(class="ml-3 mt-10 text-2xl")
+      ul(class="mt-10 ml-3 text-2xl")
         li 1. Eat
         li 2. Sleep
         li 3.
@@ -92,7 +92,7 @@ div(
             )
 
         li
-          p(class="ml-7 mt-4") Ehhh, whatever.
+          p(class="mt-4 ml-7") Ehhh, whatever.
 </template>
 
 <script lang="ts" setup>

@@ -15,38 +15,38 @@ div(
     )
     div(class="flex justify-center space-x-1")
       div(
-        class="rounded-lg bg-amber-100 px-1 pt-0.5 text-center opacity-70"
+        class="rounded-lg bg-amber-100 pt-0.5 px-1 text-center opacity-70"
         :style="{ backgroundColor: getBgColor(localAnimationOffsets.h1), transform: `scale(${localAnimationOffsets.h1 * -0.3 + 1}, ${localAnimationOffsets.h1 * 0.2 + 1}) translateY(${localAnimationOffsets.h1 * -4}px)` }"
         )
         div(class="text-xs") H
         div(class="-mt-1 text-sm font-semibold") {{ supabase.h1 }}
       div(
-        class="rounded-lg px-1 pt-0.5 text-center opacity-70"
+        class="rounded-lg pt-0.5 px-1 text-center opacity-70"
         :style="{ backgroundColor: getBgColor(localAnimationOffsets.a2), transform: `scale(${localAnimationOffsets.a2 * -0.3 + 1}, ${localAnimationOffsets.a2 * 0.2 + 1}) translateY(${localAnimationOffsets.a2 * -4}px)` }"
         )
         div(class="text-xs") A
         div(class="-mt-1 text-sm font-semibold") {{ supabase.a2 }}
       div(
-        class="rounded-lg px-1 pt-0.5 text-center opacity-70"
+        class="rounded-lg pt-0.5 px-1 text-center opacity-70"
         :style="{ backgroundColor: getBgColor(localAnimationOffsets.i3), transform: `scale(${localAnimationOffsets.i3 * -0.3 + 1}, ${localAnimationOffsets.i3 * 0.2 + 1}) translateY(${localAnimationOffsets.i3 * -4}px)` }"
         )
         div(class="text-xs") I
         div(class="-mt-1 text-sm font-semibold") {{ supabase.i3 }}
       div(
-        class="rounded-lg px-1 pt-0.5 text-center opacity-70"
+        class="rounded-lg pt-0.5 px-1 text-center opacity-70"
         :style="{ backgroundColor: getBgColor(localAnimationOffsets.l4), transform: `scale(${localAnimationOffsets.l4 * -0.3 + 1}, ${localAnimationOffsets.l4 * 0.2 + 1}) translateY(${localAnimationOffsets.l4 * -4}px)` }"
         )
         div(class="text-xs") L
         div(class="-mt-1 text-sm font-semibold") {{ supabase.l4 }}
       div(
-        class="rounded-lg px-1 pt-0.5 text-center opacity-70"
+        class="rounded-lg pt-0.5 px-1 text-center opacity-70"
         :style="{ backgroundColor: getBgColor(localAnimationOffsets.a5), transform: `scale(${localAnimationOffsets.a5 * -0.3 + 1}, ${localAnimationOffsets.a5 * 0.2 + 1}) translateY(${localAnimationOffsets.a5 * -4}px)` }"
         )
         div(class="text-xs") A
         div(class="-mt-1 text-sm font-semibold") {{ supabase.a5 }}
     div(class="mt-1 text-center text-xs text-neutral-100") You: {{ totalLocalClicks }} / Everyone: {{ supabase.totalClicks }}
 
-  div(class="absolute bottom-4 left-0 right-0 z-10 text-sm text-neutral-200 sm:bottom-5 sm:text-base")
+  div(class="absolute right-0 bottom-4 left-0 z-10 text-sm text-neutral-200 sm:bottom-5 sm:text-base")
     ul(class="container mx-auto px-4 sm:px-10")
       li BA Interaction Design
       li MProf Games Development

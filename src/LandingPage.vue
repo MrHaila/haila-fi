@@ -18,9 +18,9 @@ div#root
   CvBlock
   PhotographyBlock
 
-  div(class="mb-6 mt-20 pt-14 text-center")
+  div(class="mt-20 mb-6 pt-14 text-center")
     p Email me, maybe?
-    h4(class="mb-32 mt-3 text-2xl font-bold") teemu@haila.fi
+    h4(class="mt-3 mb-32 text-2xl font-bold") teemu@haila.fi
     div(class="space-y-1 text-sm")
       p(class="text-neutral-400") Global logo tapping 👆 stats: #[span(class="font-bold") H] {{ supabase.h1 }}, #[span(class="font-bold") A] {{ supabase.a2 }}, #[span(class="font-bold") I] {{ supabase.i3 }}, #[span(class="font-bold") L] {{ supabase.l4 }}, #[span(class="font-bold") A] {{ supabase.a5 }}
       p Handcrafted with ❤️ and 🍺 as <a href="https://github.com/MrHaila/haila-fi">open source</a>.

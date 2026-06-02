@@ -62,7 +62,7 @@ div(
         fill="url(#gradient)"
         )
 
-  div(class="container mx-auto flex h-full flex-col justify-between px-4 py-8 text-white sm:p-10")
+  div(class="container mx-auto flex h-full flex-col justify-between py-8 px-4 text-white sm:p-10")
     div(class="mt-48")
       FadeIn(class="h-14 fill-white text-center sm:h-24")
         svg(
@@ -118,7 +118,7 @@ div(
           )
           button(
             type="button"
-            class="inline-flex items-center rounded-full border border-transparent bg-neutral-800 px-5 py-3 font-medium leading-4 text-white shadow-sm transition-colors hover:bg-neutral-900 focus:ring-neutral-800 active:bg-neutral-900"
+            class="inline-flex items-center rounded-full border border-transparent bg-neutral-800 py-3 px-5 font-medium leading-4 text-white shadow-sm transition-colors hover:bg-neutral-900 focus:ring-neutral-800 active:bg-neutral-900"
             ) Go to the website
 
     p(class="block") I'm a co-founder and CPO at Metaplay, a games technology company in Helsinki, Finland.
