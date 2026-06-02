@@ -1,10 +1,10 @@
 <template lang="pug">
-div(class="container mt-14 mx-auto")
-  div(class="py-8 px-4 sm:p-10")
+div(class="container mx-auto mt-14")
+  div(class="px-4 py-8 sm:p-10")
     //-h1(class="text-3xl sm:text-4xl font-bold mb-8") CV Generator
     //- Job title generator
     div(class="flex justify-center space-x-2 text-neutral-100")
-      div(class="relative h-7 w-36 rounded-lg bg-gradient-to-t from-orange-500 to-orange-400 py-1 px-3 text-center")
+      div(class="relative h-7 w-36 rounded-lg bg-gradient-to-t from-orange-500 to-orange-400 px-3 py-1 text-center")
         span(
           class="absolute bottom-0.5 left-0 ml-1"
           style="font-size: 0.6rem"
@@ -15,7 +15,7 @@ div(class="container mt-14 mx-auto")
             class="absolute top-1/2 right-0 left-0 -translate-y-1/2 text-center font-semibold"
             ) {{ currentJob.prefix }}
 
-      div(class="relative h-7 w-36 rounded-lg bg-gradient-to-t from-sky-500 to-sky-400 py-1 px-3 text-center")
+      div(class="relative h-7 w-36 rounded-lg bg-gradient-to-t from-sky-500 to-sky-400 px-3 py-1 text-center")
         span(
           class="absolute bottom-0.5 left-0 ml-1"
           style="font-size: 0.6rem"
@@ -26,7 +26,7 @@ div(class="container mt-14 mx-auto")
             class="absolute top-1/2 right-0 left-0 -translate-y-1/2 text-center font-semibold"
             ) {{ currentJob.job }}
 
-      div(class="relative h-7 w-36 rounded-lg bg-gradient-to-t from-violet-500 to-violet-400 py-1 px-3 text-center")
+      div(class="relative h-7 w-36 rounded-lg bg-gradient-to-t from-violet-500 to-violet-400 px-3 py-1 text-center")
         span(
           class="absolute bottom-0.5 left-0 ml-1"
           style="font-size: 0.6rem"
@@ -120,7 +120,7 @@ div(class="container mt-14 mx-auto")
       div(class="flex justify-center")
         a(
           href="https://www.linkedin.com/in/dasinf/"
-          class="block w-fit rounded-lg py-2 px-3 hover:bg-neutral-300 active:bg-neutral-400"
+          class="block w-fit rounded-lg px-3 py-2 hover:bg-neutral-300 active:bg-neutral-400"
           )
           img(
             src="/assets/logos/logo-linkedin.png"

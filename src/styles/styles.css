@@ -9,6 +9,6 @@
 }
 
 @theme {
-  --font-family-sans: 'Jost', 'system-ui', sans-serif;
-  --font-family-mono: 'Fira Code', monospace;
+  --font-sans: 'Jost', 'system-ui', sans-serif;
+  --font-mono: 'Fira Code', monospace;
 }

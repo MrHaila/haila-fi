@@ -12,5 +12,5 @@ div(class="relative bg-gradient-to-t from-neutral-900 to-neutral-800 text-center
   div(
     class="absolute top-6 right-4 left-4 rounded-lg bg-neutral-900 text-center text-neutral-100 sm:top-10 sm:bg-transparent sm:text-white"
     )
-    p(class="py-2 px-4") In 2018 I got a lifetime award for my contributions to the Finnish game development scene.
+    p(class="px-4 py-2") In 2018 I got a lifetime award for my contributions to the Finnish game development scene.
 </template>
